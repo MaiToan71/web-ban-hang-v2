@@ -1,0 +1,98 @@
+/* font */
+@import "@fontsource-variable/open-sans";
+@import "@fontsource-variable/inter";
+
+/* editor */
+@import "react-quill/dist/quill.snow.css";
+/* simplebar */
+@import "simplebar-react/dist/simplebar.min.css";
+
+/* tailwind */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --c-bg: transparent;
+  --c-scrollbar: #aaa;
+  --c-scrollbar-hover: #777;
+}
+html {
+  background-color: var(--c-bg);
+  overflow: auto;
+}
+html.dark {
+  --c-bg: transparent;
+  --c-scrollbar: #555;
+  --c-scrollbar-hover: #888;
+}
+
+/* native scrollbar customize */
+::-webkit-scrollbar {
+  width: 7px;
+  cursor: pointer !important;
+}
+::-webkit-scrollbar:horizontal {
+  height: 7px;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: var(--c-bg);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-scrollbar);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-scrollbar-hover);
+}
+main {
+  background-color: #f3f5f7 !important;
+}
+/* simplebar customize */
+.simplebar-scrollbar::before {
+  border-radius: 10px;
+  background: var(--c-scrollbar-hover);
+}
+.ant-breadcrumb-link {
+  font-size: 25px !important;
+  font-weight: bold;
+}
+.footer-mobile {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  padding-bottom: 16px;
+  padding-top: 4px;
+}
+.footer-mobile ul li {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.footer-mobile ul li .ant-menu-submenu-title {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.footer-mobile li.ant-menu-overflow-item .ant-menu-title-content {
+  margin: 0px !important;
+}
+.platform {
+  margin-bottom: 16px;
+  border-radius: 5px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  border: solid 1px #e6e6e6;
+}
+.platform.active {
+  border: solid 1px #3365fd;
+  background-color: #f3f5ff;
+}
+.platform .title {
+  font-weight: 700;
+}

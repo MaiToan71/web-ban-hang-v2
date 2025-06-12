@@ -1,0 +1,52 @@
+# Base image for runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+
+# Copy project files
+COPY ["Project.API/Project.API.csproj", "Project.API/"]
+COPY ["Project.Caching/Project.Caching.csproj", "Project.Caching/"]
+COPY ["Project.Services/Project.Services.csproj", "Project.Services/"]
+COPY ["Project.Data/Project.Data.csproj", "Project.Data/"]
+COPY ["Project.Enums/Project.Enums.csproj", "Project.Enums/"]
+COPY ["Project.Utilities/Project.Utilities.csproj", "Project.Utilities/"]
+COPY ["Project.ViewModels/Project.ViewModels.csproj", "Project.ViewModels/"]
+
+# Restore dependencies
+RUN dotnet restore "./Project.API/Project.API.csproj"
+
+# Copy the entire source code
+COPY . .
+
+# Build the application
+WORKDIR "/src/Project.API"
+RUN dotnet build "./Project.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# Publish the application
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./Project.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+# Final runtime image
+FROM base AS final
+
+# Optional: Set time zone
+ENV TZ=Asia/Ho_Chi_Minh
+RUN apt-get update && \
+    apt-get install -y tzdata && \
+    ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN date
+
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+# Start the application
+ENTRYPOINT ["dotnet", "Project.API.dll"]

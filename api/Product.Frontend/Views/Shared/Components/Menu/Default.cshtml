@@ -1,0 +1,44 @@
+﻿@using Project.ViewModels.Menus
+@model List<MenuViewModel>
+<ul class="menu-list">
+
+  
+    @foreach(var level1 in Model)
+    {
+        if(level1.ParentId==0){
+            bool check = false;
+            @foreach(var level2 in Model)
+            {
+                @if(level1.Id == level2.ParentId)
+                {
+
+                    check = true;
+                }
+            }
+            @if(check == false)
+            {
+                <li><a href="@level1.Url" class="item-anchor" data-effect="@level1.Name">@level1.Name</a></li>
+
+            }
+            if(check== true)
+            {
+                <li class="menu-item has-sub">
+                    <a href="#" class="item-anchor d-flex align-item-center" data-effect="@level1.Name">@level1.Name<i class="icon icon-chevron-down"></i></a>
+                    <ul class="submenu">
+                        @foreach(var level2 in Model)
+                        {
+                            @if(level1.Id == level2.ParentId)
+                            {
+                                <li><a href="@level2.Url" class="item-anchor">@level2.Name</a></li>
+                            }
+                        }
+
+                    </ul>
+                </li>
+            }
+        }
+    }
+
+   
+
+</ul>

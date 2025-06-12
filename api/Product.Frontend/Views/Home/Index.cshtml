@@ -1,0 +1,483 @@
+﻿@{
+    ViewData["Title"] = "Ngọc Quách Gia - Chuyên Gia Về Ngọc";
+}
+@using Project.ViewModels.Products
+@model Project.ViewModels.PagedResult<ProductViewModel>
+
+<section id="billboard" class="overflow-hidden">
+
+    <button class="button-prev">
+        <i class="icon icon-chevron-left"></i>
+    </button>
+    <button class="button-next">
+        <i class="icon icon-chevron-right"></i>
+    </button>
+    <div class="swiper main-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url('/images/anh-bia-1.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="banner-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('/images/anh-bia-2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="banner-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                               
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@{
+    int count = 1;
+}
+
+<section id="featured-products" class="product-store padding-large">
+    <div class="container">
+        <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+            <h2 class="section-title">Sản phẩm nổi bật</h2>
+            <div class="btn-wrap">
+                <a href="/san-pham/tat-ca" class="d-flex align-items-center">Xem tất cả sản phảm <i class="icon icon icon-arrow-io"></i></a>
+            </div>
+        </div>
+        <div class="swiper product-swiper overflow-hidden">
+            <div class="swiper-wrapper">
+                 @foreach (var product in Model.Items)
+                {
+                    if (count <= 8)
+                    {
+                        <div class="swiper-slide">
+                            <div class="product-item">
+                                <div class="image-holder">
+                                    @if (product.Images.Count() > 0)
+                                    {
+                                        @foreach (var image in product.Images)
+                                        {
+                                            string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                            <img src="@imageUrl" alt="@product.Title" class="product-image">
+
+                                        }
+                                    }
+                                    @if (product.Images.Count() == 0)
+                                    {
+                                        <img src="/images//default-thumbnail-400.jpg" alt="Books" class="@product.Title">
+                                    }
+
+
+                                </div>
+                                <div class="cart-concern">
+                                    <div class="cart-button d-flex justify-content-between align-items-center">
+                                        <button type="button" class="btn-wrap cart-link d-flex align-items-center">
+                                            Thêm giỏ hàng <i class="icon icon-arrow-io"></i>
+                                        </button>
+                                        <button type="button" class="view-btn tooltip
+                                d-flex">
+                                            <i class="icon icon-screen-full"></i>
+                                            <span class="tooltip-text">Xem nhanh</span>
+                                        </button>
+                                        <button type="button" class="wishlist-btn">
+                                            <i class="icon icon-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <h3 class="product-title">
+                                        <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
+                                    </h3>
+                                    <div class="item-price text-primary money">@product.SellingPrice</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    
+                    count++;
+                }
+
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+@* <section id="latest-collection">
+    <div class="container">
+        <div class="product-collection row">
+            <div class="col-lg-7 col-md-12 left-content">
+                <div class="collection-item">
+                    <div class="products-thumb">
+                        <img src="images/collection-item1.jpg" alt="collection item" class="large-image image-rounded">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
+                        <div class="categories">casual collection</div>
+                        <h3 class="item-title">street wear.</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                        <div class="btn-wrap">
+                            <a href="shop.html" class="d-flex align-items-center">
+                                shop collection <i class="icon icon-arrow-io"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 right-content flex-wrap">
+                <div class="collection-item top-item">
+                    <div class="products-thumb">
+                        <img src="images/collection-item2.jpg" alt="collection item" class="small-image image-rounded">
+                    </div>
+                    <div class="col-md-6 product-entry">
+                        <div class="categories">Basic Collection</div>
+                        <h3 class="item-title">Basic shoes.</h3>
+                        <div class="btn-wrap">
+                            <a href="shop.html" class="d-flex align-items-center">
+                                shop collection <i class="icon icon-arrow-io"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection-item bottom-item">
+                    <div class="products-thumb">
+                        <img src="images/collection-item3.jpg" alt="collection item" class="small-image image-rounded">
+                    </div>
+                    <div class="col-md-6 product-entry">
+                        <div class="categories">Best Selling Product</div>
+                        <h3 class="item-title">woolen hat.</h3>
+                        <div class="btn-wrap">
+                            <a href="shop.html" class="d-flex align-items-center">
+                                shop collection <i class="icon icon-arrow-io"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> *@
+
+<section id="subscribe" class="padding-large">
+    <div class="container">
+        <div class="row">
+            <div class="block-text col-md-6">
+                <div class="section-header">
+                    <h2 class="section-title">Đăng ký nhận thông báo sản phẩm mới nhất</h2>
+                </div>
+                <p>Trang sức đá quý tinh xảo, mang đến may mắn và bình an cho cuộc sống của bạn.</p>
+            </div>
+            <div class="subscribe-content col-md-6">
+                <form id="form" class="d-flex justify-content-between">
+                    <input type="text" name="email" placeholder="Nhập thông tin địa chỉ email tại đây">
+                    <button class="btn btn-dark">Đăng ký ngay</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="selling-products" class="product-store bg-light-grey padding-large">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Sản phẩm bán chạy</h2>
+        </div>
+        <div class="tab-content">
+            <div id="all" data-tab-content class="active">
+                <div class="row d-flex flex-wrap">
+                    @foreach (var product in Model.Items)
+                    {
+                        <div class="product-item col-lg-3 col-md-6 col-sm-6">
+                            <div class="image-holder">
+                                @if (product.Images.Count() > 0)
+                                {
+                                    @foreach (var image in product.Images)
+                                    {
+                                        string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                        <img src="@imageUrl" alt="@product.Title" class="product-image">
+
+                                    }
+                                }
+                                @if (product.Images.Count() == 0)
+                                {
+                                    <img src="/images//default-thumbnail-400.jpg" alt="Books" class="@product.Title">
+                                }
+
+                            </div>
+                            <div class="cart-concern">
+                                <div class="cart-button d-flex justify-content-between align-items-center">
+                                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">
+                                        Thêm giỏ hàng <i class="icon icon-arrow-io"></i>
+                                    </button>
+                                    <button type="button" class="view-btn tooltip
+                                  d-flex">
+                                        <i class="icon icon-screen-full"></i>
+                                        <span class="tooltip-text">Xem nhanh</span>
+                                    </button>
+                                    <button type="button" class="wishlist-btn">
+                                        <i class="icon icon-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-title">
+                                    <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
+                                </h3>
+                                <div class="item-price text-primary money">@product.SellingPrice</div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+          
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="padding-large no-padding-bottom">
+    <div class="container">
+        <div class="reviews-content">
+            <div class="row d-flex flex-wrap">
+                <div class="col-md-2">
+                    <div class="review-icon">
+                        <i class="icon icon-right-quote"></i>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="swiper testimonial-swiper overflow-hidden">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testimonial-detail">
+                                    <p>“Trang sức tại Ngọc Quách Gia không chỉ đẹp mà còn mang lại cho tôi nhiều may mắn trong công việc. Tôi đặc biệt hài lòng với vòng tay thạch anh vàng mà tôi đã mua.”</p>
+                                    <div class="author-detail">
+                                        <div class="name">Nguyễn Minh Tâm</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="testimonial-detail">
+                                    <p>“Tôi rất thích sự tư vấn tận tâm của nhân viên Ngọc Quách Gia. Họ giúp tôi chọn được viên đá phù hợp với mệnh của mình. Sản phẩm rất đẹp và chất lượng.”</p>
+                                    <div class="author-detail">
+                                        <div class="name">Lê Thị Hương</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-arrows">
+                        <button class="prev-button">
+                            <i class="icon icon-arrow-left"></i>
+                        </button>
+                        <button class="next-button">
+                            <i class="icon icon-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="flash-sales" class="product-store padding-large">
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Đang giảm giá</h2>
+        </div>
+        <div class="swiper product-swiper flash-sales overflow-hidden">
+
+            <div class="swiper-wrapper">
+                   @foreach (var product in Model.Items)
+                {
+                        <div class="swiper-slide">
+                            <div class="product-item">
+                                @if (product.Images.Count() > 0)
+                                {
+                                    @foreach (var image in product.Images)
+                                    {
+                                        string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                        <img src="@imageUrl" alt="@product.Title" class="product-image">
+
+                                    }
+                                }
+                                @if (product.Images.Count() == 0)
+                                {
+                                    <img src="/images//default-thumbnail-400.jpg" alt="Books" class="@product.Title">
+                                }
+
+                        <div class="cart-concern">
+                            <div class="cart-button d-flex justify-content-between align-items-center">
+                                <button type="button" class="btn-wrap cart-link d-flex align-items-center">
+                                  Thêm giỏ hàng <i class="icon icon-arrow-io"></i>
+                                </button>
+                                <button type="button" class="view-btn tooltip
+                        d-flex">
+                                    <i class="icon icon-screen-full"></i>
+                                    <span class="tooltip-text">Xem nhanh</span>
+                                </button>
+                                <button type="button" class="wishlist-btn">
+                                    <i class="icon icon-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                                <div class="discount">@product.Discount% </div>
+                        <div class="product-detail">
+                            <h3 class="product-title">
+                                <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
+                            </h3>
+                            <div class="item-price text-primary">
+                                    @{
+                                        var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
+                                    }
+                                    <del class="prev-price money">@product.SellingPrice</del><span class="money">@lastPrice</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+               
+            </div>
+            <div class="swiper-pagination"></div>
+
+        </div>
+    </div>
+</section>
+
+<section class="shoppify-section-banner">
+    <div class="container">
+        <div class="product-collection">
+            <div class="left-content collection-item">
+                <div class="products-thumb">
+                    <img src="/images/noi-bat.jpg" alt="collection item" class="large-image image-rounded">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
+                    <h3 class="item-title">Về Ngọc Quách Gia.</h3>
+                    <p>Ngọc Quách Gia tự hào là thương hiệu trang sức đá quý phong thủy uy tín hàng đầu, mang đến những sản phẩm tinh xảo và đẳng cấp.</p>
+                    <p>Mỗi sản phẩm của chúng tôi đều được chọn lọc kỹ lưỡng từ những viên đá quý tự nhiên, được thiết kế và chế tác tỉ mỉ bởi những nghệ nhân kim hoàn lành nghề.</p>
+                    <div class="btn-wrap">
+                        <a href="/san-pham/tat-ca" class="d-flex align-items-center">
+                            Xem sản phẩm <i class="icon icon-arrow-io"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="quotation" class="align-center padding-large">
+    <div class="inner-content">
+        <h2 class="section-title divider">
+            Trích dẫn trong ngày
+        </h2>
+        <blockquote>
+            <q>Ước mơ của tôi là làm đẹp cho phần cổ của tất cả phụ nữ trên toàn thế giới bằng ngọc trai.</q>
+            <div class="author-name">
+                - Kokichi Mikimoto
+
+            </div>
+        </blockquote>
+    </div>
+</section>
+
+<hr>
+<section id="latest-blog" class="padding-large">
+    <div class="container">
+        <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
+            <h2 class="section-title">Tin tức</h2>
+            <div class="btn-wrap align-right">
+                <a href="/tin-tuc" class="d-flex align-items-center">
+                    Đọc tất cả tin tức <i class="icon icon icon-arrow-io"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row d-flex flex-wrap">
+            @foreach (var post in @ViewBag.Posts)
+            {
+                var images = post.Images as List<Project.ViewModels.Images.ImageViewModel>;
+                <article class="col-md-4 post-item">
+                    <div class="image-holder zoom-effect">
+                        <a href="/chi-tiet/@post.Url">
+                            @if (images != null && images.Any())
+                            {
+                                @foreach (var image in post.Images)
+                                {
+                                    string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                    <img src="@imageUrl" alt="@post.Title" class="post-image">
+
+                                }
+                            }
+                            else
+                            {
+                                <img src="/images//default-thumbnail-400.jpg" alt="@post.Title" class="post-image">
+                            }
+                        </a>
+                    </div>
+                    <div class="post-content d-flex">
+                        <div class="meta-date">
+                            <div class="meta-day text-primary">@post.CreateTime.ToString("dd")</div>
+                            <div class="meta-month">@post.CreateTime.ToString("MM-yyyy")</div>
+                        </div>
+                        <div class="post-header">
+                            <h3 class="post-title">
+                                <a href="/chi-tiet/@post.Url">@post.Title</a>
+                            </h3>
+                            <a href="blog.html" class="blog-categories">@post.PostType.Name</a>
+                        </div>
+                    </div>
+                </article>
+            }
+
+        </div>
+    </div>
+</section>
+
+<section id="shipping-information">
+    <hr>
+    <div class="container">
+        <div class="row d-flex flex-wrap align-items-center justify-content-between">
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    <i class="icon icon-truck"></i>
+                    <h4 class="block-title">
+                        <strong>GIAO HÀNG TOÀN QUỐC</strong>  toàn quốc
+                    </h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    <i class="icon icon-return"></i>
+                    <h4 class="block-title">
+                        <strong>ĐỔI TRẢ HÀNG</strong> trong vòng 24h
+                    </h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    <i class="icon icon-tags1"></i>
+                    <h4 class="block-title">
+                        <strong>CAM KẾT SẢN PHẨM</strong> đá tự nhiên
+                    </h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    <i class="icon icon-help_outline"></i>
+                    <h4 class="block-title">
+                        <strong>Câu hỏi?</strong> liên hệ 0936083333
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</section>

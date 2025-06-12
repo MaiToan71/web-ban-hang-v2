@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewData["Title"] = "Tin tức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Project.ViewModels.Posts
+@model Project.ViewModels.PagedResult<PostViewModel>
+
+<section class="site-banner jarallax min-height300 padding-large" style="background: url(/images/hero-image1.jpg) no-repeat; background-position: top;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">Tin tức</h1>
+                <div class="breadcrumbs">
+                    <span class="item">
+                        <a href="/">Trang chủ /</a>
+                    </span>
+                    <span class="item">Tin tức</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="latest-blog" class="post-grid padding-large">
+    <div class="container">
+        <div class="row d-flex flex-wrap">
+            @foreach (var post in Model.Items)
+            {
+                <article class="col-md-4 post-item">
+                    <div class="image-holder zoom-effect">
+                        <a href="/chi-tiet/@post.Url">
+                            @if (post.Images.Count() > 0)
+                            {
+                                @foreach (var image in post.Images)
+                                {
+                                    string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                    <img src="@imageUrl" alt="@post.Title" class="post-image">
+
+                                }
+                            }
+                            @if (post.Images.Count() == 0)
+                            {
+                                <img src="/images//default-thumbnail-400.jpg" alt="@post.Title" class="post-image">
+                            }
+                        </a>
+                    </div>
+                    <div class="post-content d-flex">
+                        <div class="meta-date">
+                            <div class="meta-day text-primary">@post.CreateTime.ToString("dd")</div>
+                            <div class="meta-month">@post.CreateTime.ToString("MM-yyyy")</div>
+                        </div>
+                        <div class="post-header">
+                            <h3 class="post-title">
+                                <a href="/chi-tiet/@post.Url">@post.Title</a>
+                            </h3>
+                            <a href="/chi-tiet/@post.Url" class="blog-categories">@post.PostType.Name</a>
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
+        <nav class="navigation paging-navigation text-center padding-medium" role="navigation">
+            <div class="pagination loop-pagination d-flex justify-content-center">
+                @{
+
+
+                    int startPage = Math.Max(1, (int)ViewBag.CurrentPage - 1);
+                    int endPage = Math.Min((int)ViewBag.TotalPages, startPage + 2);
+
+                    // Nếu endPage gần cuối thì lùi startPage lại để luôn hiển thị 3 trang (nếu có)
+                    if (endPage - startPage < 2 && startPage > 1)
+                    {
+                        startPage = Math.Max(1, endPage - 2);
+                    }
+                }
+
+                @if ((int)ViewBag.CurrentPage > 1)
+                {
+                    <a asp-route-page="@(ViewBag.CurrentPage - 1)"
+                       asp-route-size="@ViewBag.PageSize"
+                       asp-route-posttype="@ViewBag.PostType"
+                       asp-route-from="@ViewBag.PrinceFrom"
+                       asp-route-to="@ViewBag.PrinceTo"
+                       asp-route-search="@(ViewBag.Search)"
+                       asp-route-slug="@ViewBag.Slug" class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-left"></i>
+                    </a>
+                }
+                @for (int i = startPage; i <= endPage; i++)
+                {
+                    if (i == (int)ViewBag.CurrentPage)
+                    {
+                        <strong class="page-numbers current">@i</strong>
+                    }
+                    else
+                    {
+                        <a asp-route-page="@i" class="page-numbers"
+                           asp-route-size="@ViewBag.PageSize"
+                           asp-route-from="@ViewBag.PrinceFrom"
+                           asp-route-to="@ViewBag.PrinceTo"
+                           asp-route-search="@(ViewBag.Search)"
+                           asp-route-posttype="@ViewBag.PostType"
+                           asp-route-slug="@ViewBag.Slug">@i</a>
+                    }
+                }
+                @if ((int)ViewBag.CurrentPage < (int)ViewBag.TotalPages)
+                {
+                    <a asp-route-page="@(ViewBag.CurrentPage + 1)"
+                       asp-route-size="@ViewBag.PageSize"
+                       asp-route-search="@(ViewBag.Search)"
+                       asp-route-from="@ViewBag.PrinceFrom"
+                       asp-route-to="@ViewBag.PrinceTo"
+                       asp-route-posttype="@ViewBag.PostType"
+                       asp-route-slug="@ViewBag.Slug" class="pagination-arrow d-flex align-items-center">
+                        <i class="icon icon-arrow-right"></i>
+                    </a>
+                }
+            </div>
+        </nav>
+    </div>
+</section>
+

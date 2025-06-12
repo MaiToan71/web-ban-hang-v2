@@ -1,0 +1,39 @@
+﻿@using Project.ViewModels.Posts
+@model PostViewModel
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-banner jarallax min-height300 padding-large" style="background: url(/images/hero-image1.jpg) no-repeat; background-position: top;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">Tin tức</h1>
+                <div class="breadcrumbs">
+                    <span class="item">
+                        <a href="/tin-tuc">Tin tức /</a>
+                    </span>
+                    <span class="item">@Model.Title</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="latest-blog" class="post-grid padding-large">
+    <div class="container" style="max-width:800px">
+        <div class="row ">
+            <h2>@Model.Title</h2>
+            <p>Ngày : @Model.CreateTime.ToString("dd-MM-YYYY")</p>
+        </div>
+        <div class="row">
+            @Html.Raw(Model.Content)
+        </div>
+        <div class="d-flex justify-content-end">
+            <strong>@Model.Author</strong>
+        </div>
+    </div>
+</section>

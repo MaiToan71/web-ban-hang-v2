@@ -1,0 +1,26 @@
+/* Customize the drag-and-drop area */
+.uppy-DragDrop-dropZone {
+  background-color: #fafafa; /* Light background for the upload area */
+  border: 2px dashed #4caf50; /* Green dashed border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 40px; /* Add padding */
+  text-align: center; /* Center the text and icons */
+  font-size: 18px; /* Larger font size */
+  color: #333; /* Dark text color */
+}
+
+/* Customize the text and icons */
+.uppy-DragDrop-text {
+  font-weight: bold; /* Bold text */
+  color: #4caf50; /* Green color for text */
+}
+
+.uppy-DragDrop-icon {
+  color: #ff9800; /* Orange icon color */
+}
+
+/* Optional: Add hover effect */
+.uppy-DragDrop-dropZone:hover {
+  border-color: #ff5722; /* Change border color on hover */
+  background-color: #e8f5e9; /* Lighter background color on hover */
+}
