@@ -82,7 +82,7 @@ export default function PosttypeModal({
           rules={[
             {
               required: true,
-              message: "Nhập tên  thương hiệu!",
+              message: "Nhập tên  Danh mục!",
             },
           ]}
           label="Tên từ khóa"

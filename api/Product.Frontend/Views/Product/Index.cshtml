@@ -3,8 +3,9 @@
 @model Project.ViewModels.PagedResult<ProductViewModel>
 
 @{
-    ViewData["Title"] = "Sản phẩm";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Sản phẩm - Chuyên Gia Về Ngọc";
+    ViewData["Image"] = ViewBag.Image;
+    ViewData["Description"] = "Ngọc Quách Gia - Chuyên Gia Về Ngọc";
 }
 <section class="site-banner jarallax min-height300 padding-large" style="background: url(/images/hero-image.jpg) no-repeat; background-position: top;">
     <div class="container">
@@ -50,26 +51,30 @@
                                         }
 
                                     </div>
-                                    <div class="cart-concern">
-                                        <div class="cart-button d-flex justify-content-between align-items-center">
-                                            <button type="button" class="btn-wrap cart-link d-flex align-items-center">
-                                                Thêm giỏ hàng <i class="icon icon-arrow-io"></i>
-                                            </button>
-                                            <button type="button" class="view-btn tooltip
-                              d-flex">
-                                                <i class="icon icon-screen-full"></i>
-                                                <span class="tooltip-text">Xem nhanh</span>
-                                            </button>
-                                            <button type="button" class="wishlist-btn">
-                                                <i class="icon icon-heart"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    @if (product.Discount > 0)
+                                    {
+                                        <div class="discount">@product.Discount% </div>
+
+                                    }
                                     <div class="product-detail">
                                         <h3 class="product-title">
                                             <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
                                         </h3>
-                                        <div class="item-price text-primary money">@product.SellingPrice</div>
+                                        @if (product.Discount > 0)
+                                        {
+                                            <div class="item-price text-primary">
+                                                @{
+                                                    var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
+                                                }
+                                                <del class="prev-price money">@product.SellingPrice</del><span class="money">@lastPrice</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+
+                                            <span class="money">@product.SellingPrice</span>
+                                        }
+
                                     </div>
                                 </div>
                         }

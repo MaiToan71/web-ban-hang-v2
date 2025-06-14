@@ -1,0 +1,11 @@
+﻿
+@model List<Project.ViewModel.PostTypes.PostTypeViewModel>
+<ul class="cat-list">
+    @foreach(var m in Model)
+    {
+        <li class="cat-list-item">
+            <a href="/san-pham/tat-ca?page=1&size=24&posttype=@m.Id" title="@m.Name">@m.Name</a>
+        </li>
+    }
+
+</ul>

@@ -28,6 +28,10 @@ namespace Project.API.Controllers
         {
             try
             {
+                if (request.PageSize > 100)
+                {
+                    request.PageSize = 100;
+                }
                 request.UserId = CurrentUserViewModel.UserId;
                 var data = await _IProductService.GetAllPaging(request);
 

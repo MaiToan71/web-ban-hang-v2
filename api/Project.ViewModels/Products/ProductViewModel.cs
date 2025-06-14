@@ -12,6 +12,7 @@ namespace Project.ViewModels.Products
         public string SubTitle { get; set; } = string.Empty;
         public string Url { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public string Code { get; set; } = string.Empty;
 
         public string Content { get; set; } = string.Empty;
         public string ShortContent { get; set; } = string.Empty;

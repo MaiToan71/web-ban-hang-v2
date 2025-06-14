@@ -80,6 +80,7 @@ namespace Project.Data.EF
         public DbSet<UserService> UserServices { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<Project.Data.Entities.Attribute> Attributes { get; set; }
+        public DbSet<Project.Data.Entities.Config> Configs { get; set; }
 
     }
 }

@@ -83,10 +83,10 @@ export default function PosttypeModal({
           rules={[
             {
               required: true,
-              message: "Nhập tên  thương hiệu!",
+              message: "Nhập tên  Danh mục!",
             },
           ]}
-          label="Tên thương hiệu"
+          label="Tên Danh mục"
           name="Name"
         >
           <Input />
@@ -98,7 +98,7 @@ export default function PosttypeModal({
           rules={[
             {
               required: true,
-              message: "Nhập thông tin thương hiệu!",
+              message: "Nhập thông tin Danh mục!",
             },
           ]}
           label="Mô tả"

@@ -13,7 +13,7 @@ namespace Project.ViewModels.Products.Manage
         public required string SubTitle { get; set; }
         public required string Url { get; set; }
         public required string Description { get; set; }
-
+        public string Code { get; set; }
         public Platform Platform { get; set; }
         [DisplayFormat(HtmlEncode = true)]
         [AllowHtml]
@@ -24,6 +24,7 @@ namespace Project.ViewModels.Products.Manage
         public bool IsPublished { get; set; }
         public Workflow WorkflowId { get; set; }
         public bool IsShowHome { get; set; }
+        public decimal Discount { get; set; }
         public required int PostTypeId { get; set; }
         public float CapitalPrice { get; set; } = 0;
         public float SellingPrice { get; set; } = 0;

@@ -109,7 +109,7 @@ export default function DepartmentPage() {
 
       <div className="row-span-3 ">
         <Card
-          title="Thương hiệu"
+          title="Danh mục"
           extra={
             <Button type="primary" onClick={() => onCreate()}>
               Thêm mới

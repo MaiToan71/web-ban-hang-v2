@@ -952,7 +952,7 @@ img.image-circle {
   text-align: center;
 }
 .site-banner h1.page-title{
-    font-size: 7.2em;
+    font-size: 5.2em;
     font-weight: 800;
     line-height: 1em;
     letter-spacing: -0.02em;
@@ -998,10 +998,9 @@ img.image-circle {
 -----------------------------------------------*/
 .section-header {
     width: 100%;
-    padding-bottom: 20px;
 }
 .section-title {
-    font-size: 2.6em;
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -1029,16 +1028,16 @@ h2.product-title{
   padding-bottom: 0.5em;
 }
 .padding-small {
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 .padding-medium {
   padding-top: 4em;
   padding-bottom: 4em;
 }
 .padding-large {
-  padding-top: 7em;
-  padding-bottom: 7em;
+  padding-top: 16px;
+  padding-bottom:16px;
 }
 .padding-xlarge {
   padding-top: 9.5em;
@@ -2026,11 +2025,11 @@ i.icon.icon-arrow-io {
     padding-left: 25px;
 }
 .product-item h3.product-title {
-    font-size: 1.4em;
+    font-size: 18px;
     margin: 0;
 }
 .product-item .item-price {
-    font-size: 1.8em;
+    font-size: 16px;
 }
 .swiper.product-swiper {
     position: relative;
@@ -2228,6 +2227,10 @@ i.icon.icon-arrow-io {
 #testimonials .container {
     max-width: 1400px;
 }
+#testimonials{
+    padding-top:32px;
+    padding-bottom:32px;
+}
 #testimonials .reviews-content {
     position: relative;
 }
@@ -2406,9 +2409,7 @@ a.blog-categories:hover{
 
 /*----- Icon Box Section
 --------------------------------------------------------------*/
-#shipping-information {
-    padding-bottom: 100px;
-}
+
 #shipping-information .icon-box {
     display: flex;
     align-items: baseline;
@@ -2434,6 +2435,9 @@ a.blog-categories:hover{
 
 /*----- Footer Section
 --------------------------------------------------------------*/
+#footer {
+    margin-top: 16px;
+}
 #footer .footer-menu {
     margin-right: 50px;
 }
@@ -2891,4 +2895,13 @@ section.categories .category-content a{
 --------------------------------------------------------------*/
 .jarallax.min-height300 {
     min-height: 300px;
+}
+#cart-count {
+    background: #ff6517;
+    color: #fff;
+    padding: 0px 6px;
+    border-radius: 100%;
+    position: absolute;
+    font-size: 12px;
+    line-height: 20px;
 }

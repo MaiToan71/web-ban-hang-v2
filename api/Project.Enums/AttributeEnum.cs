@@ -4,6 +4,6 @@
     {
         Tag = 0,
         Color = 1,
-        Size = 3
+        Size = 2
     }
 }

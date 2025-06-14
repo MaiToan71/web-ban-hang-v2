@@ -1,9 +1,8 @@
-﻿
-@{
-    ViewData["Title"] = "Tin tức";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    ViewData["Title"] = "Tin tức - Chuyên Gia Về Ngọc";
+    ViewData["Image"] = ViewBag.Image;
+    ViewData["Description"] = "Ngọc Quách Gia - Chuyên Gia Về Ngọc";
 }
-
 @using Project.ViewModels.Posts
 @model Project.ViewModels.PagedResult<PostViewModel>
 
@@ -28,7 +27,7 @@
         <div class="row d-flex flex-wrap">
             @foreach (var post in Model.Items)
             {
-                <article class="col-md-4 post-item">
+                <article class="col-md-3 post-item">
                     <div class="image-holder zoom-effect">
                         <a href="/chi-tiet/@post.Url">
                             @if (post.Images.Count() > 0)

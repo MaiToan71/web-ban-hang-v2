@@ -145,7 +145,7 @@ export default function DepartmentPage() {
   };
   return (
     <Card
-      title="Thương hiệu"
+      title="Danh mục"
       extra={
         <Button type="primary" onClick={() => onCreate()}>
           Thêm mới

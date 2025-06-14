@@ -44,6 +44,17 @@ namespace Product.Frontend.Controllers
         {
 
             var item = await _post.GetByUrl(slug);
+            IConfigurationRoot configurationBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            ViewBag.DomainApi = configurationBuilder["Domain:Api"];
+            if (item.Images.Count > 0)
+            {
+                ViewBag.Image = configurationBuilder["Domain:Api"] + item.Images[0].ImagePath;
+
+            }
+            else
+            {
+                ViewBag.Image = configurationBuilder["Domain:Api"] + "/UploadFiles/e383dfcf-7bc0-4cf9-a470-cf1456611359.jpg";
+            }
             return View(item);
         }
     }

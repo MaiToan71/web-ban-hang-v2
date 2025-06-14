@@ -14,11 +14,12 @@ namespace Project.Data.Entities
         public string Content { get; set; }
 
         public string ShortContent { get; set; }
+        public string Code { get; set; } = string.Empty;
         public string Source { get; set; }
         public string CoverImage { get; set; }
         public Workflow WorkflowId { get; set; }
-        public bool IsPublished { get; set; }
-        public bool IsShowHome { get; set; }
+        public bool IsPublished { get; set; } = false;
+        public bool IsShowHome { get; set; } = false;
 
         public Platform Platform { get; set; } = Platform.Facebook;
 

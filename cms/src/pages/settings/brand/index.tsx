@@ -73,7 +73,7 @@ export default function PosttypePage() {
       render: (_: any, record: any) => <div>{record.Phonenumber}</div>,
     },
     {
-      title: "Mô tả thương hiệu",
+      title: "Mô tả Danh mục",
       width: "550px",
       render: (_: any, record: any) => <div>{record.Description}</div>,
     },
@@ -149,7 +149,7 @@ export default function PosttypePage() {
   };
   return (
     <Card
-      title="Thương hiệu"
+      title="Danh mục"
       extra={
         <Button type="primary" onClick={() => onCreate()}>
           Thêm mới

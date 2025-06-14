@@ -119,19 +119,19 @@
       },
       breakpoints: {
         0: {
-          slidesPerView: 1,
-          spaceBetween: 30,
-        },
-        768: {
           slidesPerView: 2,
           spaceBetween: 30,
         },
-        999: {
+        768: {
           slidesPerView: 3,
           spaceBetween: 30,
         },
-        1299: {
+        999: {
           slidesPerView: 4,
+          spaceBetween: 30,
+        },
+        1299: {
+          slidesPerView: 5,
           spaceBetween: 30,
         },
       },
@@ -144,11 +144,11 @@
       },
       breakpoints: {
         0: {
-          slidesPerView: 1,
+          slidesPerView: 2,
           spaceBetween: 30,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 30,
         },
         999: {
@@ -168,22 +168,22 @@
         clickable: true,
       },
       breakpoints: {
-        0: {
-          slidesPerView: 1,
-          spaceBetween: 30,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        999: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-        1299: {
-          slidesPerView: 4,
-          spaceBetween: 30,
-        },
+          0: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+          },
+          768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+          },
+          999: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+          },
+          1299: {
+              slidesPerView: 5,
+              spaceBetween: 30,
+          },
       },
     });
 

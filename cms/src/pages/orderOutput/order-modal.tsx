@@ -50,6 +50,10 @@ const OrderModal = ({
       values.PaymentMethod = Number(values.PaymentMethod);
       //values.Workflow = Workflow.CREATED;
       values.OrderType = OrderType.Output;
+      values.DeloveryMan = ""
+      values.UnitDelivery = ""
+      values.DeloveryManPhonenumber = ""
+
       values.OrderDetails = values.OrderDetails.map((i: any) => {
         let productObj = i.Product;
         i.ProductId = `${productObj.value}`;
@@ -60,7 +64,7 @@ const OrderModal = ({
         };
       });
       if (!(values.DateDelivery && values.DateDelivery)) {
-        values.DateDelivery = null;
+        values.DateDelivery = moment().format('yyyy-MM-DD');
       }
       let res = {
         Status: false,
@@ -260,7 +264,7 @@ const OrderModal = ({
   return (
     <Modal
       width={1200}
-      title={`Chi tiết đơn hàng xuất kho`}
+      title={`Chi tiết đơn hàng `}
       open={isModalOpen}
       onOk={handleOk}
       onCancel={handleCancel}
@@ -293,128 +297,14 @@ const OrderModal = ({
           ],
         }}
       >
-        <Card title="Thông tin chung">
-          <Row>
-            <Col span={8} className="p-1">
-              <Form.Item
-                label="Ngày đặt hàng"
-                name="DateOrder"
-                rules={[
-                  {
-                    required: true,
-                    message: "Nhập ngày đặt hàng",
-                  },
-                ]}
-              >
-                <Input type="date" />
-              </Form.Item>
-            </Col>
 
-            <Col span={8} className="p-1">
-              <Form.Item label="Ngày giao hàng" name="DateDelivery">
-                <Input type="date" />
-              </Form.Item>
-            </Col>
-            <Col span={8} className="p-1">
-              <Form.Item label="Đơn vị giao hàng" name="UnitDelivery">
-                <Select
-                  placeholder="Chọn đơn vị giao hàng"
-                  options={[
-                    {
-                      value: "Không có",
-                      label: "Không có",
-                    },
-                    {
-                      value: "Giao Hàng Nhanh - GHN",
-                      label: "Giao Hàng Nhanh - GHN",
-                    },
-                    {
-                      value: "Best Express",
-                      label: "Best Express",
-                    },
-                    {
-                      value: "Giao Hàng Tiết Kiệm - GHTK",
-                      label: "Giao Hàng Tiết Kiệm - GHTK",
-                    },
-                    {
-                      value: "J&T Express",
-                      label: "J&T Express",
-                    },
-
-                    {
-                      value: "Vietnam Post",
-                      label: "Vietnam Post",
-                    },
-                    {
-                      value: "Nhat Tin Logistics",
-                      label: "Nhat Tin Logistics",
-                    },
-                    {
-                      value: "Ninja Van",
-                      label: "Ninja Van",
-                    },
-                  ]}
-                />
-              </Form.Item>
-            </Col>
-            <Col span={8} className="p-1">
-              <Form.Item
-                label="Thanh toán"
-                name="PaymentMethod"
-                rules={[
-                  {
-                    required: true,
-                    message: "Chọn đơn vị thanh toán",
-                  },
-                ]}
-              >
-                <Select
-                  placeholder="Chọn hình thức thanh toán"
-                  options={[
-                    {
-                      value: 1,
-                      label: "Chuyển khoản",
-                    },
-                    {
-                      value: 0,
-                      label: "Tiền mặt",
-                    },
-                    {
-                      value: 2,
-                      label: "Nội bộ",
-                    },
-                    {
-                      value: 3,
-                      label: "Chưa thanh toán",
-                    },
-                  ]}
-                />
-              </Form.Item>
-            </Col>
-
-            <Col span={24} className="p-1">
-              <Form.Item
-                label="Ghi chú"
-                name="Note"
-                rules={[
-                  {
-                    required: true,
-                    message: "Vui lòng nhập ghi chú",
-                  },
-                ]}
-              >
-                <TextArea rows={4} />
-              </Form.Item>
-            </Col>
-          </Row>
-        </Card>
         <div className="mt-3">
           <Card title="Thông tin người nhận">
             <Row>
               <Col span={12} className="p-1">
                 <Form.Item
                   label="Họ tên  "
-                  name="DeloveryMan"
+                  name="FullName"
                   rules={[
                     {
                       required: true,
@@ -426,8 +316,98 @@ const OrderModal = ({
                 </Form.Item>
               </Col>
               <Col span={12} className="p-1">
-                <Form.Item label="Số điện thoại" name="DeloveryManPhonenumber">
+                <Form.Item label="Số điện thoại" name="Phone" rules={[
+                  {
+                    required: true,
+                    message: "Nhập thông tin",
+                  },
+                ]}>
                   <Input placeholder="Nhập số điện thoại" />
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row>
+
+              <Col span={8} className="p-1">
+                <Form.Item
+                  label="Ngày đặt hàng"
+                  name="DateOrder"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Nhập ngày đặt hàng",
+                    },
+                  ]}
+                >
+                  <Input type="date" />
+                </Form.Item>
+              </Col>
+              <Col span={8} className="p-1">
+                <Form.Item
+                  label="Thanh toán"
+                  name="PaymentMethod"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Chọn đơn vị thanh toán",
+                    },
+                  ]}
+                >
+                  <Select
+                    placeholder="Chọn hình thức thanh toán"
+                    options={[
+                      {
+                        value: 1,
+                        label: "Chuyển khoản",
+                      },
+                      {
+                        value: 0,
+                        label: "COD",
+                      },
+                      {
+                        value: 2,
+                        label: "Nội bộ",
+                      },
+                      {
+                        value: 3,
+                        label: "Chưa thanh toán",
+                      },
+                    ]}
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={12} className="p-1">
+                <Form.Item label="Tỉnh" name="Province" rules={[
+                  {
+                    required: true,
+                    message: "Nhập thông tin",
+                  },
+                ]}>
+                  <Input placeholder="Nhập số thông tin" />
+                </Form.Item>
+              </Col>
+              <Col span={12} className="p-1">
+                <Form.Item label="Huyện" name="District" rules={[
+                  {
+                    required: true,
+                    message: "Nhập thông tin",
+                  },
+                ]}>
+                  <Input placeholder="Nhập số thông tin" />
+                </Form.Item>
+              </Col>
+              <Col span={24} className="p-1">
+                <Form.Item
+                  label="Địa chỉ"
+                  name="Note"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Vui lòng nhập ghi chú",
+                    },
+                  ]}
+                >
+                  <TextArea rows={4} />
                 </Form.Item>
               </Col>
             </Row>
@@ -460,7 +440,7 @@ const OrderModal = ({
                         alignItems: "baseline",
                       }}
                     >
-                      <Col span={8} className="p-1">
+                      <Col span={4} className="p-1">
                         <Form.Item
                           label="Sản phẩm"
                           rules={[
@@ -483,11 +463,11 @@ const OrderModal = ({
                         </Form.Item>
                       </Col>
 
-                      <Col span={8} className="p-1">
+                      <Col span={4} className="p-1">
                         <Form.Item
                           {...restField}
-                          name={[name, "SellingPrice"]}
-                          fieldKey={[fieldKey, "SellingPrice"]}
+                          name={[name, "CapitalPrice"]}
+                          fieldKey={[fieldKey, "CapitalPrice"]}
                           label="Giá bán"
                           rules={[
                             {
@@ -503,7 +483,47 @@ const OrderModal = ({
                           />
                         </Form.Item>
                       </Col>
-                      <Col span={8} className="p-1">
+                      <Col span={4} className="p-1">
+                        <Form.Item
+                          {...restField}
+                          name={[name, "Discount"]}
+                          fieldKey={[fieldKey, "Discount"]}
+                          label="Giảm giá"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Nhập giá bán!",
+                            },
+                          ]}
+                        >
+                          <InputNumber
+                            disabled={type == "edit" ? true : false}
+                            min={0}
+                            style={{ width: "100%", height: "64px" }}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col span={4} className="p-1">
+                        <Form.Item
+                          {...restField}
+                          name={[name, "SellingPrice"]}
+                          fieldKey={[fieldKey, "SellingPrice"]}
+                          label="Sau giảm giá"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Nhập giá bán!",
+                            },
+                          ]}
+                        >
+                          <InputNumber
+                            disabled={type == "edit" ? true : false}
+                            min={0}
+                            style={{ width: "100%", height: "64px" }}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col span={4} className="p-1">
                         <Flex justify="space-between">
                           <Form.Item
                             {...restField}
@@ -533,6 +553,7 @@ const OrderModal = ({
                           )}
                         </Flex>
                       </Col>
+
                     </Row>
                   </div>
                 ))}

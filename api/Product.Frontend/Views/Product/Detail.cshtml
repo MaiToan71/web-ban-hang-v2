@@ -2,11 +2,11 @@
 @model ProductViewModel
 
 @{
-    ViewData["Title"] = Model.Title;
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = Model.Title;
+	ViewData["Image"] = ViewBag.Image;
+	ViewData["Description"] = Model.Title;
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-	</style>
 <link href="~/css/detail.css" rel="stylesheet" />
 <section id="product" class="clearfix">
 	<div class="container">
@@ -16,18 +16,27 @@
 				<div class="row images">
 					<div class="swiper">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide"><img src="https://product.hstatic.net/1000089151/product/z4221346544003_01e82fdbca30c679b171d34784401ba0__1__b57ae9e3ef094631aaf73bdbf16b1b6e_medium.jpg" alt="1"></div>
-							<div class="swiper-slide"><img src="https://product.hstatic.net/1000089151/product/z4221346544003_01e82fdbca30c679b171d34784401ba0__1__b57ae9e3ef094631aaf73bdbf16b1b6e_medium.jpg" alt="2"></div>
-							<div class="swiper-slide"><img src="https://product.hstatic.net/1000089151/product/z4221346544003_01e82fdbca30c679b171d34784401ba0__1__b57ae9e3ef094631aaf73bdbf16b1b6e_medium.jpg" alt="3"></div>
-							<div class="swiper-slide"><img src="https://product.hstatic.net/1000089151/product/z4221346544003_01e82fdbca30c679b171d34784401ba0__1__b57ae9e3ef094631aaf73bdbf16b1b6e_medium.jpg" alt="4"></div>
-							<div class="swiper-slide"><img src="https://product.hstatic.net/1000089151/product/z4221346544003_01e82fdbca30c679b171d34784401ba0__1__b57ae9e3ef094631aaf73bdbf16b1b6e_medium.jpg" alt="2"></div>
-							<div class="swiper-slide"><img src="https://product.hstatic.net/1000089151/product/z4221346544003_01e82fdbca30c679b171d34784401ba0__1__b57ae9e3ef094631aaf73bdbf16b1b6e_medium.jpg" alt="3"></div>
-							<div class="swiper-slide"><img src="https://product.hstatic.net/1000089151/product/z4221346544003_01e82fdbca30c679b171d34784401ba0__1__b57ae9e3ef094631aaf73bdbf16b1b6e_medium.jpg" alt="4"></div>
+							@foreach (var image in Model.Images)
+                            {
+								string imageUrl = ViewBag.DomainApi + image.ImagePath;
+								<div class="swiper-slide"><img src="@imageUrl" alt="@Model.Title"></div>
+							}
 						</div>
 					</div>
-					<img id="zoom_01"
-						 src="https://theme.hstatic.net/1000089151/1000738647/14/slide_index_1.jpg?v=243"
-						 data-zoom-image="https://theme.hstatic.net/1000089151/1000738647/14/slide_index_1.jpg?v=243" width="400" />
+					@{
+						int count = 0;
+					}
+					@foreach (var image in Model.Images)
+                            {
+						if (count == 0)
+						{
+							string imageUrl2 = ViewBag.DomainApi + image.ImagePath;
+							<img id="zoom_01"
+								 src="@imageUrl2"
+								 data-zoom-image="@imageUrl2" width="400" />
+						}
+						count++;
+					}
 				</div>
 
 
@@ -35,30 +44,64 @@
 			<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pd5 information-product">
 				<div class="product-border">
 					<div class="product-title">
-						<h1>Vòng Tay Agate Nâu Sần</h1>
+						<h1>@Model.Title</h1>
 					</div>
 					<div class="clearfix product-sku-date">
-						<span class="pull-left product-sku" id="pro_sku1">SKU: ASN010</span>
+						<span class="pull-left product-sku" id="pro_sku1">SKU: @Model.Code</span>
 					</div>
+				  @if (Model.Discount > 0)
+					{
+						<div class="item-price text-primary product-price">
+						@{
+							var lastPrice = Model.SellingPrice - ((float)Model.Discount / 100) * Model.SellingPrice;
+						}
+							<del class="prev-price money product-price">@Model.SellingPrice</del><span class="money product-price " id="price-preview1">@lastPrice</span>
+					</div>
+					}
 
-					<div class="product-price" id="price-preview1"><span>350,000₫</span></div>
+					@if (Model.Discount ==0)
+					{
+						<div class="product-price" id="price-preview1"><span class="money">@Model.SellingPrice</span></div>
+
+					}
 				</div>
 
 
 
-				<form id="add-item-form" action="/cart/add" method="post" class="variants clearfix variant-style">
+				<div id="add-item-form" method="post" class="variants clearfix variant-style">
 					<div class="select clearfix">
+						@{int checkSizes = Model.ProductAttributes.Count();}
+						@if (checkSizes > 0)
+						{
+							<div class="selector-wrapper opt1">
 
+								<label>SIZE</label>
+								<ul class="data-opt1 clearfix style-variant-template">
+									@{
+										int countSize = 0;
+									}
+									@foreach (var pa in Model.ProductAttributes)
+									{
+										if (pa.Type == Project.Enums.AttributeEnum.Size ){
+											if (countSize == 0)
+											{
+												<li ><label><input data-id="@pa.AttributeId" type="radio" checked="checked" value="@pa.AttributeId" name="option1"><span>@pa.Name @pa.Description</span></label></li>
 
-						<div class="selector-wrapper opt1">
-							<label>SIZE</label>
-							<ul class="data-opt1 clearfix style-variant-template">
-								<li class="hidden"><label><input type="radio" value="8 mm" name="option1"><span>8 mm</span></label></li>
-								<li class=" 10-mm"><label><input checked="checked" type="radio" value="10 mm" name="option1"><span>10 mm</span></label></li>
-								<li class=" 12-mm"><label><input type="radio" value="12 mm" name="option1"><span>12 mm</span></label></li>
-							</ul>
-						</div>
+											}
+											else
+											{
+											<li><label><input  type="radio"  data-id="@pa.AttributeId" value="@pa.AttributeId" name="option1"><span>@pa.Name @pa.Description</span></label></li>
+											
+											}
+											countSize++;
 
+										}
+									}
+									
+								</ul>
+							</div>
+						}
+@* 
 
 						<div class="selector-wrapper opt2">
 							<label>ĐẶC ĐIỂM</label>
@@ -66,60 +109,37 @@
 
 								<li class=" 10-mm 12-mm" style="display: list-item;"><label><input checked="checked" type="radio" value="mài sần" name="option2"><span>mài sần</span></label></li>
 							</ul>
-						</div>
+						</div> *@
 
 
-						<style>
-							.selector-wrapper:not(.opt1):not(.opt1-quickview):not(.opt2):not(.opt2-quickview):not(.opt3):not(.opt3-quickview) {
-								display: none;
-							}
-						</style>
-
-						<div class="selector-wrapper"><label for="product-select-option-0">SIZE</label><span class="custom-dropdown custom-dropdown-white"><select class="single-option-selector custom-dropdown-select custom-dropdown-white-select" data-option="option1" id="product-select-option-0"><option value="8 mm">8 mm</option><option value="10 mm">10 mm</option><option value="12 mm">12 mm</option></select></span></div><div class="selector-wrapper"><label for="product-select-option-1">ĐẶC ĐIỂM</label><span class="custom-dropdown custom-dropdown-white"><select class="single-option-selector custom-dropdown-select custom-dropdown-white-select" data-option="option2" id="product-select-option-1"><option value="mài sần">mài sần</option></select></span></div><select id="product-select" name="id" style="display:none">
-
-							<option value="1014979568">8 mm / mài sần - 250,000₫</option>
-
-							<option value="1014979569">10 mm / mài sần - 350,000₫</option>
-
-							<option value="1014979570">12 mm / mài sần - 400,000₫</option>
-
-						</select>
+						
 					</div>
 					<div class="select-wrapper clearfix ">
-						<label>Số lượng</label>
-						<div class="input-group">
-							<input type="button" value="-" onclick="Nobita.minusQuantity()" class="qty-btn">
-							<input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
-							<input type="button" value="+" onclick="Nobita.plusQuantity()" class="qty-btn">
+						<p>Số lượng</p>
+						<div class="input-group d-flex">
+							<div class="input-group d-flex">
+						<button id="decrease">-</button>
+						<input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+						<button id="increase">+</button>
+					</div>
 						</div>
 					</div>
 					<div class="clearfix">
-						<button class="btn-style-add add-to-cart">
+						<button class="btn-style-add add-to-cart" data-id="@Model.Id" data-name="@Model.Title" >
 							<span ><i class="fa fa-shopping-cart"></i></span>
 							<span>Thêm vào giỏ</span>
 						</button>
-						<button class="btn-style-buynow addnow">
+						<button class="btn-style-buynow addnow" data-id="@Model.Id">
 
 							<span>Mua ngay</span>
 						</button>
 					</div>
-				</form>
+				</div>
 
 
 				<div class="product-border clearfix">
 
-					<div class="info-socials-article clearfix">
-						<div class="box-like-socials-article">
-							<div class="fb-like fb_iframe_widget" data-href="/products/vong-tay-agate-nau-3" data-layout="button_count" data-action="like" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=1613769142230848&amp;container_width=0&amp;href=https%3A%2F%2Fngocgems.com%2Fproducts%2Fvong-tay-agate-nau-3&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey"><span style="vertical-align: bottom; width: 90px; height: 28px;"><iframe name="fd35a19bfa0a04b9e" width="1000px" height="1000px" data-testid="fb:like Facebook Social Plugin" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.5/plugins/like.php?action=like&amp;app_id=1613769142230848&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dfe79785591e65a17c%26domain%3Dngocgems.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fngocgems.com%252Ffde1e882d48f506f6%26relation%3Dparent.parent&amp;container_width=0&amp;href=https%3A%2F%2Fngocgems.com%2Fproducts%2Fvong-tay-agate-nau-3&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey" style="border: none; visibility: visible; width: 90px; height: 28px;" class=""></iframe></span></div>
-						</div>
-						<div class="box-like-socials-article">
-							<div class="fb-share-button fb_iframe_widget" data-href="/products/vong-tay-agate-nau-3" data-layout="button_count" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=1613769142230848&amp;container_width=0&amp;href=https%3A%2F%2Fngocgems.com%2Fproducts%2Fvong-tay-agate-nau-3&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey"><span style="vertical-align: bottom; width: 86px; height: 20px;"><iframe name="f45c7fc3b63eded5e" width="1000px" height="1000px" data-testid="fb:share_button Facebook Social Plugin" title="fb:share_button Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.5/plugins/share_button.php?app_id=1613769142230848&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df0bdeedd71ae676a3%26domain%3Dngocgems.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fngocgems.com%252Ffde1e882d48f506f6%26relation%3Dparent.parent&amp;container_width=0&amp;href=https%3A%2F%2Fngocgems.com%2Fproducts%2Fvong-tay-agate-nau-3&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey" style="border: none; visibility: visible; width: 86px; height: 20px;" class=""></iframe></span></div>
-						</div>
-						<div class="box-like-socials-article">
-							<div class="fb-send" data-href="/products/vong-tay-agate-nau-3">
-							</div>
-						</div>
-					</div>
+				
 
 
 					<div class="tag-wrapper">
@@ -128,46 +148,17 @@
 						</label>
 						<ul class="tags">
 
-
+								@foreach (var pa in Model.ProductAttributes)
+									{
+											if (pa.Type == Project.Enums.AttributeEnum.Tag ){
 							<li class="">
-								<a href="/collections/all/Khắc Mệnh Thủy">Khắc Mệnh Thủy</a>
+								<a href="/san-pham/tat-ca">@pa.Name</a>
 							</li>
+											}
 
+									}
 
-
-							<li class="">
-								<a href="/collections/all/Tốt Cho Sức Khỏe">Tốt Cho Sức Khỏe</a>
-							</li>
-
-
-
-							<li class="">
-								<a href="/collections/all/Màu Nâu">Màu Nâu</a>
-							</li>
-
-
-
-							<li class="">
-								<a href="/collections/all/Hợp Mệnh Kim">Hợp Mệnh Kim</a>
-							</li>
-
-
-
-							<li class="">
-								<a href="/collections/all/Mệnh Thổ">Mệnh Thổ</a>
-							</li>
-
-
-
-							<li class="">
-								<a href="/collections/all/Đá">Đá</a>
-							</li>
-
-
-
-							<li class="">
-								<a href="/collections/all/Hợp Mệnh Thổ">Hợp Mệnh Thổ</a>
-							</li>
+							
 
 
 						</ul>
@@ -247,7 +238,10 @@
 			</div>
 		</div>
 
-	
+	  <div>
+		  <h3>Mô tả sản phẩm</h3>
+		  <p>@Html.Raw(Model.Content)</p>
+	  </div>
 
 	</div>
 </section>

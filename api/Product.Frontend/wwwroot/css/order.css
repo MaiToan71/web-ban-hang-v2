@@ -1,0 +1,103 @@
+#billing_address_full_name{
+    width:100%
+}
+input ,select{
+    width:100%
+}
+.order .container{
+    width:1200px;
+}
+.visually-hidden{
+    display:none;
+}
+.product-thumbnail {
+    width: 4.6em;
+    height: 4.6em;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+}
+
+.product-thumbnail-quantity {
+    font-size: 0.85714em;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 2px 13px;
+    border-radius: 50%;
+    background-color: rgba(153, 153, 153, 0.9);
+    color: #fff;
+    position: absolute;
+
+    color: #fff;
+    position: absolute;
+    right: -0.75em;
+    top: -0.75em;
+    z-index: 2;
+}
+#change_pick_location_or_shipping > div{
+    display:flex;
+    justify-content:space-between;
+
+}
+.step-footer-previous-link {
+    margin-top: 16px;
+    color: #6995B1
+}
+.content{
+    padding-right:64px;
+}
+.sidebar {
+    padding-left:32px;
+    position: relative;
+    border-left: 1px solid gray !important
+}
+.payment-due .payment-due-currency {
+    font-size: 0.85714em;
+    vertical-align: 0.2em;
+    margin-right: 0.5em;
+    color: #969696;
+}
+.total-line-table-footer .total-line ,.total-line-subtotal{
+    border-top: 1px solid gray !important
+}
+.payment-due-price{
+    font-weight:bold;
+}
+.fieldset .field .field-input-wrapper {
+    position: relative;
+}
+    .fieldset .field .field-input-wrapper .field-input {
+        box-shadow: 0 0 0 1px #d9d9d9;
+        transition: all 0.2s ease-out;
+        background-color: white;
+        color: #333333;
+        border-radius: 4px;
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        word-break: normal;
+    }
+.field-input-btn-wrapper{
+    display:flex;
+    justify-content:space-between;
+    align-content:center;
+}
+.field-input-btn.btn.btn-default.btn-disabled{
+    margin-left:16px;
+    margin-top:0px;
+    margin-bottom:23px
+}
+.total-line-table{
+    width:100%;
+    margin-top:-32px;
+}
+.total-line{
+   display:flex;
+   justify-content:space-between;
+}
+.total-line-price {
+    text-align: end;
+}
+.error{
+    color:red;
+}

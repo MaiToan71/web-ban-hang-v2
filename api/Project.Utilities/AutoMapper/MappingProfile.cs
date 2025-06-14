@@ -4,6 +4,7 @@ using Project.ViewModel.Usermanagers.Permissions;
 using Project.ViewModels.Attributes;
 using Project.ViewModels.BankConfig;
 using Project.ViewModels.BankUsers;
+using Project.ViewModels.Configs;
 using Project.ViewModels.Departments;
 using Project.ViewModels.Notification;
 using Project.ViewModels.Orders;
@@ -52,6 +53,9 @@ namespace Project.Utilities.AutoMapper
 
             CreateMap<AttributeCreateRequest, Project.Data.Entities.Attribute>().ReverseMap();
             CreateMap<AttributeUpdateRequest, Project.Data.Entities.Attribute>().ReverseMap();
+
+            CreateMap<ConfigCreateRequest, Project.Data.Entities.Config>().ReverseMap();
+            CreateMap<ConfigUpdateRequest, Project.Data.Entities.Config>().ReverseMap();
         }
     }
 }

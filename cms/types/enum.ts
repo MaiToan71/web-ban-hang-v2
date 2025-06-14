@@ -85,7 +85,13 @@ export enum AttributeEnum {
 	Color = 1,
 	Size = 2,
 }
-
+export enum ConfigEnum {
+	ProductHome = 0,
+	PostHome = 1,
+	ProductSale = 2,
+	BannerHome = 3,
+	BannerCategory = 4,
+}
 export enum PlatformData {
 	FACEBOOK = 0,
 	TIKTOK = 1,

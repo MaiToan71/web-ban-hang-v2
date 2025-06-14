@@ -150,7 +150,7 @@ export default function Draft() {
       render: (_: any, record: any) => <div>{record.Title}</div>,
     },
     {
-      title: "Thương hiệu",
+      title: "Danh mục",
       render: (_: any, record: any) => (
         <Tag color="green">{record.PostType.Name}</Tag>
       ),

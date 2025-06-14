@@ -11,6 +11,7 @@ import {
   Image,
   Popconfirm,
   InputNumber,
+  Checkbox
 } from "antd";
 import Editor from "../../components/editor";
 import Card from "@/components/card";
@@ -69,6 +70,8 @@ const DetailPage = () => {
     })
     setColors(newColors)
 
+
+
     let newTags: any = []
     res.Items.map((i: any) => {
       if (i.Type == AttributeEnum.Tag) {
@@ -108,7 +111,8 @@ const DetailPage = () => {
             }
           }
         }),
-        Attributes: res.Data.ProductAttributes.filter((i: any) => i.Type === AttributeEnum.Size || i.Type == AttributeEnum.Color)
+        Sizes: res.Data.ProductAttributes.filter((i: any) => i.Type === AttributeEnum.Size),
+        Colors: res.Data.ProductAttributes.filter((i: any) => i.Type === AttributeEnum.Color)
       });
     }
   };
@@ -126,6 +130,7 @@ const DetailPage = () => {
   const onFinish = async (values: any) => {
     const formData: any = new FormData();
     formData.append("Id", detail.Id);
+    formData.append("Code", values.Code);
     formData.append("Title", values.Title);
     formData.append("SubTitle", values.Title);
     formData.append("Url", values.Title);
@@ -134,47 +139,50 @@ const DetailPage = () => {
     formData.append("ShortContent", values.Title);
     formData.append("Source", values.Title);
     formData.append("CoverImage", values.Title);
-    formData.append("IsPublished", false);
+    formData.append("IsPublished", values.IsPublished);
     formData.append("WorkflowId", workflow);
     formData.append("IsShowHome", false);
     formData.append("PostTypeId", values.PostTypeId);
     formData.append("Platform", 1);
-
+    formData.append("Discount", values.Discount);
     formData.append("Quantity", values.Quantity);
     formData.append("QuantitySold", values.QuantitySold);
     formData.append("CapitalPrice", values.CapitalPrice);
     formData.append("SellingPrice", values.SellingPrice);
-
     let attributeInputs: any = []
-    if (values.Attributes != null) {
-      attributeInputs = [...values.Attributes]
+    if (values.Colors != null) {
+      attributeInputs = [...values.Colors]
 
     }
+    if (values.Sizes != null) {
+      values.Sizes.forEach((attr: any) => {
+        attributeInputs.push(attr)
+      })
+    }
     if (values.Tags != undefined) {
-
-
       values.Tags.forEach((attr: any) => {
         if (attr.value == undefined) {
           attributeInputs.push({
             AttributeId: attr,
             Price: 0,
-            Quantity: 0
+            Quantity: 0,
+            Description: "1"
           })
         } else {
           attributeInputs.push({
             AttributeId: attr.value,
             Price: 0,
-            Quantity: 0
+            Quantity: 0,
+            Description: "1"
           })
         }
-
-
       });
     }
     attributeInputs.forEach((attr: any, index: any) => {
       formData.append(`Attributes[${index}].AttributeId`, attr.AttributeId);
       formData.append(`Attributes[${index}].Price`, attr.Price);
       formData.append(`Attributes[${index}].Quantity`, attr.Quantity);
+      formData.append(`Attributes[${index}].Description`, attr.Description);
     });
 
 
@@ -266,6 +274,19 @@ const DetailPage = () => {
                 >
                   <Input className="w-full" placeholder="Nhập tên mặt hàng" />
                 </Form.Item>
+                <Form.Item<any>
+                  label="Mã sản phẩm"
+                  name="Code"
+                  className="w-full"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Bạn nhập mã sản phẩm",
+                    },
+                  ]}
+                >
+                  <Input className="w-full" placeholder="Nhập mã mặt hàng" />
+                </Form.Item>
                 <Row gutter={16}>
                   <Col span={12}>
                     <Form.Item<any>
@@ -327,6 +348,21 @@ const DetailPage = () => {
                       <Input type="number" />
                     </Form.Item>
                   </Col>
+                  <Col span={12}>
+                    <Form.Item<any>
+                      label="Giảm giá (%)"
+                      name="Discount"
+                      className="w-full"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Nhập giảm giá",
+                        },
+                      ]}
+                    >
+                      <Input type="number" />
+                    </Form.Item>
+                  </Col>
                 </Row>
                 <div>
                   <h2 className="mb-2">Nhập mô tả sản phẩm</h2>
@@ -342,14 +378,15 @@ const DetailPage = () => {
             <Card className="mt-[16px] ">
               {/* OrderDetails List */}
               <div className="flex flex-col justify-start">
-                <h1 className="font-bold text-[18px]">Thông tin size, màu sắc</h1>
+                <h1 className="font-bold text-[18px]">Thông tin size</h1>
                 <Form.List
-                  name="Attributes"
+                  name="Sizes"
                   initialValue={[
                     {
                       AttributeId: 0,
                       Price: 0,
                       Quantity: 0,
+                      Description: ""
                     },
                   ]}
                 >
@@ -362,11 +399,11 @@ const DetailPage = () => {
                           >
                             <Col span={8} className="p-1">
                               <Form.Item
-                                label="Màu sắc"
+                                label="Kích cõ"
                                 rules={[
                                   {
                                     required: true,
-                                    message: "Vui lòng chọn màu sắc!",
+                                    message: "Vui lòng chọn kích cỡ!",
                                   },
                                 ]}
                                 {...restField}
@@ -380,6 +417,20 @@ const DetailPage = () => {
                                       label: i.Name
                                     }
                                   })}
+                                />
+                              </Form.Item>
+                            </Col>
+                            <Col span={8} className="p-1">
+                              <Form.Item
+                                {...restField}
+                                name={[name, "Description"]}
+                                fieldKey={[fieldKey, "Description"]}
+                                label="Mô tả (gam, cm ,...)"
+
+                              >
+                                <Input
+                                  min={0}
+                                  style={{ width: "100%", }}
                                 />
                               </Form.Item>
                             </Col>
@@ -447,10 +498,18 @@ const DetailPage = () => {
                 </Form.List>
               </div>
             </Card>
-          </Col>
 
+
+          </Col>
           <Col span={8} className="pl-3">
             <Card>
+
+              <Form.Item name="IsPublished" valuePropName="checked">
+                <Checkbox>Hiển thị</Checkbox>
+              </Form.Item>
+            </Card>
+            <Card className="mt-3">
+
               <Form.Item<any>
                 rules={[
                   {

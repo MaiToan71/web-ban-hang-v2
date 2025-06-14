@@ -1,0 +1,21 @@
+.ant-tabs-nav-list {
+  padding: 16px 0;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 13px;
+  line-height: 1.6153846153846154;
+  list-style: none;
+  font-family: Open Sans Variable;
+  position: relative;
+  background: #ffffff;
+  border-radius: 8px;
+}
+/* Đặt trong App.css hoặc styled-components */
+.ant-table-body {
+  max-height: calc(100vh - 330px) !important;
+  overflow-y: auto !important;
+}
+.ant-tabs-nav > div {
+  width: 200px;
+}

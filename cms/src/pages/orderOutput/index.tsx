@@ -38,8 +38,7 @@ const OrderPage = () => {
       let start = formattedDates[0];
       if (start != "") {
         setFromDateOrder(
-          `${start.split("/")[2]}-${start.split("/")[1]}-${
-            start.split("/")[0]
+          `${start.split("/")[2]}-${start.split("/")[1]}-${start.split("/")[0]
           }T00:00:00`
         );
       } else {
@@ -49,8 +48,7 @@ const OrderPage = () => {
       let end = formattedDates[1];
       if (end != "") {
         setToDateOrder(
-          `${end.split("/")[2]}-${end.split("/")[1]}-${
-            end.split("/")[0]
+          `${end.split("/")[2]}-${end.split("/")[1]}-${end.split("/")[0]
           }T23:59:59`
         );
       } else {
@@ -183,7 +181,7 @@ const OrderPage = () => {
             },
             {
               value: Workflow.CREATED,
-              label: "Khởi tạo",
+              label: "Chờ duyệt",
             },
             {
               value: Workflow.WAITING,
@@ -210,21 +208,16 @@ const OrderPage = () => {
       title: "Người nhận",
       render: (_: any, record: any) => (
         <div>
-          <p>{record.Order.DeloveryMan}</p>
+          <p>{record.Order.FullName}</p>
           <p>
-            {record.Order.DeloveryManPhonenumber != ""
-              ? `SĐT: ${record.Order.DeloveryManPhonenumber}`
+            {record.Order.Phone != ""
+              ? `SĐT: ${record.Order.Phone}`
               : ""}
           </p>
         </div>
       ),
     },
-    {
-      title: "Đơn vị giao hàng ",
-      render: (_: any, record: any) => (
-        <div>{t(record.Order.UnitDelivery)}</div>
-      ),
-    },
+
     {
       title: "Ngày tạo ",
       render: (_: any, record: any) => (

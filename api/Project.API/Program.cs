@@ -14,6 +14,7 @@ using Project.Data.Entities;
 using Project.Services.Attributes;
 using Project.Services.Banks;
 using Project.Services.BankUsers;
+using Project.Services.Configs;
 using Project.Services.Dashboards;
 using Project.Services.Departments;
 using Project.Services.Images;
@@ -179,6 +180,7 @@ builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<IWorkScheduleService, WorkScheduleService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IAttributeService, AttributeService>();
+builder.Services.AddTransient<IConfigService, ConfigService>();
 var app = builder.Build();
 
 //if (app.Environment.IsDevelopment())

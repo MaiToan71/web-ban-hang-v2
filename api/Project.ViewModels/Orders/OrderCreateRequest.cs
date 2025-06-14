@@ -6,7 +6,7 @@ namespace Project.ViewModels.Orders
     {
         public string? Code { get; set; }
         public DateTime? DateOrder { get; set; }
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
         public DateTime? DateDelivery { get; set; }
         public string UnitDelivery { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
@@ -17,5 +17,12 @@ namespace Project.ViewModels.Orders
         public string DeloveryMan { get; set; }
         public string DeloveryManPhonenumber { get; set; }
         public List<OrderDetailRequest> OrderDetails { get; set; }
+
+        public string? ProvinceCode { get; set; } = string.Empty;
+        public string? Province { get; set; } = string.Empty;
+        public string? DistrictCode { get; set; } = string.Empty;
+        public string? District { get; set; } = string.Empty;
+        public string? FullName { get; set; } = string.Empty;
+        public string? Phone { get; set; } = string.Empty;
     }
 }

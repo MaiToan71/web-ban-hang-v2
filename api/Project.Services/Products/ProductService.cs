@@ -33,6 +33,7 @@ namespace Project.Services.Products
                 .Select(product => new ProductViewModel
                 {
                     Id = product.Id,
+                    Code = product.Code,
                     Title = product.Title,
                     SubTitle = product.SubTitle,
                     Url = product.Url,
@@ -50,6 +51,7 @@ namespace Project.Services.Products
                     ExportDate = product.ExportDate,
                     InputDate = product.InputDate,
                     ExpireDate = product.ExpireDate,
+                    Discount = product.Discount,
 
                     PostTypeId = product.PostTypeId,
                     SellingPrice = product.SellingPrice,
@@ -90,7 +92,6 @@ namespace Project.Services.Products
                 .Select(m => new ProductAttributeViewModel
                 {
                     Name = m.Name,
-                    Description = m.Description,
                     Type = m.Type,
                     AttributeId = m.Id
 
@@ -107,13 +108,13 @@ namespace Project.Services.Products
                     AttributeId = pa.AttributeId,
                     ProductId = pa.ProductId,
                     Price = pa.Price,
+                    Description = pa.Description
                 };
                 foreach (var a in attributes)
                 {
                     if (pa.AttributeId == a.AttributeId)
                     {
                         outputAtribute.Name = a.Name;
-                        outputAtribute.Description = a.Description;
                         outputAtribute.Type = a.Type;
                         outputAtribute.AttributeId = a.AttributeId;
                     }
@@ -201,6 +202,13 @@ namespace Project.Services.Products
                 .Where(m => m.IsDeleted == false).AsQueryable();
 
             // 2.Filter
+            if (request.IsDiscount != null)
+            {
+                if (request.IsDiscount == true)
+                {
+                    query = query.Where(m => m.Discount > 0).OrderByDescending(m => m.Discount);
+                }
+            }
 
             if (request.WorkflowId != null)
             {
@@ -212,6 +220,10 @@ namespace Project.Services.Products
                 //}
             }
             ;
+            if (request.ProductIds != null)
+            {
+                query = query.Where(m => request.ProductIds.Contains(m.Id));
+            }
 
             if (!string.IsNullOrEmpty(request.Keyword))
             {
@@ -246,6 +258,11 @@ namespace Project.Services.Products
             {
                 query = query.Where(m => m.SellingPrice <= (float)request.SellingPriceTo);
             }
+            if (request.ProductAttributes != null)
+            {
+                var pa = _context.ProductAttributes.Where(m => request.ProductAttributes.Select(m => m.ProductId).Contains(m.ProductId)).ToList();
+                query = query.Where(m => pa.Select(m => m.ProductId).Contains(m.Id));
+            }
             //3. Paging
             int totalRow = await query.CountAsync();
 
@@ -267,6 +284,7 @@ namespace Project.Services.Products
 
                      Description = product.Description,
                      //    Source = product.Source,
+                     Code = product.Code,
                      CreateTime = product.CreatedTime,
                      Discount = product.Discount,
                      Quantity = product.Quantity,
@@ -293,7 +311,45 @@ namespace Project.Services.Products
                      }
                  })
                 .ToListAsync();
+            var pas = _context.ProductAttributes.Where(m => data.Select(m => m.Id).Contains(m.ProductId)).ToList();
+            var atts = _context.Attributes.Where(m => pas.Select(m => m.AttributeId).Contains(m.Id)).ToList();
+            foreach (var d in data)
+            {
+                var outputAtributes = new List<ProductAttributeViewModel>();
+                var ProductAttributes = pas.Where(m => m.ProductId == d.Id).ToList();
+                var attributes = atts.Where(m => ProductAttributes.Select(m => m.AttributeId).Contains(m.Id))
+                    .Select(m => new ProductAttributeViewModel
+                    {
+                        Name = m.Name,
+                        Type = m.Type,
+                        AttributeId = m.Id
 
+                    })
+                    .ToList()
+                    ;
+                foreach (var pa in ProductAttributes)
+                {
+                    var outputAtribute = new ProductAttributeViewModel()
+                    {
+                        Quantity = pa.Quantity,
+                        AttributeId = pa.AttributeId,
+                        ProductId = pa.ProductId,
+                        Price = pa.Price,
+                        Description = pa.Description
+                    };
+                    foreach (var a in attributes)
+                    {
+                        if (pa.AttributeId == a.AttributeId)
+                        {
+                            outputAtribute.Name = a.Name;
+                            outputAtribute.Type = a.Type;
+                            outputAtribute.AttributeId = a.AttributeId;
+                        }
+                    }
+                    outputAtributes.Add(outputAtribute);
+                }
+                d.ProductAttributes = outputAtributes;
+            }
             //4 .Select and projecttion
             var pagedResult = new PagedResult<ProductViewModel>()
             {
@@ -363,6 +419,8 @@ namespace Project.Services.Products
                     CreatedUser = user.FullName,
                     Platform = request.Platform,
                     PostTypeEnum = request.PostTypeEnum,
+                    Discount = 0,
+
                     Quantity = 0,
                     QuantitySold = 0,
 
@@ -577,6 +635,8 @@ namespace Project.Services.Products
             product.IsShowHome = request.IsShowHome;
             product.PostTypeId = request.PostTypeId;
             product.Platform = request.Platform;
+            product.Code = request.Code;
+            product.Discount = request.Discount;
             product.ModifiedTime = DateTime.Now;
             //  product.Quantity = request.Quantity;
             //  product.QuantitySold = request.QuantitySold;
@@ -644,10 +704,11 @@ namespace Project.Services.Products
                     ProductId = productId,
                     AttributeId = attribute.AttributeId,
                     Price = attribute.Price,
+                    Description = attribute.Description
                 };
                 updates.Add(p);
             }
-            _context.AddRange(updates);
+            _context.ProductAttributes.AddRange(updates);
             await _context.SaveChangesAsync();
             return true;
         }

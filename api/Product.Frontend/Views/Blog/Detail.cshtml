@@ -2,6 +2,8 @@
 @model PostViewModel
 @{
     ViewData["Title"] = Model.Title;
+    ViewData["Image"] = ViewBag.Image;
+    ViewData["Description"] = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

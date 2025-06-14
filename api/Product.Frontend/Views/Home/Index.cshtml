@@ -1,5 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Ngọc Quách Gia - Chuyên Gia Về Ngọc";
+    ViewData["Image"] = ViewBag.Image;
+    ViewData["Description"] = "Ngọc Quách Gia - Chuyên Gia Về Ngọc";
 }
 @using Project.ViewModels.Products
 @model Project.ViewModels.PagedResult<ProductViewModel>
@@ -14,29 +16,22 @@
     </button>
     <div class="swiper main-swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('/images/anh-bia-1.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
-                <div class="banner-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                             
+            @foreach(var b in ViewBag.Banners)
+            {
+                string imageUrl = ViewBag.DomainApi + b.Url;
+                <div class="swiper-slide" style="background-image: url('@imageUrl');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                    <div class="banner-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="swiper-slide" style="background-image: url('/images/anh-bia-2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;">
-                <div class="banner-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                               
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
+           
+           
         </div>
     </div>
 </section>
@@ -54,44 +49,29 @@
         </div>
         <div class="swiper product-swiper overflow-hidden">
             <div class="swiper-wrapper">
-                 @foreach (var product in Model.Items)
+                @foreach (var product in ViewBag.ProductHots)
                 {
-                    if (count <= 8)
-                    {
+                    var images = product.Images as List<Project.ViewModels.Images.ImageViewModel>;
                         <div class="swiper-slide">
                             <div class="product-item">
                                 <div class="image-holder">
-                                    @if (product.Images.Count() > 0)
+                                @if (images != null && images.Any())
+                                {
+                                    @foreach (var image in product.Images)
                                     {
-                                        @foreach (var image in product.Images)
-                                        {
-                                            string imageUrl = ViewBag.DomainApi + image.ImagePath;
-                                            <img src="@imageUrl" alt="@product.Title" class="product-image">
+                                        string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                        <img src="@imageUrl" alt="@product.Title" class="product-image">
 
-                                        }
                                     }
-                                    @if (product.Images.Count() == 0)
-                                    {
-                                        <img src="/images//default-thumbnail-400.jpg" alt="Books" class="@product.Title">
-                                    }
+                                }
+                                else
+                                {
+                                    <img src="/images//default-thumbnail-400.jpg" alt="@product.Title" class="post-image">
+                                }
 
 
                                 </div>
-                                <div class="cart-concern">
-                                    <div class="cart-button d-flex justify-content-between align-items-center">
-                                        <button type="button" class="btn-wrap cart-link d-flex align-items-center">
-                                            Thêm giỏ hàng <i class="icon icon-arrow-io"></i>
-                                        </button>
-                                        <button type="button" class="view-btn tooltip
-                                d-flex">
-                                            <i class="icon icon-screen-full"></i>
-                                            <span class="tooltip-text">Xem nhanh</span>
-                                        </button>
-                                        <button type="button" class="wishlist-btn">
-                                            <i class="icon icon-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
+
                                 <div class="product-detail">
                                     <h3 class="product-title">
                                         <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
@@ -100,10 +80,8 @@
                                 </div>
                             </div>
                         </div>
-                    }
 
-                    
-                    count++;
+
                 }
 
             </div>
@@ -112,61 +90,8 @@
     </div>
 </section>
 
-@* <section id="latest-collection">
-    <div class="container">
-        <div class="product-collection row">
-            <div class="col-lg-7 col-md-12 left-content">
-                <div class="collection-item">
-                    <div class="products-thumb">
-                        <img src="images/collection-item1.jpg" alt="collection item" class="large-image image-rounded">
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
-                        <div class="categories">casual collection</div>
-                        <h3 class="item-title">street wear.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                        <div class="btn-wrap">
-                            <a href="shop.html" class="d-flex align-items-center">
-                                shop collection <i class="icon icon-arrow-io"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-12 right-content flex-wrap">
-                <div class="collection-item top-item">
-                    <div class="products-thumb">
-                        <img src="images/collection-item2.jpg" alt="collection item" class="small-image image-rounded">
-                    </div>
-                    <div class="col-md-6 product-entry">
-                        <div class="categories">Basic Collection</div>
-                        <h3 class="item-title">Basic shoes.</h3>
-                        <div class="btn-wrap">
-                            <a href="shop.html" class="d-flex align-items-center">
-                                shop collection <i class="icon icon-arrow-io"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="collection-item bottom-item">
-                    <div class="products-thumb">
-                        <img src="images/collection-item3.jpg" alt="collection item" class="small-image image-rounded">
-                    </div>
-                    <div class="col-md-6 product-entry">
-                        <div class="categories">Best Selling Product</div>
-                        <h3 class="item-title">woolen hat.</h3>
-                        <div class="btn-wrap">
-                            <a href="shop.html" class="d-flex align-items-center">
-                                shop collection <i class="icon icon-arrow-io"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> *@
 
-<section id="subscribe" class="padding-large">
+<section id="subscribe">
     <div class="container">
         <div class="row">
             <div class="block-text col-md-6">
@@ -195,7 +120,7 @@
                 <div class="row d-flex flex-wrap">
                     @foreach (var product in Model.Items)
                     {
-                        <div class="product-item col-lg-3 col-md-6 col-sm-6">
+                        <div class="product-item col-lg-2 col-md-6 col-sm-6">
                             <div class="image-holder">
                                 @if (product.Images.Count() > 0)
                                 {
@@ -212,21 +137,7 @@
                                 }
 
                             </div>
-                            <div class="cart-concern">
-                                <div class="cart-button d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">
-                                        Thêm giỏ hàng <i class="icon icon-arrow-io"></i>
-                                    </button>
-                                    <button type="button" class="view-btn tooltip
-                                  d-flex">
-                                        <i class="icon icon-screen-full"></i>
-                                        <span class="tooltip-text">Xem nhanh</span>
-                                    </button>
-                                    <button type="button" class="wishlist-btn">
-                                        <i class="icon icon-heart"></i>
-                                    </button>
-                                </div>
-                            </div>
+
                             <div class="product-detail">
                                 <h3 class="product-title">
                                     <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
@@ -238,12 +149,12 @@
 
                 </div>
             </div>
-          
+
         </div>
     </div>
 </section>
 
-<section id="testimonials" class="padding-large no-padding-bottom">
+<section id="testimonials" class="padding-large ">
     <div class="container">
         <div class="reviews-content">
             <div class="row d-flex flex-wrap">
@@ -296,80 +207,57 @@
         <div class="swiper product-swiper flash-sales overflow-hidden">
 
             <div class="swiper-wrapper">
-                   @foreach (var product in Model.Items)
+                @foreach (var product in ViewBag.ProductDisCounts)
                 {
-                        <div class="swiper-slide">
-                            <div class="product-item">
-                                @if (product.Images.Count() > 0)
+                    var images = product.Images as List<Project.ViewModels.Images.ImageViewModel>;
+                    <div class="swiper-slide">
+                        <div class="product-item">
+                            @if (images != null && images.Any())
+                            {
+                                @foreach (var image in product.Images)
                                 {
-                                    @foreach (var image in product.Images)
-                                    {
-                                        string imageUrl = ViewBag.DomainApi + image.ImagePath;
-                                        <img src="@imageUrl" alt="@product.Title" class="product-image">
+                                    string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                    <img src="@imageUrl" alt="@product.Title" class="product-image">
 
-                                    }
                                 }
-                                @if (product.Images.Count() == 0)
-                                {
-                                    <img src="/images//default-thumbnail-400.jpg" alt="Books" class="@product.Title">
-                                }
+                            }
+                            else
+                            {
+                                <img src="/images//default-thumbnail-400.jpg" alt="@product.Title" class="post-image">
+                            }
 
-                        <div class="cart-concern">
-                            <div class="cart-button d-flex justify-content-between align-items-center">
-                                <button type="button" class="btn-wrap cart-link d-flex align-items-center">
-                                  Thêm giỏ hàng <i class="icon icon-arrow-io"></i>
-                                </button>
-                                <button type="button" class="view-btn tooltip
-                        d-flex">
-                                    <i class="icon icon-screen-full"></i>
-                                    <span class="tooltip-text">Xem nhanh</span>
-                                </button>
-                                <button type="button" class="wishlist-btn">
-                                    <i class="icon icon-heart"></i>
-                                </button>
-                            </div>
-                        </div>
+                            @if (product.Discount > 0)
+                            {
                                 <div class="discount">@product.Discount% </div>
-                        <div class="product-detail">
-                            <h3 class="product-title">
-                                <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
-                            </h3>
-                            <div class="item-price text-primary">
-                                    @{
-                                        var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
-                                    }
-                                    <del class="prev-price money">@product.SellingPrice</del><span class="money">@lastPrice</span>
+
+                            }
+                            <div class="product-detail">
+                                <h3 class="product-title">
+                                    <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
+                                </h3>
+                                @if (product.Discount > 0)
+                                {
+                                    <div class="item-price text-primary">
+                                        @{
+                                            var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
+                                        }
+                                        <del class="prev-price money">@product.SellingPrice</del><span class="money">@lastPrice</span>
+                                    </div>
+                                }
+                                else
+                                {
+                            
+                                    <span class="money">@product.SellingPrice</span>
+                                }
+
                             </div>
                         </div>
                     </div>
-                </div>
                 }
-               
+
             </div>
             <div class="swiper-pagination"></div>
 
-        </div>
-    </div>
-</section>
-
-<section class="shoppify-section-banner">
-    <div class="container">
-        <div class="product-collection">
-            <div class="left-content collection-item">
-                <div class="products-thumb">
-                    <img src="/images/noi-bat.jpg" alt="collection item" class="large-image image-rounded">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 product-entry">
-                    <h3 class="item-title">Về Ngọc Quách Gia.</h3>
-                    <p>Ngọc Quách Gia tự hào là thương hiệu trang sức đá quý phong thủy uy tín hàng đầu, mang đến những sản phẩm tinh xảo và đẳng cấp.</p>
-                    <p>Mỗi sản phẩm của chúng tôi đều được chọn lọc kỹ lưỡng từ những viên đá quý tự nhiên, được thiết kế và chế tác tỉ mỉ bởi những nghệ nhân kim hoàn lành nghề.</p>
-                    <div class="btn-wrap">
-                        <a href="/san-pham/tat-ca" class="d-flex align-items-center">
-                            Xem sản phẩm <i class="icon icon-arrow-io"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
