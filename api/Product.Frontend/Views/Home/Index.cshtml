@@ -6,7 +6,7 @@
 @using Project.ViewModels.Products
 @model Project.ViewModels.PagedResult<ProductViewModel>
 
-<section id="billboard" class="overflow-hidden">
+<section id="billboard" class="overflow-hidden container">
 
     <button class="button-prev">
         <i class="icon icon-chevron-left"></i>
@@ -16,10 +16,10 @@
     </button>
     <div class="swiper main-swiper">
         <div class="swiper-wrapper">
-            @foreach(var b in ViewBag.Banners)
+            @foreach (var b in ViewBag.Banners)
             {
                 string imageUrl = ViewBag.DomainApi + b.Url;
-                <div class="swiper-slide" style="background-image: url('@imageUrl');background-repeat: no-repeat;background-size: cover;background-position: center;">
+                <div class="swiper-slide image-banner" style="background-image: url('@imageUrl');background-repeat: no-repeat;background-size: cover;background-position: center;">
                     <div class="banner-content">
                         <div class="container">
                             <div class="row">
@@ -30,8 +30,8 @@
                     </div>
                 </div>
             }
-           
-           
+
+
         </div>
     </div>
 </section>
@@ -44,7 +44,7 @@
         <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
             <h2 class="section-title">Sản phẩm nổi bật</h2>
             <div class="btn-wrap">
-                <a href="/san-pham/tat-ca" class="d-flex align-items-center">Xem tất cả sản phảm <i class="icon icon icon-arrow-io"></i></a>
+                <a href="/san-pham/tat-ca" class="d-flex align-items-center">Xem tất cả sản phẩm <i class="icon icon icon-arrow-io"></i></a>
             </div>
         </div>
         <div class="swiper product-swiper overflow-hidden">
@@ -52,9 +52,9 @@
                 @foreach (var product in ViewBag.ProductHots)
                 {
                     var images = product.Images as List<Project.ViewModels.Images.ImageViewModel>;
-                        <div class="swiper-slide">
-                            <div class="product-item">
-                                <div class="image-holder">
+                    <div class="swiper-slide">
+                        <div class="product-item">
+                            <div class="image-holder">
                                 @if (images != null && images.Any())
                                 {
                                     @foreach (var image in product.Images)
@@ -70,16 +70,16 @@
                                 }
 
 
-                                </div>
+                            </div>
 
-                                <div class="product-detail">
-                                    <h3 class="product-title">
-                                        <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
-                                    </h3>
-                                    <div class="item-price text-primary money">@product.SellingPrice</div>
-                                </div>
+                            <div class="product-detail">
+                                <h3 class="product-title">
+                                    <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
+                                </h3>
+                                <div class="item-price text-primary money">@product.SellingPrice</div>
                             </div>
                         </div>
+                    </div>
 
 
                 }
@@ -120,7 +120,7 @@
                 <div class="row d-flex flex-wrap">
                     @foreach (var product in Model.Items)
                     {
-                        <div class="product-item col-lg-2 col-md-6 col-sm-6">
+                        <div class="product-item col-lg-3 col-md-6 col-sm-6">
                             <div class="image-holder">
                                 @if (product.Images.Count() > 0)
                                 {
@@ -154,7 +154,7 @@
     </div>
 </section>
 
-<section id="testimonials" class="padding-large ">
+@* <section id="testimonials" class="padding-large ">
     <div class="container">
         <div class="reviews-content">
             <div class="row d-flex flex-wrap">
@@ -197,7 +197,7 @@
         </div>
     </div>
 </section>
-
+ *@
 <section id="flash-sales" class="product-store padding-large">
 
     <div class="container">
@@ -246,7 +246,7 @@
                                 }
                                 else
                                 {
-                            
+
                                     <span class="money">@product.SellingPrice</span>
                                 }
 
@@ -262,21 +262,9 @@
     </div>
 </section>
 
-<section id="quotation" class="align-center padding-large">
-    <div class="inner-content">
-        <h2 class="section-title divider">
-            Trích dẫn trong ngày
-        </h2>
-        <blockquote>
-            <q>Ước mơ của tôi là làm đẹp cho phần cổ của tất cả phụ nữ trên toàn thế giới bằng ngọc trai.</q>
-            <div class="author-name">
-                - Kokichi Mikimoto
-
-            </div>
-        </blockquote>
-    </div>
-</section>
-
+@* <section class="py-16 bg-emerald-50"><div class="container mx-auto px-4"><div class="text-center mb-12"><h2 class="text-3xl font-serif font-semibold text-gray-800 mb-4">Khách Hàng Nói Gì Về Chúng Tôi</h2><p class="text-gray-600 max-w-2xl mx-auto">Hàng ngàn khách hàng đã tin tưởng lựa chọn Ngọc Quách Gia cho các sản phẩm trang sức phong thủy</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-8"><div class="bg-white p-6 rounded-lg shadow-md"><div class="flex items-center mb-4"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Nguyễn Minh Tâm" class="w-12 h-12 rounded-full object-cover mr-4"><div><h3 class="font-medium text-gray-800">Nguyễn Minh Tâm</h3><p class="text-sm text-gray-500">Doanh nhân</p></div></div><p class="text-gray-600 italic">"Trang sức tại Ngọc Quách Gia không chỉ đẹp mà còn mang lại cho tôi nhiều may mắn trong công việc. Tôi đặc biệt hài lòng với vòng tay thạch anh vàng mà tôi đã mua."</p><div class="mt-4 flex text-amber-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div></div><div class="bg-white p-6 rounded-lg shadow-md"><div class="flex items-center mb-4"><img src="https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg" alt="Lê Thị Hương" class="w-12 h-12 rounded-full object-cover mr-4"><div><h3 class="font-medium text-gray-800">Lê Thị Hương</h3><p class="text-sm text-gray-500">Giáo viên</p></div></div><p class="text-gray-600 italic">"Tôi rất thích sự tư vấn tận tâm của nhân viên Ngọc Quách Gia. Họ giúp tôi chọn được viên đá phù hợp với mệnh của mình. Sản phẩm rất đẹp và chất lượng."</p><div class="mt-4 flex text-amber-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div></div><div class="bg-white p-6 rounded-lg shadow-md"><div class="flex items-center mb-4"><img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="Trần Đức Minh" class="w-12 h-12 rounded-full object-cover mr-4"><div><h3 class="font-medium text-gray-800">Trần Đức Minh</h3><p class="text-sm text-gray-500">Kỹ sư</p></div></div><p class="text-gray-600 italic">"Đã mua nhiều lần tại Ngọc Quách Gia và chưa bao giờ thất vọng. Sản phẩm chất lượng, dịch vụ chuyên nghiệp, giao hàng nhanh và đóng gói cẩn thận."</p><div class="mt-4 flex text-amber-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div></div></div></div></section>
+<section class="py-16"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="bg-white p-6 rounded-lg shadow-md"><h3 class="text-xl font-medium text-gray-800 mb-4">Thông Tin Cửa Hàng</h3><ul class="space-y-4"><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-5 h-5 text-emerald-600 mt-1 mr-3"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg><div><p class="font-medium text-gray-700">Địa Chỉ</p><p class="text-gray-600">123 Đường Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</p></div></li><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-5 h-5 text-emerald-600 mt-1 mr-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><div><p class="font-medium text-gray-700">Điện Thoại</p><p class="text-gray-600"><a href="tel:+842838123456" class="hover:text-emerald-600">028 3812 3456</a></p></div></li><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5 text-emerald-600 mt-1 mr-3"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><div><p class="font-medium text-gray-700">Email</p><p class="text-gray-600"><a href="mailto:info@ngocquachgia.com" class="hover:text-emerald-600">info@ngocquachgia.com</a></p></div></li><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-5 h-5 text-emerald-600 mt-1 mr-3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><div><p class="font-medium text-gray-700">Giờ Mở Cửa</p><p class="text-gray-600">Thứ 2 - Thứ 7: 8:30 - 21:00</p><p class="text-gray-600">Chủ Nhật: 9:30 - 20:00</p></div></li></ul></div><div class="bg-white p-6 rounded-lg shadow-md"><h3 class="text-xl font-medium text-gray-800 mb-4">Liên Hệ Qua Mạng Xã Hội</h3><p class="text-gray-600 mb-6">Liên hệ với chúng tôi qua các kênh mạng xã hội để được tư vấn và hỗ trợ nhanh chóng.</p><div class="space-y-4"><a href="https://zalo.me/" target="_blank" rel="noopener noreferrer" class="flex items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"><div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-4"><span class="text-white font-bold">Z</span></div><div><p class="font-medium text-gray-800">Zalo</p><p class="text-sm text-gray-600">Nhắn tin ngay để được tư vấn</p></div></a><a href="https://m.me/" target="_blank" rel="noopener noreferrer" class="flex items-center p-3 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors"><div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-5 h-5 text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></div><div><p class="font-medium text-gray-800">Messenger</p><p class="text-sm text-gray-600">Chat với nhân viên tư vấn</p></div></a></div></div><div class="bg-white p-6 rounded-lg shadow-md"><h3 class="text-xl font-medium text-gray-800 mb-4">Gửi Yêu Cầu Tư Vấn</h3><form><div class="mb-4"><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Họ và tên</label><input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"></div><div class="mb-4"><label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại</label><input type="tel" id="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"></div><div class="mb-4"><label for="message" class="block text-sm font-medium text-gray-700 mb-1">Lời nhắn</label><textarea id="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"></textarea></div><button type="button" class="inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 bg-emerald-700 text-white hover:bg-emerald-800 focus:ring-emerald-500 text-base px-4 py-2 w-full cursor-pointer ">Gửi yêu cầu</button></form></div></div></div></section>
+ *@
 <hr>
 <section id="latest-blog" class="padding-large">
     <div class="container">
