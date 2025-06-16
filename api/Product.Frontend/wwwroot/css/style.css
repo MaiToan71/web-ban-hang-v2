@@ -625,7 +625,7 @@ hr {
   border-top: 1px solid var(--grey-color); 
 }
 
-/* -Zoom Effect
+/* -f Effect
 ------------------------------------------*/
 .zoom-effect {
     position: relative;
@@ -911,6 +911,7 @@ img.insta-image {
     width: 100%;
     height: auto;
     object-fit: cover;
+    border-radius: 8px;
 }
 img.large-image {
     width: 100%;
@@ -1016,9 +1017,12 @@ h5.widget-title {
 
 /*--- Product Title
 -----------------------------------------------*/
-h2.product-title{
-    font-size: 2.6em;
-    margin: 0;
+h3.product-title {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin: 0 0 8px;
+    min-height: 44px; /* hoặc 48px tùy dòng chữ */
+    overflow: hidden;
 }
 
 /* - Section Padding
@@ -1979,31 +1983,36 @@ blockquote cite {
     position: relative;
     margin-bottom: 30px;
 }
+.product-item {
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    overflow: hidden;
+    background-color: var(--light-color);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+    .product-item:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-4px);
+    }
+.product-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
 .product-item img.product-image {
+    width: 100%;
+    margin-bottom: 20px;
     background: var(--light-color);
     border: 1px solid var(--grey-color);
-    border-radius: 6px;
-   /* padding: 10px;*/
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    margin-bottom: 20px;
-    width: 100%;
-    
 }
-.product-item .cart-concern {
-    background: var(--light-color);
-    width: 80%;
-    text-align: center;
-    margin: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 300px;
-    z-index: 9;
-    transition: 0.5s ease-out;
-    padding: 20px 30px;
-    opacity: 0;
-}
-.product-item:hover .cart-concern {
+
+/*.product-item:hover .cart-concern {
     bottom: 280px;
     opacity: 1;
 }
@@ -2019,10 +2028,10 @@ i.icon.icon-arrow-io {
 }
 .cart-concern .cart-button button i.icon {
     color: var(--dark-color);
-}
+}*/
 .product-item .wishlist-btn i.icon.icon-heart {
     font-size: 20px;
-    padding-left: 25px;
+/*    padding-left: 25px;*/
 }
 .product-item h3.product-title {
     font-size: 18px;
@@ -2033,7 +2042,9 @@ i.icon.icon-arrow-io {
 }
 .swiper.product-swiper {
     position: relative;
-    margin-bottom: 30px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-left: 16px;
 }
 .swiper-pagination {
     width: 100%;
@@ -2320,14 +2331,14 @@ i.icon.icon-arrow-io {
 --------------------------------------------------------------*/
 #latest-blog article.post-item,
 #latest-blog .image-holder {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 #latest-blog .image-holder {
-    border-radius: 4px;
+    border-radius: 8px;
 }
 #latest-blog .meta-date {
-    padding-bottom: 20px;
-    margin-right: 30px;
+    padding-bottom: 16px;
+    margin-right: 20px;
     color: var(--dark-grey-color);
 }
 #latest-blog .meta-date .meta-day {
@@ -2341,7 +2352,7 @@ i.icon.icon-arrow-io {
     color: var(--dark-grey-color);
 }
 #latest-blog h3.post-title {
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-weight: 700;
     color: var(--dark-color);
     margin: 0;
@@ -2374,7 +2385,7 @@ a.blog-categories:hover{
       font-size: 3em;
   }
   #latest-blog h3.post-title {
-      font-size: 1.5em;
+      font-size: 1.4em;
   }
 }
 
