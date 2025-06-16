@@ -30,8 +30,6 @@
                     </div>
                 </div>
             }
-
-
         </div>
     </div>
 </section>
@@ -61,17 +59,13 @@
                                     {
                                         string imageUrl = ViewBag.DomainApi + image.ImagePath;
                                         <img src="@imageUrl" alt="@product.Title" class="product-image">
-
                                     }
                                 }
                                 else
                                 {
                                     <img src="/images//default-thumbnail-400.jpg" alt="@product.Title" class="post-image">
                                 }
-
-
                             </div>
-
                             <div class="product-detail">
                                 <h3 class="product-title">
                                     <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
@@ -80,10 +74,7 @@
                             </div>
                         </div>
                     </div>
-
-
                 }
-
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -120,33 +111,33 @@
                 <div class="row d-flex flex-wrap">
                     @foreach (var product in Model.Items)
                     {
-                        <div class="product-item col-lg-3 col-md-6 col-sm-6">
-                            <div class="image-holder">
-                                @if (product.Images.Count() > 0)
-                                {
-                                    @foreach (var image in product.Images)
-                                    {
-                                        string imageUrl = ViewBag.DomainApi + image.ImagePath;
-                                        <img src="@imageUrl" alt="@product.Title" class="product-image">
-
-                                    }
-                                }
-                                @if (product.Images.Count() == 0)
-                                {
-                                    <img src="/images//default-thumbnail-400.jpg" alt="Books" class="@product.Title">
-                                }
-
-                            </div>
-
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
-                                </h3>
-                                <div class="item-price text-primary money">@product.SellingPrice</div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product-wrapper">
+                                <div class="product-item">
+                                    <div class="image-holder">
+                                        @if (product.Images.Any())
+                                        {
+                                            foreach (var image in product.Images)
+                                            {
+                                                string imageUrl = ViewBag.DomainApi + image.ImagePath;
+                                                <img src="@imageUrl" alt="@product.Title" class="product-image" />
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <img src="/images/default-thumbnail-400.jpg" alt="@product.Title" class="product-image" />
+                                        }
+                                    </div>
+                                    <div class="product-detail">
+                                        <h3 class="product-title">
+                                            <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
+                                        </h3>
+                                        <div class="item-price text-primary money">@product.SellingPrice</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     }
-
                 </div>
             </div>
 
@@ -218,7 +209,6 @@
                                 {
                                     string imageUrl = ViewBag.DomainApi + image.ImagePath;
                                     <img src="@imageUrl" alt="@product.Title" class="product-image">
-
                                 }
                             }
                             else
@@ -280,7 +270,7 @@
             @foreach (var post in @ViewBag.Posts)
             {
                 var images = post.Images as List<Project.ViewModels.Images.ImageViewModel>;
-                <article class="col-md-4 post-item">
+                <article class="col-lg-3 col-md-6 col-sm-6 post-item">
                     <div class="image-holder zoom-effect">
                         <a href="/chi-tiet/@post.Url">
                             @if (images != null && images.Any())
@@ -289,7 +279,6 @@
                                 {
                                     string imageUrl = ViewBag.DomainApi + image.ImagePath;
                                     <img src="@imageUrl" alt="@post.Title" class="post-image">
-
                                 }
                             }
                             else
@@ -312,7 +301,6 @@
                     </div>
                 </article>
             }
-
         </div>
     </div>
 </section>
@@ -325,7 +313,7 @@
                 <div class="icon-box">
                     <i class="icon icon-truck"></i>
                     <h4 class="block-title">
-                        <strong>GIAO HÀNG TOÀN QUỐC</strong>  toàn quốc
+                        <strong>GIAO HÀNG</strong> toàn quốc
                     </h4>
                 </div>
             </div>
