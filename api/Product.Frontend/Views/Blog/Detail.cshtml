@@ -6,29 +6,31 @@
     ViewData["Description"] = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Scripts {
+    <script src="/js/active.js"></script>
 
-<section class="site-banner jarallax min-height300 padding-large" style="background: url(/images/hero-image1.jpg) no-repeat; background-position: top;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="page-title">Tin tức</h1>
-                <div class="breadcrumbs">
-                    <span class="item">
-                        <a href="/tin-tuc">Tin tức /</a>
-                    </span>
-                    <span class="item">@Model.Title</span>
+
+}
+<div class="breadcumb_area bg-img mt-[120px]" style="background-image: url(/img/bg-img/breadcumb.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="page-title text-center">
+                    <h2>Tin tức</h2>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 
-
-<section id="latest-blog" class="post-grid padding-large">
+<section id="latest-blog" class="post-grid padding-large m-2">
     <div class="container" style="max-width:800px">
         <div class="row ">
-            <h2>@Model.Title</h2>
+           <div class="col-12">
+                <h2>@Model.Title</h2>
+           </div>
+            <br/>
             <p>Ngày : @Model.CreateTime.ToString("dd-MM-YYYY")</p>
         </div>
         <div class="row">

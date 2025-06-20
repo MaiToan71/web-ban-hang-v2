@@ -6,6 +6,7 @@
         PostHome,
         ProductSale,
         BannerHome,
-        BannerCategory
+        BannerCategory,
+        Category
     }
 }

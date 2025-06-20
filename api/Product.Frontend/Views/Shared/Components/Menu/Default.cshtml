@@ -1,11 +1,11 @@
 ﻿@using Project.ViewModels.Menus
 @model List<MenuViewModel>
-<ul class="menu-list">
+<ul>
 
   
     @foreach(var level1 in Model)
     {
-        if(level1.ParentId==0){
+          <li>    @if(level1.ParentId==0){
             bool check = false;
             @foreach(var level2 in Model)
             {
@@ -17,14 +17,14 @@
             }
             @if(check == false)
             {
-                <li><a href="@level1.Url" class="item-anchor" data-effect="@level1.Name">@level1.Name</a></li>
 
+                    <a href="@level1.Url">@level1.Name</a>
+               
             }
             if(check== true)
             {
-                <li class="menu-item has-sub">
-                    <a href="#" class="item-anchor d-flex align-item-center" data-effect="@level1.Name">@level1.Name<i class="icon icon-chevron-down"></i></a>
-                    <ul class="submenu">
+                    <a href="@level1.Url">@level1.Name</a>
+                    <ul class="dropdown">
                         @foreach(var level2 in Model)
                         {
                             @if(level1.Id == level2.ParentId)
@@ -34,11 +34,12 @@
                         }
 
                     </ul>
-                </li>
             }
-        }
-    }
+            }
+        </li>
+      
 
+    }
    
 
 </ul>

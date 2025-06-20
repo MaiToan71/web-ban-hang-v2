@@ -106,6 +106,10 @@ namespace Project.Services.PostTypes
                 query = query.Where(m => m.Name.Contains(request.Name));
 
             }
+            if (request.Ids != null)
+            {
+                query = query.Where(m => request.Ids.Contains(m.Id));
+            }
 
 
             //3. Paging

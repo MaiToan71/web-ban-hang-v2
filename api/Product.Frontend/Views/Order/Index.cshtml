@@ -2,21 +2,37 @@
     ViewData["Title"] = "Thanh toán";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/css/order.css" rel="stylesheet" />
+
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
     <script src="~/lib/knockout-3.5.1.js"></script>
     <script src="~/lib/knockout-3.5.1.debug.js"></script>
     <script src="~/lib/knockout.mapping-latest.js"></script>
     <script src="~/js/order.js"></script>
+    <script src="/js/active.js"></script>
+
+}
+@section Css {
+    <link href="~/css/order.css" rel="stylesheet" />
 }
 
+<div class="breadcumb_area bg-img mt-[120px]" style="background-image: url(/img/bg-img/breadcumb.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="page-title text-center">
+                    <h2>Thanh toán</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <input id="domain" value="@ViewBag.Domain" class="hide" />
-<div class="order">
+<div>
     <div class="container">
 
-        <div class="row">
-            <div class="col-md-7 content">
+        <div class="grid grid-cols-2 max-sm:grid-cols-1 gap-8">
+            <div class="">
                 <form class="section" id="myForm">
                     <div class="section-header">
                         <h2 class="section-title">Thông tin giao hàng</h2>
@@ -100,264 +116,13 @@
                                       <div class="row">
                                             <div class="field field-show-floating-label  field-half col-md-7">
                                                 <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="customer_shipping_province"> Tỉnh / thành  </label>
-                                                    <select required class="field-input"  name="customer_shipping_province">
-                                                        <option data-code="" value="">
+                                                    <label class="field-label" > Tỉnh / thành  </label>
+                                                    <select  class="field-input " id="provinces" name="customer_shipping_province">
+                                                        <option value="">
 
                                                             Chọn tỉnh / thành
                                                         </option>
 
-
-
-                                                        <option data-code="HC" value="50">Hồ Chí Minh</option>
-
-
-
-                                                        <option data-code="HI" value="1">Hà Nội</option>
-
-
-
-                                                        <option data-code="DA" value="32">Đà Nẵng</option>
-
-
-
-                                                        <option data-code="AG" value="57">An Giang</option>
-
-
-
-                                                        <option data-code="BV" value="49">Bà Rịa - Vũng Tàu</option>
-
-
-
-                                                        <option data-code="BI" value="47">Bình Dương</option>
-
-
-
-                                                        <option data-code="BP" value="45">Bình Phước</option>
-
-
-
-                                                        <option data-code="BU" value="39">Bình Thuận</option>
-
-
-
-                                                        <option data-code="BD" value="35">Bình Định</option>
-
-
-
-                                                        <option data-code="BL" value="62">Bạc Liêu</option>
-
-
-
-                                                        <option data-code="BG" value="15">Bắc Giang</option>
-
-
-
-                                                        <option data-code="BK" value="4">Bắc Kạn</option>
-
-
-
-                                                        <option data-code="BN" value="18">Bắc Ninh</option>
-
-
-
-                                                        <option data-code="BT" value="53">Bến Tre</option>
-
-
-
-                                                        <option data-code="CB" value="3">Cao Bằng</option>
-
-
-
-                                                        <option data-code="CM" value="63" selected="">Cà Mau</option>
-
-
-
-                                                        <option data-code="CN" value="59">Cần Thơ</option>
-
-
-
-                                                        <option data-code="GL" value="41">Gia Lai</option>
-
-
-
-                                                        <option data-code="HG" value="2">Hà Giang</option>
-
-
-
-                                                        <option data-code="HM" value="23">Hà Nam</option>
-
-
-
-                                                        <option data-code="HT" value="28">Hà Tĩnh</option>
-
-
-
-                                                        <option data-code="HO" value="11">Hòa Bình</option>
-
-
-
-                                                        <option data-code="HY" value="21">Hưng Yên</option>
-
-
-
-                                                        <option data-code="HD" value="19">Hải Dương</option>
-
-
-
-                                                        <option data-code="HP" value="20">Hải Phòng</option>
-
-
-
-                                                        <option data-code="HU" value="60">Hậu Giang</option>
-
-
-
-                                                        <option data-code="KH" value="37">Khánh Hòa</option>
-
-
-
-                                                        <option data-code="KG" value="58">Kiên Giang</option>
-
-
-
-                                                        <option data-code="KT" value="40">Kon Tum</option>
-
-
-
-                                                        <option data-code="LI" value="8">Lai Châu</option>
-
-
-
-                                                        <option data-code="LA" value="51">Long An</option>
-
-
-
-                                                        <option data-code="LO" value="6">Lào Cai</option>
-
-
-
-                                                        <option data-code="LD" value="44">Lâm Đồng</option>
-
-
-
-                                                        <option data-code="LS" value="13">Lạng Sơn</option>
-
-
-
-                                                        <option data-code="ND" value="24">Nam Định</option>
-
-
-
-                                                        <option data-code="NA" value="27">Nghệ An</option>
-
-
-
-                                                        <option data-code="NB" value="25">Ninh Bình</option>
-
-
-
-                                                        <option data-code="NT" value="38">Ninh Thuận</option>
-
-
-
-                                                        <option data-code="PT" value="16">Phú Thọ</option>
-
-
-
-                                                        <option data-code="PY" value="36">Phú Yên</option>
-
-
-
-                                                        <option data-code="QB" value="29">Quảng Bình</option>
-
-
-
-                                                        <option data-code="QM" value="33">Quảng Nam</option>
-
-
-
-                                                        <option data-code="QG" value="34">Quảng Ngãi</option>
-
-
-
-                                                        <option data-code="QN" value="14">Quảng Ninh</option>
-
-
-
-                                                        <option data-code="QT" value="30">Quảng Trị</option>
-
-
-
-                                                        <option data-code="ST" value="61">Sóc Trăng</option>
-
-
-
-                                                        <option data-code="SL" value="9">Sơn La</option>
-
-
-
-                                                        <option data-code="TH" value="26">Thanh Hóa</option>
-
-
-
-                                                        <option data-code="TB" value="22">Thái Bình</option>
-
-
-
-                                                        <option data-code="TY" value="12">Thái Nguyên</option>
-
-
-
-                                                        <option data-code="TT" value="31">Thừa Thiên Huế</option>
-
-
-
-                                                        <option data-code="TG" value="52">Tiền Giang</option>
-
-
-
-                                                        <option data-code="TV" value="54">Trà Vinh</option>
-
-
-
-                                                        <option data-code="TQ" value="5">Tuyên Quang</option>
-
-
-
-                                                        <option data-code="TN" value="46">Tây Ninh</option>
-
-
-
-                                                        <option data-code="VL" value="55">Vĩnh Long</option>
-
-
-
-                                                        <option data-code="VT" value="17">Vĩnh Phúc</option>
-
-
-
-                                                        <option data-code="YB" value="10">Yên Bái</option>
-
-
-
-                                                        <option data-code="DB" value="7">Điện Biên</option>
-
-
-
-                                                        <option data-code="DC" value="42">Đắk Lắk</option>
-
-
-
-                                                        <option data-code="DO" value="43">Đắk Nông</option>
-
-
-
-                                                        <option data-code="DN" value="48">Đồng Nai</option>
-
-
-
-                                                        <option data-code="DT" value="56">Đồng Tháp</option>
 
 
 
@@ -419,8 +184,8 @@
                             </a>
                             <div id="form_next_step" accept-charset="UTF-8" method="post">
                                 <input name="utf8" type="hidden" value="✓">
-                                <button type="submit" class="step-footer-continue-btn btn">
-                                    <span class="btn-content">Tiếp tục đến phương thức thanh toán</span>
+                                <button type="submit" class="step-footer-continue-btn btn btn essence-btn">
+                                    <span class="btn-content">Thanh toán</span>
                                     <i class="btn-spinner icon icon-button-spinner"></i>
                                 </button>
                             </div>
@@ -429,30 +194,22 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-5 sidebar">
+            <div>
                 <div class="order-summary-sections">
                     <div class="order-summary-section order-summary-section-product-list" data-order-summary-section="line-items">
-                        <table class="product-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"><span class="visually-hidden">Hình ảnh</span></th>
-                                    <th scope="col"><span class="visually-hidden">Mô tả</span></th>
-                                    <th scope="col"><span class="visually-hidden">Số lượng</span></th>
-                                    <th scope="col"><span class="visually-hidden">Giá</span></th>
-                                </tr>
-                            </thead>
-                            <tbody data-bind="foreach:$root.data">
+                        <div class="product-table">
+                            <div data-bind="foreach:$root.data">
 
-                                <tr class="product" data-product-id="1006340273" data-variant-id="1014979569">
-                                    <td class="product-image">
+                                <div class="product row" data-product-id="1006340273" data-variant-id="1014979569">
+                                    <div class="product-image col-md-4 col-sm-12">
                                         <div class="product-thumbnail">
                                             <div class="product-thumbnail-wrapper">
                                                 <img class="product-thumbnail-image" alt="Vòng Tay Agate Nâu Sần" data-bind="attr:{'src':$data.Detail.Image()}">
                                             </div>
                                             <span class="product-thumbnail-quantity" aria-hidden="true" data-bind="text:Quantity">8</span>
                                         </div>
-                                    </td>
-                                    <td class="product-description">
+                                    </div>
+                                    <div class="product-description  col-md-4  col-sm-12">
                                         <span class="product-description-name order-summary-emphasis" data-bind="text: $data.Detail.Title()">Vòng Tay Agate Nâu Sần</span>
 
                                             <div data-bind="foreach:$data.Detail.ProductAttributes()">
@@ -460,17 +217,17 @@
                                                 <span class="product-description-variant order-summary-small-text" data-bind="text: Name() + ' '+Description()"></span>
                                                 <!--/ko-->
                                             </div>
+                                        <div class="product-quantity visually-hidden  col-3" data-bind="text: Quantity">8</div>
 
-                                    </td>
-                                    <td class="product-quantity visually-hidden" data-bind="text: Quantity">8</td>
-                                    <td class="product-price">
+                                    </div>
+                                    <div class="product-price  col-md-4  col-sm-12">
                                         <span class="order-summary-emphasis money" data-bind="text:$data.Detail.LastSellingPrice">2,800,000₫</span>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
 
 
-                            </tbody>
-                        </table>
+                            </div>
+                        </div>
                       
                     </div>
 
@@ -483,7 +240,7 @@
                                         <div class="field-input-wrapper">
                                             <input placeholder="Mã giảm giá" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code" name="discount.code" value="">
                                         </div>
-                                        <button type="submit" class="field-input-btn btn btn-default btn-disabled">
+                                        <button type="submit" class="field-input-btn btn btn-default btn-disabled essence-btn">
                                             <span class="btn-content">Sử dụng</span>
                                             <i class="btn-spinner icon icon-button-spinner"></i>
                                         </button>

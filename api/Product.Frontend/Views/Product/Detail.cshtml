@@ -7,41 +7,40 @@
 	ViewData["Description"] = Model.Title;
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/css/detail.css" rel="stylesheet" />
-<section id="product" class="clearfix">
-	<div class="container">
-		<div class="row">
-			<div id="surround" class="col-lg-6 col-md-6">
+@section Css {
+	<link href="~/css/detail.css" rel="stylesheet" />
+ 
+}
+@section Scripts {
+ <script src="~/js/detail.js"></script>
 
-				<div class="row images">
-					<div class="swiper">
-						<div class="swiper-wrapper">
-							@foreach (var image in Model.Images)
-                            {
-								string imageUrl = ViewBag.DomainApi + image.ImagePath;
-								<div class="swiper-slide"><img src="@imageUrl" alt="@Model.Title"></div>
-							}
-						</div>
-					</div>
-					@{
-						int count = 0;
-					}
-					@foreach (var image in Model.Images)
-                            {
-						if (count == 0)
-						{
-							string imageUrl2 = ViewBag.DomainApi + image.ImagePath;
-							<img id="zoom_01"
-								 src="@imageUrl2"
-								 data-zoom-image="@imageUrl2" width="400" />
-						}
-						count++;
-					}
+    <script src="/js/active.js"></script>
+
+
+
+}
+
+<section id="product" class="clearfix mt-[150px] ">
+	<div class="container">
+		 <div class="grid grid-cols-3 max-sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-8">
+			<div id="surround" class="col-span-2 max-sm:col-span-1 ">
+				  <div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+			   @foreach (var image in Model.Images)
+										{
+											string imageUrl = ViewBag.DomainApi + image.ImagePath;
+											<div class="swiper-slide"><img class="zoom" src="@imageUrl" alt="@Model.Title"></div>
+										}
 				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			  </div>
+
 
 
 			</div>
-			<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pd5 information-product">
+			<div class="col-span-2 max-sm:col-span-1">
 				<div class="product-border">
 					<div class="product-title">
 						<h1>@Model.Title</h1>
@@ -51,17 +50,18 @@
 					</div>
 				  @if (Model.Discount > 0)
 					{
-						<div class="item-price text-primary product-price">
+						<div class="item-price text-primary d-flex">
 						@{
 							var lastPrice = Model.SellingPrice - ((float)Model.Discount / 100) * Model.SellingPrice;
 						}
-							<del class="prev-price money product-price">@Model.SellingPrice</del><span class="money product-price " id="price-preview1">@lastPrice</span>
+						<del  class="product-price del">@Model.SellingPrice</del>
+							<p class=" product-price   mt-3" >@lastPrice</p>
 					</div>
 					}
 
 					@if (Model.Discount ==0)
 					{
-						<div class="product-price" id="price-preview1"><span class="money">@Model.SellingPrice</span></div>
+						<div class="product-price" id="price-preview1">@Model.SellingPrice</div>
 
 					}
 				</div>
@@ -118,18 +118,18 @@
 						<p>Số lượng</p>
 						<div class="input-group d-flex">
 							<div class="input-group d-flex">
-						<button id="decrease">-</button>
+						<button id="decrease" class="btn">-</button>
 						<input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
-						<button id="increase">+</button>
+						<button id="increase"  class="btn">+</button>
 					</div>
 						</div>
 					</div>
 					<div class="clearfix">
-						<button class="btn-style-add add-to-cart" data-id="@Model.Id" data-name="@Model.Title" >
+						<button class="btn-style-add add-to-cart btn" data-id="@Model.Id" data-name="@Model.Title" >
 							<span ><i class="fa fa-shopping-cart"></i></span>
 							<span>Thêm vào giỏ</span>
 						</button>
-						<button class="btn-style-buynow addnow" data-id="@Model.Id">
+						<button class="btn-style-buynow addnow btn" data-id="@Model.Id">
 
 							<span>Mua ngay</span>
 						</button>
@@ -166,7 +166,7 @@
 
 				</div>
 			</div>
-			<div class="col-lg-2 col-xs-12 pd-none-box-service mb15">
+			<div class="">
 				<div class="box-service-product">
 					<div class="header-box-service-product text-center">
 						<div class="title">Sẽ có tại nhà bạn</div>
@@ -238,13 +238,10 @@
 			</div>
 		</div>
 
-	  <div>
-		  <h3>Mô tả sản phẩm</h3>
-		  <p>@Html.Raw(Model.Content)</p>
-	  </div>
+		  <div>
+			  <h3>Mô tả sản phẩm</h3>
+			  <p>@Html.Raw(Model.Content)</p>
+		  </div>
 
 	</div>
 </section>
-@section scripts {
-    <script src="~/js/detail.js"></script>
-}

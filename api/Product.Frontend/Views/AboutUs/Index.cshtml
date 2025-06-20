@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Giới thiệu thương hiệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css {
+    <link href="~/css/detail.css" rel="stylesheet" />
+    <style>
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600959907703-ea1d49c2c805') center center/cover;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .brand-section {
+      padding: 60px 0;
+    }
+    .values-section {
+      background-color: #f8f9fa;
+      padding: 60px 0;
+    }
+    .team-section {
+      padding: 60px 0;
+    }
+    .contact-section {
+      background-color: #f1f1f1;
+      padding: 60px 0;
+    }
+  </style>
+}
+
+@section Scripts {
+    <script src="~/lib/knockout-3.5.1.js"></script>
+    <script src="~/lib/knockout-3.5.1.debug.js"></script>
+    <script src="~/lib/knockout.mapping-latest.js"></script>
+    <script src="~/js/cart.js"></script>
+ 
+    <script src="/js/active.js"></script>
+
+
+
+}
+<section class="brand-section mt-[120px] container">
+    <div class="container">
+      <h2 class="text-center mb-4">Giới thiệu thương hiệu</h2>
+      <p class="text-justify">
+        Thương hiệu <strong>Ngọc Quách Gia</strong> ra đời với sứ mệnh mang đến những sản phẩm đá quý cao cấp, tinh xảo và đầy giá trị văn hóa. Chúng tôi tự hào là đơn vị chuyên cung cấp các dòng đá quý thiên nhiên được tuyển chọn kỹ lưỡng, qua quá trình chế tác thủ công tinh tế bởi những nghệ nhân lành nghề.
+      </p>
+      <p class="text-justify">
+        Với phương châm "Chân thật - Đẳng cấp - Bền vững", Ngọc Quách Gia không chỉ chú trọng đến chất lượng mà còn tôn vinh giá trị tinh thần và phong thủy trong từng sản phẩm. Chúng tôi luôn không ngừng đổi mới và sáng tạo để mang đến những bộ sưu tập đá quý độc đáo, góp phần tôn vinh vẻ đẹp và đẳng cấp của người sở hữu.
+      </p>
+      <p class="text-justify">
+        Hãy cùng Ngọc Quách Gia khám phá vẻ đẹp tinh túy của đất trời và tìm kiếm món trang sức mang dấu ấn cá nhân riêng biệt dành cho bạn.
+      </p>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Giá trị cốt lõi</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Chân Thật</h5>
+          <p>Sản phẩm được chứng nhận rõ ràng về nguồn gốc và chất lượng. Chúng tôi cam kết minh bạch trong từng chi tiết.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Đẳng Cấp</h5>
+          <p>Thiết kế tinh xảo, mang đậm tính nghệ thuật và đẳng cấp cho người sở hữu.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Bền Vững</h5>
+          <p>Phát triển lâu dài cùng khách hàng, cộng đồng và môi trường thông qua những hoạt động có trách nhiệm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Đội ngũ của chúng tôi</h2>
+      <p class="text-justify">Ngọc Quách Gia sở hữu đội ngũ chuyên gia và nghệ nhân đá quý với nhiều năm kinh nghiệm. Chúng tôi không ngừng trau dồi kỹ thuật và kiến thức để tạo nên những sản phẩm vượt trội về cả chất lượng lẫn giá trị thẩm mỹ.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Liên hệ với chúng tôi</h2>
+      <p class="text-center">Địa chỉ: 123 Đường Đá Quý, Quận Tinh Hoa, TP. HCM</p>
+      <p class="text-center">Email: lienhe@ngocquachgia.vn | Hotline: 0909 123 456</p>
+    </div>
+  </section>

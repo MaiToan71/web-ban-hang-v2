@@ -91,6 +91,7 @@ export enum ConfigEnum {
 	ProductSale = 2,
 	BannerHome = 3,
 	BannerCategory = 4,
+	Category = 5
 }
 export enum PlatformData {
 	FACEBOOK = 0,

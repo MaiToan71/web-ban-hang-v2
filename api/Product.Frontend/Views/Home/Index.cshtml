@@ -5,343 +5,415 @@
 }
 @using Project.ViewModels.Products
 @model Project.ViewModels.PagedResult<ProductViewModel>
+@section Scripts {
+    <script src="/js/active.js"></script>
 
-<section id="billboard" class="overflow-hidden container">
-
-    <button class="button-prev">
-        <i class="icon icon-chevron-left"></i>
-    </button>
-    <button class="button-next">
-        <i class="icon icon-chevron-right"></i>
-    </button>
-    <div class="swiper main-swiper">
-        <div class="swiper-wrapper">
-            @foreach (var b in ViewBag.Banners)
-            {
-                string imageUrl = ViewBag.DomainApi + b.Url;
-                <div class="swiper-slide image-banner" style="background-image: url('@imageUrl');background-repeat: no-repeat;background-size: cover;background-position: center;">
-                    <div class="banner-content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</section>
-@{
-    int count = 1;
+    <script src="~/js/home.js"></script>
+ 
+}
+@section Css {
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link href="~/css/home.css?v=@DateTime.Now.ToString("yyyyMMddhhmmss")" rel="stylesheet" />
 }
 
-<section id="featured-products" class="product-store padding-large">
-    <div class="container">
-        <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
-            <h2 class="section-title">Sản phẩm nổi bật</h2>
-            <div class="btn-wrap">
-                <a href="/san-pham/tat-ca" class="d-flex align-items-center">Xem tất cả sản phẩm <i class="icon icon icon-arrow-io"></i></a>
-            </div>
+  <section class="relative max-sm:mt-[60px] min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M30 30l15-15v30zM15 15l15 15H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    </div>
+    <div class="container mx-auto px-4 text-center text-white relative z-10">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="mb-8 flex justify-center">
+          <div class="relative">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-contain animate-scale-in" src="/lovable-uploads/721e99e1-5b71-422a-ab7e-4912fcc3f527.png" alt="Ngọc Quách Gia Logo">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-gold-400/20 rounded-full blur-xl animate-pulse"></div>
+          </div>
         </div>
-        <div class="swiper product-swiper overflow-hidden">
-            <div class="swiper-wrapper">
-                @foreach (var product in ViewBag.ProductHots)
-                {
-                    var images = product.Images as List<Project.ViewModels.Images.ImageViewModel>;
-                    <div class="swiper-slide">
-                        <div class="product-item">
-                            <div class="image-holder">
-                                @if (images != null && images.Any())
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <span class="block text-white">Ngọc Quách Gia</span>
+          <span class="block bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent mt-2">Tinh Hoa Đá Quý</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">Khám phá bộ sưu tập trang sức đá quý cao cấp, được chế tác thủ công với sự tỉ mỉ và đam mê. Mỗi món trang sức là một tác phẩm nghệ thuật độc đáo, mang lại may mắn và thịnh vượng.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <a href="/san-pham/tat-ca" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-8 py-6 text-lg rounded-full shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105">Khám phá bộ sưu tập</a>
+          <button class="justify-center whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background hover:text-accent-foreground h-10 border-2 border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full backdrop-blur-sm transition-all duration-300 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play w-5 h-5">
+              <polygon points="6 3 20 12 6 21 6 3"></polygon>
+            </svg>Xem video giới thiệu</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-gold-400 mb-2">15+</div>
+            <div class="text-gray-300">Năm kinh nghiệm</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-gold-400 mb-2">1000+</div>
+            <div class="text-gray-300">Khách hàng tin tưởng</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-gold-400 mb-2">100%</div>
+            <div class="text-gray-300">Chất lượng đảm bảo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute top-1/4 left-10 w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+    <div class="absolute top-1/3 right-20 w-1 h-1 bg-gold-400 rounded-full animate-pulse delay-1000"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 bg-emerald-300 rounded-full animate-pulse delay-500"></div>
+    <div class="absolute bottom-1/3 right-1/3 w-1 h-1 bg-gold-300 rounded-full animate-pulse delay-1500"></div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+          <img class="w-4 h-4" src="/img//logo.png" alt="Diamond icon">Sản phẩm nổi bật
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Bộ Sưu Tập <span class="text-emerald-600">Tinh Hoa</span></h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Khám phá những món trang sức đá quý được tuyển chọn kỹ lưỡng, mang đến vẻ đẹp vượt thời gian và giá trị bền vững.</p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Product Card 1 -->
+            @foreach(var product in  ViewBag.ProductHots)
+            {
+              var images = product.Images as List<Project.ViewModels.Images.ImageViewModel>;
+                string imageUrl = "";
+                @if (images != null && images.Any())
                                 {
                                     @foreach (var image in product.Images)
                                     {
-                                        string imageUrl = ViewBag.DomainApi + image.ImagePath;
-                                        <img src="@imageUrl" alt="@product.Title" class="product-image">
+                                         imageUrl = ViewBag.DomainApi + image.ImagePath;
                                     }
                                 }
                                 else
                                 {
-                                    <img src="/images//default-thumbnail-400.jpg" alt="@product.Title" class="post-image">
+                                     imageUrl = "/images//default-thumbnail-400.jpg";
                                 }
-                            </div>
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
-                                </h3>
-                                <div class="item-price text-primary money">@product.SellingPrice</div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-</section>
-
-
-<section id="subscribe">
-    <div class="container">
-        <div class="row">
-            <div class="block-text col-md-6">
-                <div class="section-header">
-                    <h2 class="section-title">Đăng ký nhận thông báo sản phẩm mới nhất</h2>
+            <div class="rounded-lg text-card-foreground group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white">
+          <a class="block" href="/san-pham/chi-tiet/@product.Id">
+            <div class="relative overflow-hidden">
+              <div class="aspect-square overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 cursor-pointer">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="@imageUrl" alt="Vòng Tay Ngọc Phỉ Thúy Miến Điện - Mã số 459-Luxury">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                <div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart w-4 h-4 text-gray-700 hover:text-red-500 transition-colors">
+                      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                    </svg>
+                  </button>
+                  <div class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-4 h-4 text-gray-700 hover:text-emerald-600 transition-colors">
+                      <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </div>
                 </div>
-                <p>Trang sức đá quý tinh xảo, mang đến may mắn và bình an cho cuộc sống của bạn.</p>
+                <div class="absolute top-4 left-4 flex flex-col gap-2">
+                  <span class="px-3 py-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-xs font-semibold rounded-full">MỚI</span>
+                  <span class="px-3 py-1 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold rounded-full">GIẢM GIÁ</span>
+                </div>
+              </div>
             </div>
-            <div class="subscribe-content col-md-6">
-                <form id="form" class="d-flex justify-content-between">
-                    <input type="text" name="email" placeholder="Nhập thông tin địa chỉ email tại đây">
-                    <button class="btn btn-dark">Đăng ký ngay</button>
-                </form>
+          </a>
+          <div class="p-6">
+            <div class="flex items-center gap-1 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+              <span class="text-sm text-gray-500 ml-2">(5.0)</span>
             </div>
-        </div>
-    </div>
-</section>
+            <a class="block" href="/san-pham/chi-tiet/@product.Id">
+              <h3 class="font-semibold text-lg text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">@product.Title</h3>
+            </a>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-2">@product.Description</p>
+            <div class="flex items-center gap-2 mb-4">
+                 @if (product.Discount > 0)
+                            {
+                                var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
 
-<section id="selling-products" class="product-store bg-light-grey padding-large">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Sản phẩm bán chạy</h2>
-        </div>
-        <div class="tab-content">
-            <div id="all" data-tab-content class="active">
-                <div class="row d-flex flex-wrap">
-                    @foreach (var product in Model.Items)
-                    {
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="product-wrapper">
-                                <div class="product-item">
-                                    <div class="image-holder">
-                                        @if (product.Images.Any())
-                                        {
-                                            foreach (var image in product.Images)
-                                            {
-                                                string imageUrl = ViewBag.DomainApi + image.ImagePath;
-                                                <img src="@imageUrl" alt="@product.Title" class="product-image" />
-                                            }
-                                        }
-                                        else
-                                        {
-                                            <img src="/images/default-thumbnail-400.jpg" alt="@product.Title" class="product-image" />
-                                        }
-                                    </div>
-                                    <div class="product-detail">
-                                        <h3 class="product-title">
-                                            <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
-                                        </h3>
-                                        <div class="item-price text-primary money">@product.SellingPrice</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                <span class="text-2xl font-bold text-emerald-600 product-price">@lastPrice</span>
+                           
+                        <span class="text-lg text-gray-400 line-through product-price">@product.SellingPrice</span>
                     }
-                </div>
+                    else
+                    {
+                         <span class="text-2xl font-bold text-emerald-600 product-price">@product.SellingPrice</span>
+                    }
             </div>
-
+            <div class="flex gap-2">
+              <button class="flex-1 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 px-4 py-2">Liên hệ</button>
+              <a class="flex-1 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background hover:text-accent-foreground h-10 px-4 py-2 border" href="/san-pham/chi-tiet/@product.Id">Chi tiết</a>
+            </div>
+          </div>
         </div>
+       }
     </div>
-</section>
+      </div>
+  </section>
 
-@* <section id="testimonials" class="padding-large ">
-    <div class="container">
-        <div class="reviews-content">
-            <div class="row d-flex flex-wrap">
-                <div class="col-md-2">
-                    <div class="review-icon">
-                        <i class="icon icon-right-quote"></i>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="swiper testimonial-swiper overflow-hidden">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="testimonial-detail">
-                                    <p>“Trang sức tại Ngọc Quách Gia không chỉ đẹp mà còn mang lại cho tôi nhiều may mắn trong công việc. Tôi đặc biệt hài lòng với vòng tay thạch anh vàng mà tôi đã mua.”</p>
-                                    <div class="author-detail">
-                                        <div class="name">Nguyễn Minh Tâm</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="testimonial-detail">
-                                    <p>“Tôi rất thích sự tư vấn tận tâm của nhân viên Ngọc Quách Gia. Họ giúp tôi chọn được viên đá phù hợp với mệnh của mình. Sản phẩm rất đẹp và chất lượng.”</p>
-                                    <div class="author-detail">
-                                        <div class="name">Lê Thị Hương</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-arrows">
-                        <button class="prev-button">
-                            <i class="icon icon-arrow-left"></i>
-                        </button>
-                        <button class="next-button">
-                            <i class="icon icon-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
+@foreach(var pt in ViewBag.ProductTypes)
+{
+<section class="py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+                <img class="w-4 h-4" src="/img//logo.png" alt="Diamond icon">Sản phẩm nổi bật
             </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">@pt.Name <span class="text-emerald-600">Tinh Hoa</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">@pt.Description</p>
         </div>
-    </div>
-</section>
- *@
-<section id="flash-sales" class="product-store padding-large">
-
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Đang giảm giá</h2>
-        </div>
-        <div class="swiper product-swiper flash-sales overflow-hidden">
-
-            <div class="swiper-wrapper">
-                @foreach (var product in ViewBag.ProductDisCounts)
-                {
-                    var images = product.Images as List<Project.ViewModels.Images.ImageViewModel>;
-                    <div class="swiper-slide">
-                        <div class="product-item">
-                            @if (images != null && images.Any())
-                            {
-                                @foreach (var image in product.Images)
-                                {
-                                    string imageUrl = ViewBag.DomainApi + image.ImagePath;
-                                    <img src="@imageUrl" alt="@product.Title" class="product-image">
-                                }
-                            }
-                            else
-                            {
-                                <img src="/images//default-thumbnail-400.jpg" alt="@product.Title" class="post-image">
-                            }
-
-                            @if (product.Discount > 0)
-                            {
-                                <div class="discount">@product.Discount% </div>
-
-                            }
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="/san-pham/chi-tiet/@product.Id">@product.Title</a>
-                                </h3>
-                                @if (product.Discount > 0)
-                                {
-                                    <div class="item-price text-primary">
-                                        @{
-                                            var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
-                                        }
-                                        <del class="prev-price money">@product.SellingPrice</del><span class="money">@lastPrice</span>
-                                    </div>
-                                }
-                                else
-                                {
-
-                                    <span class="money">@product.SellingPrice</span>
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-                }
-
-            </div>
-            <div class="swiper-pagination"></div>
-
-        </div>
-    </div>
-</section>
-
-@* <section class="py-16 bg-emerald-50"><div class="container mx-auto px-4"><div class="text-center mb-12"><h2 class="text-3xl font-serif font-semibold text-gray-800 mb-4">Khách Hàng Nói Gì Về Chúng Tôi</h2><p class="text-gray-600 max-w-2xl mx-auto">Hàng ngàn khách hàng đã tin tưởng lựa chọn Ngọc Quách Gia cho các sản phẩm trang sức phong thủy</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-8"><div class="bg-white p-6 rounded-lg shadow-md"><div class="flex items-center mb-4"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Nguyễn Minh Tâm" class="w-12 h-12 rounded-full object-cover mr-4"><div><h3 class="font-medium text-gray-800">Nguyễn Minh Tâm</h3><p class="text-sm text-gray-500">Doanh nhân</p></div></div><p class="text-gray-600 italic">"Trang sức tại Ngọc Quách Gia không chỉ đẹp mà còn mang lại cho tôi nhiều may mắn trong công việc. Tôi đặc biệt hài lòng với vòng tay thạch anh vàng mà tôi đã mua."</p><div class="mt-4 flex text-amber-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div></div><div class="bg-white p-6 rounded-lg shadow-md"><div class="flex items-center mb-4"><img src="https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg" alt="Lê Thị Hương" class="w-12 h-12 rounded-full object-cover mr-4"><div><h3 class="font-medium text-gray-800">Lê Thị Hương</h3><p class="text-sm text-gray-500">Giáo viên</p></div></div><p class="text-gray-600 italic">"Tôi rất thích sự tư vấn tận tâm của nhân viên Ngọc Quách Gia. Họ giúp tôi chọn được viên đá phù hợp với mệnh của mình. Sản phẩm rất đẹp và chất lượng."</p><div class="mt-4 flex text-amber-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div></div><div class="bg-white p-6 rounded-lg shadow-md"><div class="flex items-center mb-4"><img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="Trần Đức Minh" class="w-12 h-12 rounded-full object-cover mr-4"><div><h3 class="font-medium text-gray-800">Trần Đức Minh</h3><p class="text-sm text-gray-500">Kỹ sư</p></div></div><p class="text-gray-600 italic">"Đã mua nhiều lần tại Ngọc Quách Gia và chưa bao giờ thất vọng. Sản phẩm chất lượng, dịch vụ chuyên nghiệp, giao hàng nhanh và đóng gói cẩn thận."</p><div class="mt-4 flex text-amber-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div></div></div></div></section>
-<section class="py-16"><div class="container mx-auto px-4"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="bg-white p-6 rounded-lg shadow-md"><h3 class="text-xl font-medium text-gray-800 mb-4">Thông Tin Cửa Hàng</h3><ul class="space-y-4"><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-5 h-5 text-emerald-600 mt-1 mr-3"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg><div><p class="font-medium text-gray-700">Địa Chỉ</p><p class="text-gray-600">123 Đường Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</p></div></li><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-5 h-5 text-emerald-600 mt-1 mr-3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><div><p class="font-medium text-gray-700">Điện Thoại</p><p class="text-gray-600"><a href="tel:+842838123456" class="hover:text-emerald-600">028 3812 3456</a></p></div></li><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5 text-emerald-600 mt-1 mr-3"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><div><p class="font-medium text-gray-700">Email</p><p class="text-gray-600"><a href="mailto:info@ngocquachgia.com" class="hover:text-emerald-600">info@ngocquachgia.com</a></p></div></li><li class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-5 h-5 text-emerald-600 mt-1 mr-3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><div><p class="font-medium text-gray-700">Giờ Mở Cửa</p><p class="text-gray-600">Thứ 2 - Thứ 7: 8:30 - 21:00</p><p class="text-gray-600">Chủ Nhật: 9:30 - 20:00</p></div></li></ul></div><div class="bg-white p-6 rounded-lg shadow-md"><h3 class="text-xl font-medium text-gray-800 mb-4">Liên Hệ Qua Mạng Xã Hội</h3><p class="text-gray-600 mb-6">Liên hệ với chúng tôi qua các kênh mạng xã hội để được tư vấn và hỗ trợ nhanh chóng.</p><div class="space-y-4"><a href="https://zalo.me/" target="_blank" rel="noopener noreferrer" class="flex items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"><div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-4"><span class="text-white font-bold">Z</span></div><div><p class="font-medium text-gray-800">Zalo</p><p class="text-sm text-gray-600">Nhắn tin ngay để được tư vấn</p></div></a><a href="https://m.me/" target="_blank" rel="noopener noreferrer" class="flex items-center p-3 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors"><div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-5 h-5 text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></div><div><p class="font-medium text-gray-800">Messenger</p><p class="text-sm text-gray-600">Chat với nhân viên tư vấn</p></div></a></div></div><div class="bg-white p-6 rounded-lg shadow-md"><h3 class="text-xl font-medium text-gray-800 mb-4">Gửi Yêu Cầu Tư Vấn</h3><form><div class="mb-4"><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Họ và tên</label><input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"></div><div class="mb-4"><label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại</label><input type="tel" id="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"></div><div class="mb-4"><label for="message" class="block text-sm font-medium text-gray-700 mb-1">Lời nhắn</label><textarea id="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"></textarea></div><button type="button" class="inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 bg-emerald-700 text-white hover:bg-emerald-800 focus:ring-emerald-500 text-base px-4 py-2 w-full cursor-pointer ">Gửi yêu cầu</button></form></div></div></div></section>
- *@
-<hr>
-<section id="latest-blog" class="padding-large">
-    <div class="container">
-        <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
-            <h2 class="section-title">Tin tức</h2>
-            <div class="btn-wrap align-right">
-                <a href="/tin-tuc" class="d-flex align-items-center">
-                    Đọc tất cả tin tức <i class="icon icon icon-arrow-io"></i>
-                </a>
-            </div>
-        </div>
-        <div class="row d-flex flex-wrap">
-            @foreach (var post in @ViewBag.Posts)
+            @await Component.InvokeAsync("ProductCategory",
+            new
             {
-                var images = post.Images as List<Project.ViewModels.Images.ImageViewModel>;
-                <article class="col-lg-3 col-md-6 col-sm-6 post-item">
-                    <div class="image-holder zoom-effect">
-                        <a href="/chi-tiet/@post.Url">
-                            @if (images != null && images.Any())
-                            {
-                                @foreach (var image in post.Images)
-                                {
-                                    string imageUrl = ViewBag.DomainApi + image.ImagePath;
-                                    <img src="@imageUrl" alt="@post.Title" class="post-image">
-                                }
-                            }
-                            else
-                            {
-                                <img src="/images//default-thumbnail-400.jpg" alt="@post.Title" class="post-image">
-                            }
-                        </a>
-                    </div>
-                    <div class="post-content d-flex">
-                        <div class="meta-date">
-                            <div class="meta-day text-primary">@post.CreateTime.ToString("dd")</div>
-                            <div class="meta-month">@post.CreateTime.ToString("MM-yyyy")</div>
-                        </div>
-                        <div class="post-header">
-                            <h3 class="post-title">
-                                <a href="/chi-tiet/@post.Url">@post.Title</a>
-                            </h3>
-                            <a href="blog.html" class="blog-categories">@post.PostType.Name</a>
-                        </div>
-                    </div>
-                </article>
+                PostTypeId = @pt.Id,
             }
-        </div>
+                )
+        <!-- Products Grid -->
     </div>
 </section>
-
-<section id="shipping-information">
-    <hr>
-    <div class="container">
-        <div class="row d-flex flex-wrap align-items-center justify-content-between">
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-box">
-                    <i class="icon icon-truck"></i>
-                    <h4 class="block-title">
-                        <strong>GIAO HÀNG</strong> toàn quốc
-                    </h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-box">
-                    <i class="icon icon-return"></i>
-                    <h4 class="block-title">
-                        <strong>ĐỔI TRẢ HÀNG</strong> trong vòng 24h
-                    </h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-box">
-                    <i class="icon icon-tags1"></i>
-                    <h4 class="block-title">
-                        <strong>CAM KẾT SẢN PHẨM</strong> đá tự nhiên
-                    </h4>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="icon-box">
-                    <i class="icon icon-help_outline"></i>
-                    <h4 class="block-title">
-                        <strong>Câu hỏi?</strong> liên hệ 0936083333
-                    </h4>
-                </div>
-            </div>
-        </div>
+}
+<section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold-100 text-gold-700 rounded-full text-sm font-medium mb-4">
+        <img class="w-4 h-4" src="/img/logo.png" alt="Diamond icon">Về Ngọc Quách Gia
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Hành Trình <span class="text-gold-600">15 Năm</span> Tạo Nên Uy Tín</h2>
+      <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Từ một cửa hàng nhỏ đến thương hiệu trang sức đá quý uy tín hàng đầu Việt Nam, Ngọc Quách Gia luôn cam kết mang đến những sản phẩm chất lượng cao nhất, được tuyển chọn kỹ lưỡng từ những mỏ đá quý nổi tiếng thế giới.</p>
     </div>
-    <hr>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-3xl font-bold text-gray-900 mb-4">Sứ Mệnh &amp; Tầm Nhìn</h3>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">Chúng tôi tin rằng mỗi viên đá quý không chỉ là một món trang sức đẹp, mà còn là nguồn năng lượng tích cực, mang lại may mắn và thịnh vượng cho người sở hữu.</p>
+          <p class="text-lg text-gray-700 leading-relaxed">Với tầm nhìn trở thành thương hiệu trang sức đá quý hàng đầu Đông Nam Á, chúng tôi không ngừng nâng cao chất lượng sản phẩm và dịch vụ.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="text-center p-6 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl">
+            <div class="text-3xl font-bold text-emerald-600 mb-2">1000+</div>
+            <div class="text-gray-700 font-medium">Khách hàng VIP</div>
+          </div>
+          <div class="text-center p-6 bg-gradient-to-br from-gold-50 to-gold-100 rounded-2xl">
+            <div class="text-3xl font-bold text-gold-600 mb-2">5000+</div>
+            <div class="text-gray-700 font-medium">Sản phẩm bán ra</div>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 shadow-2xl">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600" alt="Ngọc Quách Gia Showroom">
+        </div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-3xl opacity-20 blur-xl"></div>
+        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-gold-400 to-gold-600 rounded-3xl opacity-20 blur-xl"></div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="rounded-lg text-card-foreground group border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50">
+        <div class="p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-2xl flex items-center justify-center group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors">Chất lượng đảm bảo</h4>
+          <p class="text-gray-600 leading-relaxed">Mỗi viên đá quý được kiểm định chất lượng nghiêm ngặt, đi kèm giấy chứng nhận quốc tế GIA/GRS.</p>
+        </div>
+      </div>
+      <div class="rounded-lg text-card-foreground group border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50">
+        <div class="p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-2xl flex items-center justify-center group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300">
+              <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
+              <circle cx="12" cy="8" r="6"></circle>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors">Thủ công cao cấp</h4>
+          <p class="text-gray-600 leading-relaxed">Được chế tác bởi những nghệ nhân hàng đầu với hơn 20 năm kinh nghiệm trong nghề kim hoàn.</p>
+        </div>
+      </div>
+      <div class="rounded-lg text-card-foreground group border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50">
+        <div class="p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-2xl flex items-center justify-center group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors">Tư vấn chuyên nghiệp</h4>
+          <p class="text-gray-600 leading-relaxed">Đội ngũ chuyên gia phong thủy và trang sức hỗ trợ tư vấn 24/7, giúp bạn chọn được món đồ phù hợp.</p>
+        </div>
+      </div>
+      <div class="rounded-lg text-card-foreground group border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50">
+        <div class="p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-2xl flex items-center justify-center group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300">
+              <path d="M6 3h12l4 6-10 13L2 9Z"></path>
+              <path d="M11 3 8 9l4 13 4-13-3-6"></path>
+              <path d="M2 9h20"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors">Bộ sưu tập độc quyền</h4>
+          <p class="text-gray-600 leading-relaxed">Những thiết kế độc đáo, mang đậm dấu ấn văn hóa Việt, kết hợp tinh hoa nghệ thuật Á Đông.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="py-20 bg-gradient-to-b from-white to-emerald-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+        <img class="w-4 h-4" src="/img/logo.png" alt="Diamond icon">Khách hàng nói gì
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Cảm Nhận Từ <span class="text-emerald-600">Khách Hàng VIP</span></h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hơn 1000 khách hàng đã tin tưởng lựa chọn Ngọc Quách Gia. Sự hài lòng của quý khách là niềm tự hào và động lực của chúng tôi.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <!-- Testimonial Card 1 -->
+      <div class="rounded-lg text-card-foreground group border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white hover:bg-gradient-to-br hover:from-white hover:to-emerald-50">
+        <div class="p-8">
+          <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center mb-6 group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote w-6 h-6 text-emerald-600 group-hover:text-white transition-colors duration-300">
+              <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+              <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+            </svg>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+          </div>
+          <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 italic">"Tôi đã mua nhẫn kim cương tại Ngọc Quách Gia được 2 năm, vẫn giữ được độ sáng và chất lượng như ban đầu. Dịch vụ tư vấn rất chuyên nghiệp, giúp tôi chọn được món đồ phù hợp với mệnh và sở thích."</blockquote>
+          <div class="text-sm text-emerald-600 font-medium mb-6 bg-emerald-50 px-3 py-1 rounded-full inline-block">Sản phẩm: Nhẫn Kim Cương 3 Carat</div>
+          <div class="flex items-center gap-4">
+            <img class="w-12 h-12 rounded-full object-cover border-2 border-emerald-200" src="https://images.unsplash.com/photo-1494790108755-2616c1111b0c?w=100" alt="Chị Nguyễn Thị Lan">
+            <div>
+              <div class="font-semibold text-gray-900">Chị Nguyễn Thị Lan</div>
+              <div class="text-sm text-gray-600">Doanh nhân • TP. Hồ Chí Minh</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="rounded-lg text-card-foreground group border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white hover:bg-gradient-to-br hover:from-white hover:to-emerald-50">
+        <div class="p-8">
+          <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center mb-6 group-hover:from-emerald-500 group-hover:to-emerald-600 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote w-6 h-6 text-emerald-600 group-hover:text-white transition-colors duration-300">
+              <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+              <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+            </svg>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+          </div>
+          <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 italic">"Mua vòng cổ ngọc trai làm quà sinh nhật vợ, chất lượng tuyệt vời! Vợ tôi rất thích và đã giới thiệu cho nhiều bạn bè. Sẽ quay lại ủng hộ shop trong tương lai."</blockquote>
+          <div class="text-sm text-emerald-600 font-medium mb-6 bg-emerald-50 px-3 py-1 rounded-full inline-block">Sản phẩm: Vòng Cổ Ngọc Trai Akoya</div>
+          <div class="flex items-center gap-4">
+            <img class="w-12 h-12 rounded-full object-cover border-2 border-emerald-200" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" alt="Anh Trần Văn Minh">
+            <div>
+              <div class="font-semibold text-gray-900">Anh Trần Văn Minh</div>
+              <div class="text-sm text-gray-600">Giám đốc • Hà Nội</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0" style="background:#06523e"></div>
+  </div>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+          <img class="w-4 h-4" src="/img/logo.png" alt="Diamond icon">Đăng ký ngay
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Nhận Ưu Đãi <span class="text-gold-300">Đặc Biệt</span></h2>
+        <p class="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">Đăng ký để nhận thông tin về các sản phẩm mới, ưu đãi độc quyền và những kiến thức bổ ích về thế giới đá quý trang sức.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gift w-8 h-8 text-gold-300">
+              <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+              <path d="M12 8v13"></path>
+              <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
+              <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 4.8 0 0 1 12 8a4.8 4.8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Ưu đãi độc quyền</h3>
+          <p class="text-emerald-200 text-sm">Nhận mã giảm giá 10% cho đơn hàng đầu tiên</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell w-8 h-8 text-gold-300">
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Thông báo sớm</h3>
+          <p class="text-emerald-200 text-sm">Cập nhật sản phẩm mới và bộ sưu tập limited</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-8 h-8 text-gold-300">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+              <path d="M20 3v4"></path>
+              <path d="M22 5h-4"></path>
+              <path d="M4 17v2"></path>
+              <path d="M5 18H3"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Tư vấn miễn phí</h3>
+          <p class="text-emerald-200 text-sm">Kiến thức phong thủy và chăm sóc trang sức</p>
+        </div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 max-w-2xl mx-auto">
+        <form class="space-y-6">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex-1 relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <input type="email" class="flex w-full border-input px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm pl-12 h-14 bg-white/90 backdrop-blur-sm border-0 text-gray-900 placeholder:text-gray-500 rounded-2xl text-lg" placeholder="Nhập địa chỉ email của bạn..." required="" value="">
+            </div>
+            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white px-8 h-14 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" type="submit">Đăng ký ngay</button>
+          </div>
+          <p class="text-emerald-200 text-sm">Bằng cách đăng ký, bạn đồng ý với <a class="text-gold-300 hover:text-gold-200 underline" href="#">Điều khoản sử dụng</a> và <a class="text-gold-300 hover:text-gold-200 underline" href="#">Chính sách bảo mật</a> của chúng tôi.</p>
+        </form>
+      </div>
+      <div class="mt-8 text-center">
+        <p class="text-emerald-200 text-sm">🔒 Chúng tôi cam kết bảo vệ thông tin cá nhân của bạn và không spam email</p>
+      </div>
+    </div>
+  </div>
+  <div class="absolute top-1/4 left-10 w-2 h-2 bg-gold-400 rounded-full animate-pulse"></div>
+  <div class="absolute top-1/3 right-20 w-1 h-1 bg-emerald-300 rounded-full animate-pulse delay-1000"></div>
+  <div class="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 bg-gold-300 rounded-full animate-pulse delay-500"></div>
+  <div class="absolute bottom-1/3 right-1/3 w-1 h-1 bg-emerald-400 rounded-full animate-pulse delay-1500"></div>
 </section>

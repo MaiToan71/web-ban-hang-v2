@@ -1,15 +1,19 @@
-#billing_address_full_name{
-    width:100%
+#billing_address_full_name {
+    width: 100%
 }
-input ,select{
-    width:100%
+
+input, select {
+    width: 100%
 }
-.order .container{
-    width:1200px;
+
+.order .container {
+    width: 1200px;
 }
-.visually-hidden{
-    display:none;
+
+.visually-hidden {
+    display: none;
 }
+
 .product-thumbnail {
     width: 4.6em;
     height: 4.6em;
@@ -27,45 +31,55 @@ input ,select{
     background-color: rgba(153, 153, 153, 0.9);
     color: #fff;
     position: absolute;
-
     color: #fff;
     position: absolute;
     right: -0.75em;
     top: -0.75em;
     z-index: 2;
 }
-#change_pick_location_or_shipping > div{
-    display:flex;
-    justify-content:space-between;
-
+.product{
+    padding:26px;
 }
+
+#change_pick_location_or_shipping > div {
+    display: flex;
+    justify-content: space-between;
+}
+
 .step-footer-previous-link {
     margin-top: 16px;
     color: #6995B1
 }
-.content{
-    padding-right:64px;
+
+.content {
+    padding-right: 64px;
 }
+
 .sidebar {
-    padding-left:32px;
+    padding-left: 32px;
     position: relative;
     border-left: 1px solid gray !important
 }
+
 .payment-due .payment-due-currency {
     font-size: 0.85714em;
     vertical-align: 0.2em;
     margin-right: 0.5em;
     color: #969696;
 }
-.total-line-table-footer .total-line ,.total-line-subtotal{
+
+.total-line-table-footer .total-line, .total-line-subtotal {
     border-top: 1px solid gray !important
 }
-.payment-due-price{
-    font-weight:bold;
+
+.payment-due-price {
+    font-weight: bold;
 }
+
 .fieldset .field .field-input-wrapper {
     position: relative;
 }
+
     .fieldset .field .field-input-wrapper .field-input {
         box-shadow: 0 0 0 1px #d9d9d9;
         transition: all 0.2s ease-out;
@@ -77,27 +91,168 @@ input ,select{
         width: 100%;
         word-break: normal;
     }
-.field-input-btn-wrapper{
-    display:flex;
-    justify-content:space-between;
-    align-content:center;
+
+.field-input-btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
 }
-.field-input-btn.btn.btn-default.btn-disabled{
-    margin-left:16px;
-    margin-top:0px;
-    margin-bottom:23px
+
+.field-input-btn.btn.btn-default.btn-disabled {
+    margin-left: 16px;
+    margin-top: 0px;
+    margin-bottom: 23px
 }
-.total-line-table{
-    width:100%;
-    margin-top:-32px;
+
+.total-line-table {
+    width: 100%;
+    margin-top: -32px;
 }
-.total-line{
-   display:flex;
-   justify-content:space-between;
+
+.total-line {
+    display: flex;
+    justify-content: space-between;
 }
+
 .total-line-price {
     text-align: end;
 }
-.error{
-    color:red;
+
+.error {
+    color: red;
+}
+/*------------------------------------------------
+/* 2.3 Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    height: 50px;
+    padding: 6px 15px;
+    background-color: var(--light-background-color);
+    border: 1px solid var(--grey-color);
+    border-radius: 4px;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+/*--------------------------------------------------------------
+/** 2.10 Buttons
+--------------------------------------------------------------*/
+a.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="file"],
+button {
+    background-image: none;
+    background: var(--dark-color);
+    text-decoration: none !important;
+    display: inline-block;
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 0;
+    padding: 0.75em 1.5em;
+    margin-top: 15px;
+    font-family: var(--body-font);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--light-color);
+    z-index: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .btn:hover,
+    .btn:focus,
+    input[type="button"]:focus,
+    input[type="button"]:hover,
+    input[type="submit"]:focus,
+    input[type="submit"]:hover,
+    input[type="reset"]:focus,
+    input[type="reset"]:hover,
+    input[type="file"]:focus,
+    input[type="file"]:hover,
+    button:focus,
+    button:hover {
+        text-decoration: none;
+        outline: 0;
+    }
+
+.light .btn:hover {
+    color: var(--light-color);
+}
+
+.btn:last-child {
+    margin-right: 0;
+}
+
+.btn:active,
+.btn.btn-outline-light:active,
+.btn.btn-outline-dark:active,
+.btn.btn-outline-accent:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="file"]:active,
+button:active {
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+a.btn.disabled,
+fieldset[disabled] a.btn {
+    pointer-events: none;
+}
+#change_pick_location_or_shipping{
+    margin-bottom:16px;
+    margin-top:16px;
+}
+
+.hide{
+    display:none;
+}
+#form_discount_add{
+    margin-top:30px;
+}
+.total-line-subtotal{
+    margin-top:32px !important;
+}
+.total-line{
+    padding-top:16px;
+}
+.order{
+    padding-top:16px;
+    padding-bottom:16px;
+}
+.product-description-name{
+    font-weight:bold;
 }

@@ -1,4 +1,4 @@
-﻿var Cart = function () {
+var Cart = function () {
     var self = this;
     self.convertToKoObject = function (data) {
         var newObj = ko.mapping.fromJS(data);
@@ -11,7 +11,7 @@
     self.discount = ko.observable(0)
     self.getCart = function () {
         let carts = $.cookie("cart") ? JSON.parse($.cookie("cart")) : [];
-      
+
 
         var input = {
             "PageIndex": 1,
@@ -31,9 +31,10 @@
             self.total(0)
             let totalItem = 0;
             $.each(carts, function (ex, i) {
-               
+                i.Detail =""
                 $.each(result.Items, function (ex, j) {
-                    if (j.Id == i.ProductId) {
+                    if (Number(j.Id) == Number(i.ProductId)) {
+                        j.Image =""
                         if (j.Images.length > 0) {
                             j.Image = $("#domain").val() + j.Images[0].ImagePath
                         }
@@ -42,25 +43,20 @@
                         i.Total = total
                         i.Detail = j
                         totalItem += total
+
                     }
                 })
                 self.total(totalItem)
-
                 self.data.push(self.convertToKoObject(i))
             })
-            function formatMoneyVND(amount) {
-                return new Intl.NumberFormat('vi-VN', {
-                    style: 'currency',
-                    currency: 'VND'
-                }).format(amount);
-            }
+         
             self.modifyMoney()
-           
+
         })
     }
     self.modifyMoney = function () {
         // Lấy tất cả phần tử có class "money"
-        const moneyElements = document.querySelectorAll('.money');
+        const moneyElements = document.querySelectorAll('.product-price');
 
         moneyElements.forEach(el => {
             const rawValue = parseFloat(el.textContent.replace(/,/g, '')); // Bỏ dấu phẩy nếu có
@@ -84,7 +80,7 @@
     }
 
     self.addToCart = function () {
-        let newCookies =[]
+        let newCookies = []
         $.each(self.data(), function (ex, i) {
             let product = {
                 ProductId: i.ProductId(),
@@ -97,26 +93,25 @@
         Cookies.remove("cart", { path: '/' });
         console.log("Đã xóa cookie giỏ hàng!")
 
-       
+
 
         Cookies.set("cart", JSON.stringify(newCookies), { expires: 7, path: '/' });
-        console.log("Đã thêm giỏ hàng mới!"); 
+        console.log("Đã thêm giỏ hàng mới!");
         toastr.success("Sản phẩm đã được cập nhật trong giỏ hàng!", "Cập nhật thành công");
     }
 
     self.addPayment = function () {
         self.addToCart();
-        window.location.href="/thanh-toan"
+        window.location.href = "/thanh-toan"
     }
 
 
 }
 jQuery(document).ready(function ($) {
-    
+
 
     var viewModel = new Cart();
     viewModel.getCart();
     ko.applyBindings(viewModel);
 });
-
 

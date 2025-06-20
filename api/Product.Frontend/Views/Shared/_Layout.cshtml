@@ -13,290 +13,345 @@
     <meta property="og:image" content="@ViewData["Image"]" />
     <meta property="og:title" content="@ViewData["Title"]" />
     <meta name="description" content="Ngọc Quách Gia - Chuyên cung cấp các loại đá quý phong thủy, vòng tay phong thủy, mặt dây chuyền đá quý chất lượng cao." />
-  @*   <meta property="og:url" content="https://example.com/duong-dan-trang" /> *@
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/icomoon/icomoon.css">
-    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="shortcut icon" href="/images/logo.jpg" />
-  
 
-    <!-- script
-    ================================================== -->
-    <script src="/js/modernizr.js"></script>
-    <script src="/js/jquery-1.11.0.min.js"></script>
-    <script src="/js/plugins.js"></script>
-    <script src="/js/script.js"></script>
-    <script src="~/lib/jquery.elevatezoom.js"></script>
-    <script src="~/lib/jquery.mthumbnailscroller.js"></script>
-    <script src="~/lib/bootstrap-tabdrop.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="/img/core-img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="/css/core-style.css?v=@DateTime.Now.ToString("yyyyMMddhhmmss")">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="~/css/site.css?v=@DateTime.Now.ToString("yyyyMMddhhmmss")" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    @await RenderSectionAsync("Css", required: false)
+
+</head>
+<body>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header_area">
+        <div class="bg-gradient-to-r from-emerald-800 to-emerald-700 text-white py-2">
+            <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm">
+                <!-- Contact Information -->
+                <div class="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4">
+                    <div class="flex items-center space-x-1">
+                        <!-- Phone Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-3 h-3">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>Hotline: 0963.872.872 - 0866.116.792 - 0384.056.888</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <!-- Map Pin Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3 h-3">
+                            <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <!-- Showroom address for larger screens -->
+                        <span class="hidden sm:inline">Showroom: Cầu Giấy, Hà Nội, Việt Nam</span>
+                        <!-- Showroom address for smaller screens -->
+                        <span class="sm:hidden">Q1, TP.HCM</span>
+                    </div>
+                </div>
+                <!-- Service Message -->
+                <div class="text-center sm:text-right">
+                    <span>Miễn phí tư vấn 24/7</span>
+                </div>
+            </div>
+        </div>
+        <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+            <!-- Classy Menu -->
+            
+            <nav class="classy-navbar" id="essenceNav">
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <!-- Logo Image -->
+                    <a href="/"> <img class="w-10 h-10 sm:w-12 sm:h-12 object-contain" src="/img/logo.png" alt="Ngọc Quách Gia Logo"></a>
+                    <div>
+                        <!-- Main Brand Name with Gradient Text -->
+                        <span class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-gold-600 bg-clip-text text-transparent">Ngọc Quách Gia</span>
+                        <!-- Slogan (visible on larger screens) -->
+                        <div class="text-xs sm:text-sm text-gray-600 font-normal hidden sm:block">Định nghĩa đẳng cấp qua từng giác cắt</div>
+                    </div>
+                </div>
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+                <!-- Menu -->
+                <div class="classy-menu">
+                    <!-- close btn -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        @await Component.InvokeAsync("Menu")
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+
+            <!-- Header Meta Data -->
+            <div class="header-meta d-flex clearfix justify-content-end">
+                <div b-ykj01qz0ep class="search-area">
+                    <form method="get" class="search-form" action="/san-pham/tat-ca">
+                        <input b-ykj01qz0ep type="search" name="search" id="headerSearch" placeholder="Tìm sản phẩm">
+                        <button b-ykj01qz0ep type="submit"><i b-ykj01qz0ep class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+              @*   <!-- User Login Info -->
+                <div class="user-login-info">
+                    <a href="#"><img src="/img/core-img/user.svg" alt=""></a>
+                </div> *@
+                <!-- Cart Area -->
+                <div class="cart-area flex" >
+                    <a href="/gio-hang" class="flex content-center" ><img src="/img/core-img/bag.svg" alt=""> <span>3</span></a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+    <!-- ##### Right Side Cart Area ##### -->
+    <div class="cart-bg-overlay"></div>
+
+    <div class="right-side-cart-area">
+
+        <!-- Cart Button -->
+        <div class="cart-button">
+            <a href="#" id="rightSideCart"><img src="img/core-img/bag.svg" alt=""> <span>3</span></a>
+        </div>
+
+        <div class="cart-content d-flex">
+
+            <!-- Cart List Area -->
+            <div class="cart-list">
+                <!-- Single Cart Item -->
+                <div class="single-cart-item">
+                    <a href="#" class="product-image">
+                        <img src="img/product-img/product-1.jpg" class="cart-thumb" alt="">
+                        <!-- Cart Item Desc -->
+                        <div class="cart-item-desc">
+                            <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                            <span class="badge">Mango</span>
+                            <h6>Button Through Strap Mini Dress</h6>
+                            <p class="size">Size: S</p>
+                            <p class="color">Color: Red</p>
+                            <p class="price">$45.00</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Single Cart Item -->
+                <div class="single-cart-item">
+                    <a href="#" class="product-image">
+                        <img src="img/product-img/product-2.jpg" class="cart-thumb" alt="">
+                        <!-- Cart Item Desc -->
+                        <div class="cart-item-desc">
+                            <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                            <span class="badge">Mango</span>
+                            <h6>Button Through Strap Mini Dress</h6>
+                            <p class="size">Size: S</p>
+                            <p class="color">Color: Red</p>
+                            <p class="price">$45.00</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Single Cart Item -->
+                <div class="single-cart-item">
+                    <a href="#" class="product-image">
+                        <img src="img/product-img/product-3.jpg" class="cart-thumb" alt="">
+                        <!-- Cart Item Desc -->
+                        <div class="cart-item-desc">
+                            <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                            <span class="badge">Mango</span>
+                            <h6>Button Through Strap Mini Dress</h6>
+                            <p class="size">Size: S</p>
+                            <p class="color">Color: Red</p>
+                            <p class="price">$45.00</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-amount-summary">
+
+                <h2>Summary</h2>
+                <ul class="summary-table">
+                    <li><span>subtotal:</span> <span>$274.00</span></li>
+                    <li><span>delivery:</span> <span>Free</span></li>
+                    <li><span>discount:</span> <span>-15%</span></li>
+                    <li><span>total:</span> <span>$232.00</span></li>
+                </ul>
+                <div class="checkout-btn mt-100">
+                    <a href="checkout.html" class="btn essence-btn">check out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Right Side Cart End ##### -->
+            @RenderBody()
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Brand Info and Certifications -->
+                <a href="/" class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img class="w-12 h-12 object-contain" src="/img//logo.png" alt="Ngọc Quách Gia Logo">
+                        <div class="text-2xl font-bold">
+                            <span class="bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent">Ngọc Quách Gia</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">Thương hiệu trang sức đá quý cao cấp hàng đầu Việt Nam với hơn 15 năm kinh nghiệm. Chuyên cung cấp các sản phẩm trang sức đá quý thiên nhiên, được chế tác thủ công tinh xảo.</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-emerald-400">
+                            <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                            <span>Chứng nhận GIA - Viện Đá quý Hoa Kỳ</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-emerald-400">
+                            <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                            <span>Chứng nhận GRS - Viện Đá quý Thái Lan</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-emerald-400">
+                            <div class="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                            <span>Thành viên Hiệp hội Kim hoàn Việt Nam</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-gold-400">Thông tin liên hệ</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-5 h-5 text-emerald-400 mt-1 flex-shrink-0">
+                                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <div class="text-gray-300">
+                                <div class="font-medium mb-1">Showroom chính:</div>
+                                <div>123 Trần Hưng Đạo, Quận 1, TP.HCM</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-5 h-5 text-emerald-400 mt-1 flex-shrink-0">
+                                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <div class="text-gray-300">
+                                <div class="font-medium mb-1">Chi nhánh Hà Nội:</div>
+                                <div>456 Hai Bà Trưng, Hoàn Kiếm, Hà Nội</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-5 h-5 text-emerald-400">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <div class="text-gray-300">
+                                <div class="font-medium">Hotline: 0123.456.789</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5 text-emerald-400">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            <div class="text-gray-300">
+                                <div>info@ngocquachgia.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-5 h-5 text-emerald-400 mt-1">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <div class="text-gray-300">
+                                <div class="font-medium mb-1">Giờ làm việc:</div>
+                                <div>T2-T7: 8:00 - 20:00</div>
+                                <div>CN: 8:00 - 18:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-gold-400">Liên kết nhanh</h3>
+                    <div class="space-y-3">
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/products">Sản phẩm</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/collections">Bộ sưu tập</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/blog">Tin tức &amp; Blog</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/about">Về chúng tôi</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/contact">Liên hệ</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/warranty">Chính sách bảo hành</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/privacy">Chính sách bảo mật</a>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4 text-gold-400">Kết nối với chúng tôi</h4>
+                        <div class="flex space-x-4">
+                            <a class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:from-blue-600 hover:to-blue-700 transition-all duration-300" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook w-5 h-5">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                            <a class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-5 h-5">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                </svg>
+                            </a>
+                            <a class="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center hover:from-red-600 hover:to-red-700 transition-all duration-300" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube w-5 h-5">
+                                    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+                                    <path d="m10 15 5-3-5-3z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">© 2024 Ngọc Quách Gia. Bảo lưu mọi quyền.</div>
+                    <div class="flex space-x-6 text-sm text-gray-400">
+                        <a class="hover:text-emerald-400 transition-colors" href="/terms">Điều khoản sử dụng</a>
+                        <a class="hover:text-emerald-400 transition-colors" href="/privacy">Chính sách bảo mật</a>
+                        <a class="hover:text-emerald-400 transition-colors" href="/sitemap">Sơ đồ trang web</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="/js/plugins.js"></script>
+    <!-- Classy Nav js -->
+    <script src="/js/classy-nav.min.js"></script>
+
+    <!-- Active js -->
+    <script src="/lib/jquery.elevatezoom.js"></script>
+    <script src="/lib/jquery.mthumbnailscroller.js"></script>
+    <script src="/lib/bootstrap-tabdrop.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    
-</head>
-<body>
-    <div class="preloader-wrapper">
-        <div class="preloader">
-        </div>
-    </div>
-
-    <div class="search-popup">
-        <div class="search-popup-container">
-           
-            <form role="search" method="get" class="search-form" action="/san-pham/tat-ca" >
-                <input type="search" id="search-form" class="search-field search-field" placeholder="Nhập tên sản phẩm" value="" name="search" />
-                <button type="submit" class="search-submit"><a href="#"><i class="icon icon-search"></i></a></button>
-            </form>
-
-            <h5 class="cat-list-title">Danh mục</h5>
-            @await Component.InvokeAsync("Categories")
-          
-        </div>
-    </div>
-
-    <header id="header">
-        <div id="header-wrap">
-            <nav class="secondary-nav border-bottom">
-                <div class="container">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-md-4 header-contact">
-                            <p>
-                                Liên hệ chúng tôi!
-                                <a href="tel:0384056888"><strong>038 405 6888</strong></a>
-                            </p>
-                        </div>
-                        <div class="col-md-4 shipping-purchase text-center">
-                            <p>
-                            </p>
-                        </div>
-                        <div class="col-md-4 col-sm-12 user-items">
-                            <ul class="d-flex justify-content-end list-unstyled">
-                                <li>
-                                    <a href="/dang-nhap">
-                                        <i class="icon icon-user"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/gio-hang">
-                                        <i class="icon icon-shopping-cart"></i>
-                                        <span id="cart-count">0</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/">
-                                        <i class="icon icon-heart"></i>
-                                    </a>
-                                </li>
-                                <li class="user-items search-item pe-3">
-                                    <a href="#" class="search-button">
-                                        <i class="icon icon-search"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <nav class="primary-nav padding-small">
-                <div class="container">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-lg-2 col-md-2">
-                            <div class="main-logo">
-                                <a href="/">
-                                    <img src="/images/logo.jpg" alt="logo" style="height:60px" />
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-10 col-md-10">
-                            <div class="navbar">
-                                <div id="main-nav" class="stellarnav d-flex justify-content-end right">
-                                     @await Component.InvokeAsync("Menu")
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
-            @RenderBody()
-    <section id="instagram" class="padding-large">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Theo dõi trên facebook</h2>
-            </div>
-            <p>
-                Tài khoản Instagram chính thức của chúng tôi <a href="https://www.facebook.com/profile.php?id=61564089861341">Ngọc Quách Gia - Chuyên Gia Về Ngọc</a>
-            </p>
-            <div class="row d-flex flex-wrap justify-content-between">
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <figure class="zoom-effect">
-                        <img src="/images/fb-anh1.jpg" alt="facebook" class="insta-image">
-                        <i class="icon icon-facebook"></i>
-                    </figure>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <figure class="zoom-effect">
-                        <img src="/images/fb-anh2.jpg" alt="facebook" class="insta-image">
-                        <i class="icon icon-facebook"></i>
-                    </figure>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <figure class="zoom-effect">
-                        <img src="/images/fb-anh3.jpg" alt="facebook" class="insta-image">
-                        <i class="icon icon-facebook"></i>
-                    </figure>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <figure class="zoom-effect">
-                        <img src="/images/fb-anh4.jpg" alt="facebook" class="insta-image">
-                        <i class="icon icon-facebook"></i>
-                    </figure>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <figure class="zoom-effect">
-                        <img src="/images/fb-anh5.jpg" alt="facebook" class="insta-image">
-                        <i class="icon icon-facebook"></i>
-                    </figure>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <figure class="zoom-effect">
-                        <img src="/images/fb-anh6.jpg" alt="facebook" class="insta-image">
-                        <i class="icon icon-facebook"></i>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-menu-list">
-                <div class="row d-flex flex-wrap justify-content-between">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">Chính sách ưu đãi</h5>
-                            <ul class="menu-list list-unstyled">
-                                <li class="menu-item">
-                                    Chính Sách Ưu Đãi Sinh Nhật Khách Hàng
-                                </li>
-                                <li class="menu-item">
-                                    Chính sách giảm giá
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">Chính sách hỗ trợ</h5>
-                            <ul class="menu-list list-unstyled">
-                                <li class="menu-item">
-                                    Giới thiệu
-                                </li>
-                                <li class="menu-item">
-                                    Chính sách vận chuyển
-                                </li>
-                                <li class="menu-item">
-                                    Chinh sách bảo hành & đổi trả
-                                </li>
-                                <li class="menu-item">
-                                    Chính sách mua hàng & thanh toán
-                                </li>
-                               
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">
-                                Liên hệ</h5>
-                            <p>
-                                Showroom Ngọc Gems, 16 Ô Chợ Dừa, Đống Đa, Hà Nội <a href="#" class="email">ourservices@ultras.com</a>
-                            </p>
-                            <p>
-                                Số điện thoại <br>
-                                <strong>+57 444 11 00 35</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">Đăng ký nhận thông tin</h5>
-                            <p>"Đăng ký ngay để cập nhật những mẫu đá quý mới nhất, kiến thức phong thủy và ưu đãi đặc biệt dành riêng cho bạn!"</p>
-                            <div class="social-links">
-                                <ul class="d-flex list-unstyled">
-                                    <li>
-                                        <a href="https://www.facebook.com/profile.php?id=61564089861341">
-                                            <i class="icon icon-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon icon-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon icon-youtube-play"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon icon-behance-square"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-    </footer>
-    <div id="footer-bottom">
-        <div class="container">
-            <div class="d-flex align-items-center flex-wrap justify-content-between">
-                <div class="copyright">
-                    <p>
-                        Thiết kế bởi <a href="https://www.facebook.com/mai.toan.3990/">Mai Toản</a> 
-                    </p>
-                </div>
-                <div class="payment-method">
-                    <p>Payment options :</p>
-                    <div class="card-wrap">
-                        <img src="/images/visa-icon.jpg" alt="visa">
-                        <img src="/images/mastercard.png" alt="mastercard">
-                        <img src="/images/american-express.jpg" alt="american-express">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
- 
+    <script src="~/js/active.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script>
-               function getCartItemCount() {
-            let cart = Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : [];
-            return cart.length;
-        }
-
-
-
-        console.log(getCartItemCount())
-        $("#cart-count").text(getCartItemCount());
-    </script>
-
     <script>
         function formatMoneyVND(amount) {
           return new Intl.NumberFormat('vi-VN', {
@@ -306,7 +361,7 @@
         }
 
         // Lấy tất cả phần tử có class "money"
-        const moneyElements = document.querySelectorAll('.money');
+        const moneyElements = document.querySelectorAll('.product-price');
 
         moneyElements.forEach(el => {
           const rawValue = parseFloat(el.textContent.replace(/,/g, '')); // Bỏ dấu phẩy nếu có
@@ -314,10 +369,28 @@
             el.textContent = formatMoneyVND(rawValue);
           }
         });
-        $('.zoom-effect').click(function(){
-            window.location.href="https://www.facebook.com/profile.php?id=61564089861341"
-        })
+      
+       
+                $('.flex-1.bg-gradient-to-r').on('click', function () {
+          window.location.href = 'https://www.facebook.com/messages/t/330001696873545';
+        });
+
     </script>
-    <link href="~/css/site.css?v=@DateTime.Now.ToString("yyyyMMddHHmmss")" rel="stylesheet" />
+    <script>
+               function getCartItemCount() {
+            let cart = Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : [];
+            return cart.length;
+        }
+
+
+
+        $(".cart-area a span").text(getCartItemCount());
+
+                $('.classy-navbar-toggler').on('click', function () {
+            $(this).toggleClass('navbarToggler active');
+            $('.classy-menu').toggleClass('menu-on');
+        });
+
+    </script>
 </body>
 </html>

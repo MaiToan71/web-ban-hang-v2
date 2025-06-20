@@ -199,7 +199,7 @@ namespace Project.Services.Products
             var query = _context.Products
 
                 .OrderByDescending(m => m.Id)
-                .Where(m => m.IsDeleted == false).AsQueryable();
+                .Where(m => m.IsDeleted == false && m.IsPublished == true).AsQueryable();
 
             // 2.Filter
             if (request.IsDiscount != null)
@@ -260,8 +260,7 @@ namespace Project.Services.Products
             }
             if (request.ProductAttributes != null)
             {
-                var pa = _context.ProductAttributes.Where(m => request.ProductAttributes.Select(m => m.ProductId).Contains(m.ProductId)).ToList();
-                query = query.Where(m => pa.Select(m => m.ProductId).Contains(m.Id));
+                query = query.Where(m => request.ProductAttributes.Select(m => m.ProductId).Contains(m.Id));
             }
             //3. Paging
             int totalRow = await query.CountAsync();

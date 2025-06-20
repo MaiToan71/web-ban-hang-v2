@@ -1,54 +1,54 @@
+/* Custom styles or overrides if needed */
+body {
+    font-family: 'Inter', sans-serif;
+}
+.container {
+    width: 100%; /* Đảm bảo container chiếm 100% chiều rộng của phần tử cha */
+    margin-left: auto; /* Căn giữa tự động */
+    margin-right: auto; /* Căn giữa tự động */
+}
+
+/* ... các lớp khác như .px-4 cũng rất quan trọng cho mobile responsiveness ... */
+.px-4 {
+    padding-left: 1rem; /* 16px padding bên trái */
+    padding-right: 1rem; /* 16px padding bên phải */
+}
+.bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.text-transparent {
+    color: transparent;
+}
+.to-gold-600 {
+    --tw-gradient-to: #d97706 var(--tw-gradient-to-position) !important;
+}
+.to-gold-400 {
+    --tw-gradient-to: #fbbf24 var(--tw-gradient-to-position) !important;
+}
+.fill-gold-400 {
+    fill: #fbbf24;
+}
+.text-gold-400 {
+    --tw-text-opacity: 1;
+    color: rgb(251 191 36 / var(--tw-text-opacity, 1));
+}
+/* Bootstrap-like Container styles */
 .container {
     width: 100%;
-    max-width: 1320px; /* desktop lớn */
-    padding-right: 15px;
-    padding-left: 15px;
-    margin: 0 auto;
-    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 2rem;
+    padding-left: 2rem;
+
 }
-.main-logo{
-    display:none;
-}
-#billboard {
-    height: 480px
-}
-@media (max-width: 1400px) {
-    .container {
-        max-width: 1170px;
-    }
+.add-payment{
+
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 1400px) {
     .container {
-        max-width: 960px;
-    }
-}
-
-@media (max-width: 992px) {
-    .container {
-        max-width: 720px;
-    }
-    #billboard {
-        height: 250px
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        max-width: 540px;
-    }
-    #billboard {
-        height: 250px
-    }
-}
-
-@media (max-width: 576px) {
-    .container {
-        max-width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    #billboard{
-        height:250px
+        max-width: 1400px !important;
     }
 }

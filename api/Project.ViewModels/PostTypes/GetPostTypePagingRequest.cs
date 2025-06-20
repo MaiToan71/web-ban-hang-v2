@@ -12,5 +12,7 @@ namespace Project.ViewModel.PostTypes
         public bool? SortOrder { get; set; }
         public string? Name { get; set; }
         public Status? Status { get; set; }
+
+        public List<int>? Ids { get; set; }
     }
 }

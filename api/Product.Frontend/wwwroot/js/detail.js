@@ -1,13 +1,17 @@
-﻿$('#zoom_01').elevateZoom({
-    zoomType: "lens",
-    lensShape: "round",
-    lensSize: 200
-});
+// Initialize Swiper
 const swiper = new Swiper('.swiper', {
-    direction: 'vertical',
-    slidesPerView: 5,
-    mousewheel: true,
+    pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+   
 });
+
+
 
 // Optional: Add click handler
 document.querySelectorAll('.swiper-slide img').forEach(img => {
