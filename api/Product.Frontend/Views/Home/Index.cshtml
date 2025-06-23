@@ -16,15 +16,15 @@
       <link href="~/css/home.css?v=@DateTime.Now.ToString("yyyyMMddhhmmss")" rel="stylesheet" />
 }
 
-  <section class="relative max-sm:mt-[60px] min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+  <section class="relative mt-[120px] max-sm:mt-[160px] min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M30 30l15-15v30zM15 15l15 15H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
     </div>
-    <div class="container mx-auto px-4 text-center text-white relative z-10">
+    <div class="container  text-center text-white relative z-10">
       <div class="max-w-4xl mx-auto animate-fade-in">
         <div class="mb-8 flex justify-center">
           <div class="relative">
-            <img class="w-24 h-24 md:w-32 md:h-32 object-contain animate-scale-in" src="/lovable-uploads/721e99e1-5b71-422a-ab7e-4912fcc3f527.png" alt="Ngọc Quách Gia Logo">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-contain animate-scale-in" src="/img/logo.png" alt="Ngọc Quách Gia Logo">
             <div class="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-gold-400/20 rounded-full blur-xl animate-pulse"></div>
           </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="text-gray-300">Năm kinh nghiệm</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-gold-400 mb-2">1000+</div>
+            <div class="text-3xl font-bold text-gold-400 mb-2">5000+</div>
             <div class="text-gray-300">Khách hàng tin tưởng</div>
           </div>
           <div class="text-center">
@@ -69,7 +69,7 @@
 
 
   <section class="py-20 bg-gradient-to-b from-white to-gray-50">
-    <div class="container mx-auto px-4">
+    <div class="container ">
       <!-- Section Header -->
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
@@ -80,7 +80,7 @@
       </div>
 
       <!-- Products Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-sm:gap-2 max-sm:grid-cols-2">
         <!-- Product Card 1 -->
             @foreach(var product in  ViewBag.ProductHots)
             {
@@ -116,41 +116,43 @@
                     </svg>
                   </div>
                 </div>
-                <div class="absolute top-4 left-4 flex flex-col gap-2">
+                <div class="absolute top-4 left-4 flex flex-col gap-2 max-sm:hidden">
                   <span class="px-3 py-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-xs font-semibold rounded-full">MỚI</span>
                   <span class="px-3 py-1 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold rounded-full">GIẢM GIÁ</span>
                 </div>
               </div>
             </div>
           </a>
-          <div class="p-6">
-            <div class="flex items-center gap-1 mb-3">
+          <div class="p-6 max-sm:p-[4px]">
+            <div class="flex items-center gap-1 mb-3 max-sm:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 fill-gold-400 text-gold-400"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-              <span class="text-sm text-gray-500 ml-2">(5.0)</span>
+              <span class="text-sm text-gray-500 ml-2 max-sm:hidden">(5.0)</span>
             </div>
             <a class="block" href="/san-pham/chi-tiet/@product.Id">
-              <h3 class="font-semibold text-lg text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">@product.Title</h3>
+                            <h3 class="font-semibold text-lg text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2 max-sm:text-[13px] max-sm:text-center max-sm:mb-1">@product.Title</h3>
             </a>
-            <p class="text-sm text-gray-600 mb-4 line-clamp-2">@product.Description</p>
-            <div class="flex items-center gap-2 mb-4">
+            <p class="text-sm text-gray-600 mb-[8px] line-clamp-2 max-sm:text-[13px] max-sm:text-center max-sm:mb-[4px]">@product.Description</p>
+            <div class="flex items-center gap-2 mb-[8px] max-sm:flex max-sm:flex-col max-sm:mb-1 max-sm:gap-0">
                  @if (product.Discount > 0)
                             {
                                 var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
 
-                                <span class="text-2xl font-bold text-emerald-600 product-price">@lastPrice</span>
-                           
-                        <span class="text-lg text-gray-400 line-through product-price">@product.SellingPrice</span>
+                                <span class="text-2xl max-sm:text-[13px] font-bold text-emerald-600 product-price">@lastPrice</span>
+                           <div class="flex">
+                                    <span class="text-lg max-sm:text-[13px] text-gray-400 line-through product-price">@product.SellingPrice</span>
+                                    <span class="text-lg max-sm:text-[13px] text-gray-400 hidden max-sm:block"> (-@product.Discount.ToString().Replace(".00", "")%)</span>
+                           </div>
                     }
                     else
                     {
                          <span class="text-2xl font-bold text-emerald-600 product-price">@product.SellingPrice</span>
                     }
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-2 max-sm:hidden" >
               <button class="flex-1 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 px-4 py-2">Liên hệ</button>
               <a class="flex-1 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background hover:text-accent-foreground h-10 px-4 py-2 border" href="/san-pham/chi-tiet/@product.Id">Chi tiết</a>
             </div>
@@ -164,7 +166,7 @@
 @foreach(var pt in ViewBag.ProductTypes)
 {
 <section class="py-20 bg-gradient-to-b from-white to-gray-50">
-    <div class="container mx-auto px-4">
+    <div class="container ">
         <!-- Section Header -->
         <div class="text-center mb-16">
             <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
@@ -184,7 +186,7 @@
 </section>
 }
 <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
-  <div class="container mx-auto px-4">
+  <div class="container ">
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold-100 text-gold-700 rounded-full text-sm font-medium mb-4">
         <img class="w-4 h-4" src="/img/logo.png" alt="Diamond icon">Về Ngọc Quách Gia
@@ -201,11 +203,11 @@
         </div>
         <div class="grid grid-cols-2 gap-6">
           <div class="text-center p-6 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl">
-            <div class="text-3xl font-bold text-emerald-600 mb-2">1000+</div>
+            <div class="text-3xl font-bold text-emerald-600 mb-2">5000+</div>
             <div class="text-gray-700 font-medium">Khách hàng VIP</div>
           </div>
           <div class="text-center p-6 bg-gradient-to-br from-gold-50 to-gold-100 rounded-2xl">
-            <div class="text-3xl font-bold text-gold-600 mb-2">5000+</div>
+            <div class="text-3xl font-bold text-gold-600 mb-2">500.000+</div>
             <div class="text-gray-700 font-medium">Sản phẩm bán ra</div>
           </div>
         </div>
@@ -274,7 +276,7 @@
 </section>
 
   <section class="py-20 bg-gradient-to-b from-white to-emerald-50">
-  <div class="container mx-auto px-4">
+  <div class="container ">
     <div class="text-center mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
         <img class="w-4 h-4" src="/img/logo.png" alt="Diamond icon">Khách hàng nói gì
@@ -346,7 +348,7 @@
   <div class="absolute inset-0">
     <div class="absolute inset-0" style="background:#06523e"></div>
   </div>
-  <div class="container mx-auto px-4 relative z-10">
+  <div class="container  relative z-10">
     <div class="max-w-4xl mx-auto text-center text-white">
       <div class="mb-12">
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">

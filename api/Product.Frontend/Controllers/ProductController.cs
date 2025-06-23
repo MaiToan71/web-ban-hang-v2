@@ -99,6 +99,14 @@ namespace Product.Frontend.Controllers
                 ViewBag.Image = configurationBuilder["Domain:Api"] + "/UploadFiles/e383dfcf-7bc0-4cf9-a470-cf1456611359.jpg";
             }
 
+            var productCategory = new GetProductPagingRequest
+            {
+                PageIndex = 1,
+                PageSize = 8,
+                PostTypeId = item.PostTypeId,
+            };
+            ViewBag.Products = _product.GetAllPaging(productCategory).Result.Items;
+
             return View(item);
         }
     }

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Favicon  -->
-    <link rel="icon" href="/img/core-img/favicon.ico">
+    <link rel="icon" href="/img/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="/css/core-style.css?v=@DateTime.Now.ToString("yyyyMMddhhmmss")">
@@ -31,7 +31,7 @@
     <!-- ##### Header Area Start ##### -->
     <header class="header_area">
         <div class="bg-gradient-to-r from-emerald-800 to-emerald-700 text-white py-2">
-            <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm">
+            <div class="container  flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm">
                 <!-- Contact Information -->
                 <div class="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4">
                     <div class="flex items-center space-x-1">
@@ -48,14 +48,14 @@
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
                         <!-- Showroom address for larger screens -->
-                        <span class="hidden sm:inline">Showroom: Cầu Giấy, Hà Nội, Việt Nam</span>
+                        <span class=" sm:inline">Cs1 : Đình Hạ Yên, Cầu Giấy, Hà Nội</span>
                         <!-- Showroom address for smaller screens -->
-                        <span class="sm:hidden">Q1, TP.HCM</span>
+                        <span class="sm:inline">. Cs2 : Thanh Miếu, Việt Trì, Phú Thọ</span>
                     </div>
                 </div>
                 <!-- Service Message -->
                 <div class="text-center sm:text-right">
-                    <span>Miễn phí tư vấn 24/7</span>
+                    <a href="https://www.facebook.com/messages/t/330001696873545">Miễn phí tư vấn 24/7</a>
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@
             @RenderBody()
     <!-- ##### Footer Area Start ##### -->
     <footer class="bg-gray-900 text-white">
-        <div class="container mx-auto px-4 py-16">
+        <div class="container  py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <!-- Brand Info and Certifications -->
                 <a href="/" class="lg:col-span-2">
@@ -232,8 +232,8 @@
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                             <div class="text-gray-300">
-                                <div class="font-medium mb-1">Showroom chính:</div>
-                                <div>123 Trần Hưng Đạo, Quận 1, TP.HCM</div>
+                                <div class="font-medium mb-1">Cs 1:</div>
+                                <div>Đình Hạ Yên, Cầu Giấy, Hà Nội</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
@@ -242,8 +242,8 @@
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                             <div class="text-gray-300">
-                                <div class="font-medium mb-1">Chi nhánh Hà Nội:</div>
-                                <div>456 Hai Bà Trưng, Hoàn Kiếm, Hà Nội</div>
+                                <div class="font-medium mb-1">Cs 2:</div>
+                                <div>Số 73, Lý Tự Trọng, P. Thanh Miếu, Việt Trì, Phú Thọ</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-3">
@@ -251,7 +251,7 @@
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
                             <div class="text-gray-300">
-                                <div class="font-medium">Hotline: 0123.456.789</div>
+                                <div class="font-medium">Hotline: 0963872872</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-3">
@@ -281,33 +281,49 @@
                 <div>
                     <h3 class="text-xl font-bold mb-6 text-gold-400">Liên kết nhanh</h3>
                     <div class="space-y-3">
-                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/products">Sản phẩm</a>
-                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/collections">Bộ sưu tập</a>
-                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/blog">Tin tức &amp; Blog</a>
-                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/about">Về chúng tôi</a>
-                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/contact">Liên hệ</a>
-                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/warranty">Chính sách bảo hành</a>
-                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/privacy">Chính sách bảo mật</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/san-pham/tat-ca">Sản phẩm</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/san-pham/tat-ca">Bộ sưu tập</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/tin-tuc">Tin tức &amp; Blog</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/ve-chung-toi">Về chúng tôi</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/lien-he">Liên hệ</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/chinh-sach-bao-hanh">Chính sách bảo hành</a>
+                        <a class="block text-gray-300 hover:text-emerald-400 transition-colors" href="/chinh-sach-bao-mat">Chính sách bảo mật</a>
                     </div>
                     <div class="mt-8">
                         <h4 class="font-bold mb-4 text-gold-400">Kết nối với chúng tôi</h4>
-                        <div class="flex space-x-4">
-                            <a class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:from-blue-600 hover:to-blue-700 transition-all duration-300" href="#">
+                        <div class="flex space-x-4    fixed bottom-4 right-4 z-50
+        flex flex-col items-end space-y-4
+        md:relative md:flex-row md:space-y-0 md:space-x-4 md:items-start
+        p-2 md:p-0
+      max-sm:mb-[60px]">
+                            <a class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:from-blue-600 hover:to-blue-700 transition-all duration-300" href="https://www.facebook.com/profile.php?id=61564089861341">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook w-5 h-5">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                                 </svg>
                             </a>
-                            <a class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-5 h-5">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                            <a class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:from-blue-600 hover:to-blue-700 transition-all duration-300" href="https://zalo.me/g/crevdh371">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path fill="#2962ff" d="M15,36V6.827l-1.211-0.811C8.64,8.083,5,13.112,5,19v10c0,7.732,6.268,14,14,14h10	c4.722,0,8.883-2.348,11.417-5.931V36H15z"></path>
+                                    <path fill="#eee" d="M29,5H19c-1.845,0-3.601,0.366-5.214,1.014C10.453,9.25,8,14.528,8,19	c0,6.771,0.936,10.735,3.712,14.607c0.216,0.301,0.357,0.653,0.376,1.022c0.043,0.835-0.129,2.365-1.634,3.742	c-0.162,0.148-0.059,0.419,0.16,0.428c0.942,0.041,2.843-0.014,4.797-0.877c0.557-0.246,1.191-0.203,1.729,0.083	C20.453,39.764,24.333,40,28,40c4.676,0,9.339-1.04,12.417-2.916C42.038,34.799,43,32.014,43,29V19C43,11.268,36.732,5,29,5z"></path>
+                                    <path fill="#2962ff" d="M36.75,27C34.683,27,33,25.317,33,23.25s1.683-3.75,3.75-3.75s3.75,1.683,3.75,3.75	S38.817,27,36.75,27z M36.75,21c-1.24,0-2.25,1.01-2.25,2.25s1.01,2.25,2.25,2.25S39,24.49,39,23.25S37.99,21,36.75,21z"></path>
+                                    <path fill="#2962ff" d="M31.5,27h-1c-0.276,0-0.5-0.224-0.5-0.5V18h1.5V27z"></path>
+                                    <path fill="#2962ff" d="M27,19.75v0.519c-0.629-0.476-1.403-0.769-2.25-0.769c-2.067,0-3.75,1.683-3.75,3.75	S22.683,27,24.75,27c0.847,0,1.621-0.293,2.25-0.769V26.5c0,0.276,0.224,0.5,0.5,0.5h1v-7.25H27z M24.75,25.5	c-1.24,0-2.25-1.01-2.25-2.25S23.51,21,24.75,21S27,22.01,27,23.25S25.99,25.5,24.75,25.5z"></path>
+                                    <path fill="#2962ff" d="M21.25,18h-8v1.5h5.321L13,26h0.026c-0.163,0.211-0.276,0.463-0.276,0.75V27h7.5	c0.276,0,0.5-0.224,0.5-0.5v-1h-5.321L21,19h-0.026c0.163-0.211,0.276-0.463,0.276-0.75V18z"></path>
                                 </svg>
                             </a>
-                            <a class="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center hover:from-red-600 hover:to-red-700 transition-all duration-300" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube w-5 h-5">
-                                    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
-                                    <path d="m10 15 5-3-5-3z"></path>
+                             <a class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:from-blue-600 hover:to-blue-700 transition-all duration-300" href="https://zalo.me/g/mcjjep478">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                    <path fill="#2962ff" d="M15,36V6.827l-1.211-0.811C8.64,8.083,5,13.112,5,19v10c0,7.732,6.268,14,14,14h10	c4.722,0,8.883-2.348,11.417-5.931V36H15z"></path>
+                                    <path fill="#eee" d="M29,5H19c-1.845,0-3.601,0.366-5.214,1.014C10.453,9.25,8,14.528,8,19	c0,6.771,0.936,10.735,3.712,14.607c0.216,0.301,0.357,0.653,0.376,1.022c0.043,0.835-0.129,2.365-1.634,3.742	c-0.162,0.148-0.059,0.419,0.16,0.428c0.942,0.041,2.843-0.014,4.797-0.877c0.557-0.246,1.191-0.203,1.729,0.083	C20.453,39.764,24.333,40,28,40c4.676,0,9.339-1.04,12.417-2.916C42.038,34.799,43,32.014,43,29V19C43,11.268,36.732,5,29,5z"></path>
+                                    <path fill="#2962ff" d="M36.75,27C34.683,27,33,25.317,33,23.25s1.683-3.75,3.75-3.75s3.75,1.683,3.75,3.75	S38.817,27,36.75,27z M36.75,21c-1.24,0-2.25,1.01-2.25,2.25s1.01,2.25,2.25,2.25S39,24.49,39,23.25S37.99,21,36.75,21z"></path>
+                                    <path fill="#2962ff" d="M31.5,27h-1c-0.276,0-0.5-0.224-0.5-0.5V18h1.5V27z"></path>
+                                    <path fill="#2962ff" d="M27,19.75v0.519c-0.629-0.476-1.403-0.769-2.25-0.769c-2.067,0-3.75,1.683-3.75,3.75	S22.683,27,24.75,27c0.847,0,1.621-0.293,2.25-0.769V26.5c0,0.276,0.224,0.5,0.5,0.5h1v-7.25H27z M24.75,25.5	c-1.24,0-2.25-1.01-2.25-2.25S23.51,21,24.75,21S27,22.01,27,23.25S25.99,25.5,24.75,25.5z"></path>
+                                    <path fill="#2962ff" d="M21.25,18h-8v1.5h5.321L13,26h0.026c-0.163,0.211-0.276,0.463-0.276,0.75V27h7.5	c0.276,0,0.5-0.224,0.5-0.5v-1h-5.321L21,19h-0.026c0.163-0.211,0.276-0.463,0.276-0.75V18z"></path>
+                                </svg>
+                            </a>
+                            <a class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:from-blue-600 hover:to-blue-700 transition-all duration-300" href="https://www.facebook.com/messages/t/330001696873545">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-messenger w-5 h-5" viewBox="0 0 16 16">
+                                    <path d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.64.64 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.64.64 0 0 0-.215-.456C." />
                                 </svg>
                             </a>
                         </div>
@@ -316,13 +332,13 @@
             </div>
         </div>
         <div class="border-t border-gray-800">
-            <div class="container mx-auto px-4 py-6">
+            <div class="container  py-6">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="text-gray-400 text-sm mb-4 md:mb-0">© 2024 Ngọc Quách Gia. Bảo lưu mọi quyền.</div>
                     <div class="flex space-x-6 text-sm text-gray-400">
-                        <a class="hover:text-emerald-400 transition-colors" href="/terms">Điều khoản sử dụng</a>
-                        <a class="hover:text-emerald-400 transition-colors" href="/privacy">Chính sách bảo mật</a>
-                        <a class="hover:text-emerald-400 transition-colors" href="/sitemap">Sơ đồ trang web</a>
+                        <a class="hover:text-emerald-400 transition-colors" href="/">Điều khoản sử dụng</a>
+                        <a class="hover:text-emerald-400 transition-colors" href="/">Chính sách bảo mật</a>
+                        <a class="hover:text-emerald-400 transition-colors" href="/">Sơ đồ trang web</a>
                     </div>
                 </div>
             </div>

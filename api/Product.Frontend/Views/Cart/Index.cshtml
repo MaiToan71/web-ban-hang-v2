@@ -63,37 +63,38 @@
 </div>
 
 <input id="domain" value="@ViewBag.Domain" class="hide"/>
-<section class="mt-[30px]">
-    <div class="container">
+<section class="mt-[30px] mb-[30px] container flex  justify-center">
+    <div class="max-sm:w-full w-[70%] ">
         <div class="grid grid-cols-1">
             <div class="max-sm:block hidden">
                 <div data-bind="foreach:$root.data">
-                    <div class="shadow-lg p-[8px] rounded-lg mb-[8px]">
+                    <div class="shadow-lg p-[16px] rounded-lg mb-[8px]">
                         <div class="shoping__cart__item flex">
                             <img data-bind="attr:{'src':$data.Detail.Image()}" alt="" class="w-[30%]">
-                            <h5 data-bind="text: $data.Detail.Title()">Vegetable’s Package</h5>
-                            <div data-bind="foreach:$data.Detail.ProductAttributes()">
-                                <!--ko if:$data.AttributeId() == $parent.AttributeId()-->
-                                <span data-bind="text: Name() + ' '+Description()"></span>
-                                <!--/ko-->
-                            </div>
+                           <div class="ml-[8px]">
+                                <h5 class="font-bold" data-bind="text: $data.Detail.Title()">Vegetable’s Package</h5>
+                                <div data-bind="foreach:$data.Detail.ProductAttributes()">
+                                    <!--ko if:$data.AttributeId() == $parent.AttributeId()-->
+                                    <span data-bind="text: Name() + ' '+Description()"></span>
+                                    <!--/ko-->
+                                </div>
+                                <div class="shoping__cart__price product-price font-bold text-[16px]" data-bind="text:$data.Detail.SellingPrice">
+                                </div>
+                                <div class="shoping__cart__price bold text-[red]" data-bind="text:$data.Detail.Discount() +'%'">
+                                </div>
                         </div>
-                        <div class="flex mb-[8px] mt-[8px] justify-between">
-                            <div class="shoping__cart__price product-price bold" data-bind="text:$data.Detail.SellingPrice">
-                            </div>
-                            <div class="shoping__cart__price bold" style="text-align:end" data-bind="text:$data.Detail.Discount">
-                            </div>
+                        
                        </div>
-                        <div class="shoping__cart__quantity">
+                        <div class="shoping__cart__quantity flex justify-end">
                             <div class="quantity">
-                                <div class="pro-qty">
+                                <div class="pro-qty mt-[8px] w-full">
                                     <span class="dec qtybtn " data-bind="click:$root.sub">-</span>
                                     <input type="text" value="1" data-bind="value: Quantity">
                                     <span class="inc qtybtn" data-bind="click:$root.add">+</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="shoping__cart__total product-price" data-bind="text:Total">
+                        <div class="shoping__cart__total product-price text-[red] font-bold text-[20px] text-end" data-bind="text:Total">
                         </div>
                         <div class="shoping__cart__item__close">
                             <span class="icon_close"></span>
@@ -161,14 +162,17 @@
                 </div>
             </div>
            
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="shoping__checkout">
                     <h5>Tổng đơn</h5>
                     <ul>
                         <li>Tổng <span class="product-price" data-bind="text:$root.total">$454.98</span></li>
                         <li>Thanh toán <span class="product-price" data-bind="text:$root.total()">$454.98</span></li>
                     </ul>
-                    <button class="btn add-payment step-footer-continue-btn btn btn essence-btn" data-bind="click:$root.addPayment">Tiến hành thanh toán</button>
+                    <div class="flex justify-end">
+                        <button class="btn add-payment step-footer-continue-btn btn btn essence-btn" data-bind="click:$root.addPayment">Tiến hành thanh toán</button>
+
+                    </div>
                 </div>
             </div>
         </div>

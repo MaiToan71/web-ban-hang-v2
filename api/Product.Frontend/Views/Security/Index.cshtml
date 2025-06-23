@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewData["Title"] = "Chính sách bảo hành";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css {
+    <link href="~/css/detail.css" rel="stylesheet" />
+    <style>
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600959907703-ea1d49c2c805') center center/cover;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .brand-section {
+      padding: 60px 0;
+    }
+    .values-section {
+      background-color: #f8f9fa;
+      padding: 60px 0;
+    }
+    .team-section {
+      padding: 60px 0;
+    }
+    .contact-section {
+      background-color: #f1f1f1;
+      padding: 60px 0;
+    }
+  </style>
+}
+
+@section Scripts {
+    <script src="~/lib/knockout-3.5.1.js"></script>
+    <script src="~/lib/knockout-3.5.1.debug.js"></script>
+    <script src="~/lib/knockout.mapping-latest.js"></script>
+    <script src="~/js/cart.js"></script>
+ 
+    <script src="/js/active.js"></script>
+
+
+
+}
+<div class=" mt-[160px]">
+  
+   
+
+        <div class="container mx-auto p-4 md:p-8 bg-white rounded-lg my-8 max-w-4xl mt-[160px]">
+            <h1 class="text-4xl font-bold text-center mb-6 text-custom-green">CHÍNH SÁCH BẢO MẬT</h1>
+
+            <p class="mb-4">
+                Chào mừng quý khách đến với Ngọc Quách Gia! Chúng tôi cam kết bảo vệ quyền riêng tư và thông tin cá nhân của quý khách. Chính sách bảo mật này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ thông tin của quý khách khi quý khách truy cập và sử dụng các dịch vụ của chúng tôi.
+            </p>
+            <p class="mb-6">
+                Bằng việc sử dụng website Ngọc Quách Gia, quý khách đồng ý với các điều khoản của Chính sách bảo mật này.
+            </p>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">1. Thu thập thông tin cá nhân</h2>
+                <p class="mb-2">Chúng tôi có thể thu thập các loại thông tin sau từ quý khách:</p>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li><strong>Thông tin nhận dạng cá nhân:</strong> Tên, địa chỉ email, số điện thoại, địa chỉ giao hàng, thông tin thanh toán (ví dụ: thông tin thẻ tín dụng/ghi nợ nếu bạn thanh toán trực tiếp qua website, hoặc thông tin ngân hàng nếu thanh toán chuyển khoản).</li>
+                    <li><strong>Thông tin giao dịch:</strong> Lịch sử mua hàng, sản phẩm đã xem, sản phẩm yêu thích.</li>
+                    <li><strong>Thông tin kỹ thuật:</strong> Địa chỉ IP, loại trình duyệt, hệ điều hành, thời gian truy cập, trang web giới thiệu, dữ liệu về việc sử dụng website của quý khách thông qua cookie và các công nghệ theo dõi khác.</li>
+                </ul>
+                <p class="mt-4">Chúng tôi thu thập thông tin khi quý khách:</p>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li>Đăng ký tài khoản trên website.</li>
+                    <li>Đặt hàng hoặc sử dụng dịch vụ của chúng tôi.</li>
+                    <li>Đăng ký nhận bản tin, khuyến mãi.</li>
+                    <li>Tham gia khảo sát, cuộc thi.</li>
+                    <li>Liên hệ với chúng tôi qua email, điện thoại hoặc các kênh hỗ trợ khác.</li>
+                </ul>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">2. Mục đích sử dụng thông tin</h2>
+                <p class="mb-2">Chúng tôi sử dụng thông tin của quý khách cho các mục đích sau:</p>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li><strong>Xử lý đơn hàng và cung cấp dịch vụ:</strong> Giao hàng, xử lý thanh toán, cung cấp hỗ trợ khách hàng.</li>
+                    <li><strong>Nâng cao trải nghiệm người dùng:</strong> Cá nhân hóa nội dung, sản phẩm và dịch vụ mà chúng tôi cung cấp cho quý khách.</li>
+                    <li><strong>Gửi thông tin tiếp thị:</strong> Cập nhật về sản phẩm mới, chương trình khuyến mãi, tin tức (nếu quý khách đồng ý nhận).</li>
+                    <li><strong>Phân tích và cải thiện:</strong> Nghiên cứu hành vi người dùng để cải thiện website, sản phẩm và dịch vụ của chúng tôi.</li>
+                    <li><strong>Tuân thủ pháp luật:</strong> Ngăn chặn gian lận và tuân thủ các quy định pháp luật liên quan.</li>
+                </ul>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">3. Chia sẻ thông tin</h2>
+                <p class="mb-2">Chúng tôi cam kết không bán, trao đổi hoặc cho thuê thông tin cá nhân của quý khách cho bên thứ ba vì mục đích tiếp thị trực tiếp của họ mà không có sự đồng ý của quý khách.</p>
+                <p class="mb-2">Chúng tôi có thể chia sẻ thông tin của quý khách với các bên thứ ba trong các trường hợp sau:</p>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li><strong>Đối tác dịch vụ:</strong> Các công ty vận chuyển, nhà cung cấp dịch vụ thanh toán, nhà cung cấp dịch vụ hosting, dịch vụ email marketing hỗ trợ chúng tôi vận hành kinh doanh. Các đối tác này chỉ được phép sử dụng thông tin trong phạm vi cần thiết để thực hiện dịch vụ được giao.</li>
+                    <li><strong>Yêu cầu pháp lý:</strong> Khi được yêu cầu bởi pháp luật, cơ quan nhà nước có thẩm quyền hoặc để bảo vệ quyền và lợi ích hợp pháp của Ngọc Quách Gia.</li>
+                    <li><strong>Chuyển nhượng kinh doanh:</strong> Trong trường hợp sáp nhập, mua lại, hoặc bán một phần hoặc toàn bộ tài sản, thông tin khách hàng có thể được chuyển giao như một phần của tài sản đó.</li>
+                </ul>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">4. Bảo mật thông tin</h2>
+                <p class="mb-2">Chúng tôi áp dụng các biện pháp bảo mật vật lý, điện tử và quản lý phù hợp để bảo vệ thông tin cá nhân của quý khách khỏi sự truy cập trái phép, sử dụng hoặc tiết lộ. Các biện pháp này bao gồm:</p>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li>Mã hóa dữ liệu khi truyền tải (ví dụ: sử dụng SSL/TLS).</li>
+                    <li>Kiểm soát truy cập vào hệ thống chứa thông tin cá nhân.</li>
+                    <li>Thường xuyên kiểm tra và cập nhật các biện pháp bảo mật.</li>
+                </ul>
+                <p class="mt-4">Tuy nhiên, không có phương thức truyền tải dữ liệu nào qua internet hoặc phương pháp lưu trữ điện tử nào là an toàn tuyệt đối 100%. Do đó, chúng tôi không thể đảm bảo an ninh tuyệt đối cho thông tin của quý khách.</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">5. Quyền của quý khách</h2>
+                <p class="mb-2">Quý khách có quyền:</p>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li><strong>Truy cập và chỉnh sửa:</strong> Yêu cầu truy cập hoặc chỉnh sửa thông tin cá nhân của mình.</li>
+                    <li><strong>Rút lại sự đồng ý:</strong> Rút lại sự đồng ý đã cung cấp cho chúng tôi bất cứ lúc nào, tuy nhiên điều này có thể ảnh hưởng đến khả năng cung cấp dịch vụ của chúng tôi cho quý khách.</li>
+                    <li><strong>Hủy bỏ nhận thông tin tiếp thị:</strong> Hủy đăng ký nhận email tiếp thị bằng cách nhấp vào liên kết "hủy đăng ký" ở cuối mỗi email.</li>
+                </ul>
+                <p class="mt-4">Để thực hiện các quyền này, vui lòng liên hệ với chúng tôi theo thông tin dưới đây.</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">6. Cookie</h2>
+                <p class="mb-2">Chúng tôi sử dụng cookie và các công nghệ theo dõi tương tự để thu thập thông tin về hoạt động duyệt web của quý khách nhằm:</p>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li>Cải thiện trải nghiệm người dùng.</li>
+                    <li>Phân tích lưu lượng truy cập website.</li>
+                    <li>Cá nhân hóa nội dung và quảng cáo.</li>
+                </ul>
+                <p class="mt-4">Quý khách có thể cài đặt trình duyệt của mình để từ chối tất cả hoặc một số cookie, hoặc để thông báo cho quý khách khi cookie được gửi. Tuy nhiên, nếu quý khách vô hiệu hóa cookie, một số phần của website có thể không hoạt động bình thường.</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">7. Thay đổi Chính sách bảo mật</h2>
+                <p class="mb-4">Chúng tôi có thể cập nhật Chính sách bảo mật này theo thời gian để phản ánh những thay đổi trong hoạt động của chúng tôi hoặc các yêu cầu pháp lý. Mọi thay đổi sẽ được đăng tải trên trang này và có hiệu lực ngay lập tức kể từ thời điểm đăng tải.</p>
+            </div>
+
+            <div class="mb-4">
+                <h2 class="text-2xl font-bold mb-4 text-custom-green">8. Thông tin liên hệ</h2>
+                <p class="mb-2">Nếu quý khách có bất kỳ câu hỏi nào về Chính sách bảo mật này hoặc muốn thực hiện các quyền của mình, vui lòng liên hệ với chúng tôi theo thông tin sau:</p>
+                <p class="mb-1"><strong>Ngọc Quách Gia</strong></p>
+                <p class="mb-1"><strong>Hotline:</strong> 0384.056.888</p>
+                <p class="mb-1"><strong>Facebook:</strong> Ngọc Quách Gia - Chuyên Gia Về Ngọc</p>
+                <p class="mb-1"><strong>CS1:</strong> Đình Hạ Yên, Quế Giấy, HN</p>
+                <p><strong>CS2:</strong> Số 73, Lý Tự Trọng, P. Thanh Miếu, Việt Trì, Phú Thọ . Hotline:0963872872</p>
+            </div>
+
+            <p class="text-sm text-gray-500 text-right mt-8">Cập nhật lần cuối: 24 tháng 6 năm 2025</p>
+        </div>
+</div>
