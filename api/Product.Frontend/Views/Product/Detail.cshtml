@@ -189,7 +189,7 @@
                                 </div>
                                 <div>
                                     <p class="font-semibold text-gray-800">Hỗ trợ online</p>
-                                    <p class="text-sm text-gray-600">093 608 3333</p>
+                                    <p class="text-sm text-gray-600">0963 872 872</p>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                 <div class="flex flex-wrap md:flex-nowrap gap-2 mt-8 justify-between">
                     <div class="w-full md:w-[68%] bg-white border border-gray-200 p-6 rounded-lg shadow-xl mb-6 lg:mb-0">
                         <h3 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 border-emerald-500 pb-3 text-center">Mô tả sản phẩm</h3>
-                        <div class="prose max-w-none text-gray-700 leading-relaxed text-base space-y-4">
+                        <div >
                             @Html.Raw(Model.Content)
                         </div>
                     </div>
@@ -280,86 +280,5 @@
             </div>
         </section>
 
-        <div class="flex flex-wrap lg:flex-nowrap gap-6 mt-8">
-            <div class="w-full lg:w-[68%] bg-white border border-gray-200 p-6 rounded-lg shadow-xl mb-6 lg:mb-0">
-                <h3 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 border-emerald-500 pb-3 text-center">Mô tả sản phẩm</h3>
-                <div class="prose max-w-none text-gray-700 leading-relaxed text-base space-y-4">
-                    @Html.Raw(Model.Content)
-                </div>
-            </div>
-
-            <div class="w-full lg:w-[30%] bg-white border border-gray-200 p-6 rounded-lg shadow-xl">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-emerald-500 pb-3 text-center">Sản phẩm liên quan</h2>
-
-                <div class="space-y-4">
-                    @foreach (var product in ViewBag.Products)
-                    {
-                        var images = product.Images as List<Project.ViewModels.Images.ImageViewModel>;
-                        string imageUrl = "/images/default-thumbnail-400.jpg";
-
-                        if (images != null && images.Any())
-                        {
-                            imageUrl = ViewBag.DomainApi + images.First().ImagePath;
-                        }
-
-                        <div class="product-related-card flex items-center bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm
-                                        hover:shadow-md transform hover:scale-[1.01] transition-all duration-300">
-
-                            <a class="block w-2/5 flex-shrink-0" href="/san-pham/chi-tiet/@product.Id">
-                                <div class="relative overflow-hidden aspect-w-1 aspect-h-1">
-                                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                         src="@imageUrl"
-                                         alt="@product.Title - Ngọc Quách Gia">
-                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-
-                                    <div class="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <button class="w-8 h-8 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors text-gray-700 hover:text-red-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                                            </svg>
-                                        </button>
-                                        <div class="w-8 h-8 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors text-gray-700 hover:text-emerald-600">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
-                                                <circle cx="12" cy="12" r="3"></circle>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <div class="p-3 flex-grow w-3/5">
-                                <a class="block" href="/san-pham/chi-tiet/@product.Id">
-                                    <h3 class="font-semibold text-gray-900 mb-2
-                                                   hover:text-emerald-600 transition-colors
-                                                   line-clamp-2 text-sm md:text-base">
-                                        @product.Title
-                                    </h3>
-                                </a>
-
-                                <div class="flex flex-col gap-1">
-                                    @if (product.Discount > 0)
-                                    {
-                                        var lastPrice = product.SellingPrice - ((float)product.Discount / 100) * product.SellingPrice;
-
-                                        <span class="font-bold text-emerald-600 text-lg">@lastPrice.ToString("N0") VNĐ</span>
-                                        <div class="flex items-center gap-2">
-                                            <span class="text-sm text-gray-500 line-through">@product.SellingPrice.ToString("N0") VNĐ</span>
-                                            <span class="bg-red-100 text-red-700 text-xs font-semibold px-2 py-0.5 rounded-full">
-                                                -@product.Discount.ToString("N0").Replace(".00", "")%
-                                            </span>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <span class="font-bold text-emerald-600 text-lg">@product.SellingPrice.ToString("N0") VNĐ</span>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
     </div>
 </section>

@@ -78,6 +78,10 @@ var Cart = function () {
 
         }
     }
+    self.removeItem = function (item) {
+        self.data.remove(item)
+    }
+
 
     self.addToCart = function () {
         let newCookies = []

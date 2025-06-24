@@ -4,17 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Css {
-    <link href="~/css/detail.css" rel="stylesheet" />
 
 }
 
 @section Scripts {
-    <script src="~/lib/knockout-3.5.1.js"></script>
-    <script src="~/lib/knockout-3.5.1.debug.js"></script>
-    <script src="~/lib/knockout.mapping-latest.js"></script>
-    <script src="~/js/cart.js"></script>
- 
-    <script src="/js/active.js"></script>
+    <script src="~/lib/knockout-3.5.1.js?v=@DateTime.Now.ToString("yyyyMMddhhmmss")"></script>
+    <script src="~/lib/knockout-3.5.1.debug.js?v=@DateTime.Now.ToString("yyyyMMddhhmmss")"></script>
+    <script src="~/lib/knockout.mapping-latest.js?v=@DateTime.Now.ToString("yyyyMMddhhmmss")"></script>
+    <script src="~/js/cart.js?v=@DateTime.Now.ToString("yyyyMMddhhmmss")"></script>
+
+    <script src="/js/active.js?v=@DateTime.Now.ToString("yyyyMMddhhmmss")"></script>
 
     <script>
         function getCookie(name) {
@@ -63,10 +62,10 @@
 </div>
 
 <input id="domain" value="@ViewBag.Domain" class="hide"/>
-<section class="mt-[30px] mb-[30px] container flex  justify-center">
+<section class="mt-[30px] mb-[30px] container flex  justify-center" >
     <div class="max-sm:w-full w-[70%] ">
         <div class="grid grid-cols-1">
-            <div class="max-sm:block hidden">
+            <div class="max-sm:block hidden" data-bind="if:$root.data().length>0">
                 <div data-bind="foreach:$root.data">
                     <div class="shadow-lg p-[16px] rounded-lg mb-[8px]">
                         <div class="shoping__cart__item flex">
@@ -97,12 +96,12 @@
                         <div class="shoping__cart__total product-price text-[red] font-bold text-[20px] text-end" data-bind="text:Total">
                         </div>
                         <div class="shoping__cart__item__close">
-                            <span class="icon_close"></span>
+                            <button class="btn" data-bind="click:$root.removeItem"> <i class="fa-solid fa-xmark text-[red]"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div  class="max-sm:hidden">
+            <div class="max-sm:hidden" data-bind="if:$root.data().length>0">
                 <div class="shoping__cart__table">
                     <table>
                         <thead class="max-sm:hidden">
@@ -142,8 +141,8 @@
                                 <td class="shoping__cart__total product-price" data-bind="text:Total">
                                    
                                 </td>
-                                <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
+                                <td class="shoping__cart__item__close text-[red]">
+                                    <button class="btn" data-bind="click:$root.removeItem"> <i class="fa-solid fa-xmark text-[red]"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -151,18 +150,21 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" >
+            <p class="text-center w-full" style="text-align:center; color:red !important">Ghi chú: Khi thay đổi giá trị vui lòng ấn "Cập nhật giỏ hàng"</p>
             <div class="col-lg-12">
                 <div class="shoping__cart__btns flex justify-between">
                     <a href="/san-pham/tat-ca" class="primary-btn cart-btn">Tiếp tục mua sắm</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right " data-bind="click:$root.addToCart">
-                        <span class="icon_loading"></span>
-                      Cập nhật giỏ hàng
-                    </a>
+                    <div class="flex">
+                        <a href="#" class="primary-btn cart-btn cart-btn-right " data-bind="click:$root.addToCart">
+                            <span class="icon_loading"></span>
+                            Cập nhật giỏ hàng
+                        </a>
+                    </div>
                 </div>
             </div>
            
-            <div class="col-lg-12">
+            <div class="col-lg-12" data-bind="if:$root.data().length>0">
                 <div class="shoping__checkout">
                     <h5>Tổng đơn</h5>
                     <ul>
